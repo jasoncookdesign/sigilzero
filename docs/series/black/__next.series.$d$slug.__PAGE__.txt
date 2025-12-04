@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/247eb132b7f7b574.js"],"OutletBoundary"]
+3:"$Sreact.suspense"
+0:{"buildId":"v56s7tAGDwDTotBDpv3GK","rsc":["$","$1","c",{"children":[["$","div",null,{"children":[["$","h1",null,{"style":{"fontSize":"2rem","marginBottom":"0.5rem"},"children":"SIGIL.ZERO Black"}],["$","p",null,{"style":{"fontSize":"0.95rem","opacity":0.85,"marginBottom":"0.75rem"},"children":"Peak-time occult techno for the ritual hour."}],["$","div",null,{"style":{"fontSize":"0.95rem","lineHeight":1.6,"marginBottom":"1.5rem"},"children":"\n**Black** is the core of SIGIL.ZERO — dark, driving, and built for peak-time.\nThese tracks are engineered for big systems, strobe-lit rooms, and high-pressure\nmoments when the dancefloor needs maximum intensity and focus.\n"}],false]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"loading":null,"isPartial":false}
+4:null

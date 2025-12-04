@@ -1,0 +1,35 @@
+- id: "core"
+  slug: "core"
+  name: "SIGIL.ZERO"
+  short_label: "Core"
+  description: "The mainline of SIGIL.ZERO. The purest expression of the label's sonic identity, unrestricted by the sub-series aesthetics."
+  order: 0
+  color_hex: "#222222"
+  accent_hex: "#888888"
+
+- id: "black"
+  slug: "black"
+  name: "SIGIL.ZERO Black"
+  short_label: "Black"
+  description: "Dark, peak-time  house, techno, breakbeat, and bass music."
+  order: 1
+  color_hex: "#000000"
+  accent_hex: "#FF0000"
+
+- id: "red"
+  slug: "red"
+  name: "SIGIL.ZERO Red"
+  short_label: "Red"
+  description: "Groove-forward house and techno."
+  order: 2
+  color_hex: "#D32F2F"
+  accent_hex: "#FFBABA"
+
+- id: "void"
+  slug: "void"
+  name: "SIGIL.ZERO Void"
+  short_label: "Void"
+  description: "Experimental, boundary-pushing sounds."
+  order: 3
+  color_hex: "#111111"
+  accent_hex: "#555555"
