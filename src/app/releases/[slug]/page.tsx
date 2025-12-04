@@ -6,6 +6,7 @@ import {
 } from "../../../lib/content/load-releases";
 import { loadSeriesRegistry } from "../../../lib/content/load-series-registry";
 import { loadAllArtists } from "../../../lib/content/load-artists";
+import ReleaseTrackList from "../../../components/releases/ReleaseTrackList";
 
 type ParamsPromise = {
   params: Promise<{
@@ -67,26 +68,20 @@ export default async function ReleasePage({ params }: ParamsPromise) {
       )}
 
       {meta.tracks.length > 0 && (
-        <section>
-          <h2 className="h-md mb-2">
-            Tracklist
-          </h2>
-          <ol className="pl-4 text-sm leading-relaxed">
-            {meta.tracks
-              .slice()
-              .sort((a, b) => a.position - b.position)
-              .map((t) => (
-                <li key={t.id}>
-                  {t.title}
-                  {t.remix_artists.length > 0 && (
-                    <> (Remix: {t.remix_artists.join(", ")})</>
-                  )}
-                  {t.bpm && <> · {t.bpm} BPM</>}
-                  {t.key && <> · {t.key}</>}
-                </li>
-              ))}
-          </ol>
-        </section>
+        <ReleaseTrackList
+          releaseTitle={meta.title}
+          tracks={meta.tracks.map((t) => ({
+            id: t.id,
+            title: t.title,
+            preview_url: t.preview_url || null,
+            duration_seconds: t.duration_seconds || null,
+            artists: t.primary_artists,
+            position: t.position,
+            remix_artists: t.remix_artists || [],
+            bpm: t.bpm || null,
+            key: t.key || null,
+          }))}
+        />
       )}
     </div>
   );

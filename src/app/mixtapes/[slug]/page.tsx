@@ -5,6 +5,7 @@ import {
   loadMixtapeBySlug,
 } from "../../../lib/content/load-mixtapes";
 import { loadAllArtists } from "../../../lib/content/load-artists";
+import MixtapePlayButton from "../../../components/mixtapes/MixtapePlayButton";
 
 type ParamsPromise = {
   params: Promise<{
@@ -61,13 +62,15 @@ export default async function MixtapePage({ params }: ParamsPromise) {
 
       {meta.embed_url && (
         <div className="my-4 mb-6">
-          <iframe
-            src={meta.embed_url}
-            title={`${meta.title} player`}
-            className="w-full h-42"
-            style={{ border: "none" }}
-            allow="autoplay"
-          />
+          <MixtapePlayButton embedUrl={meta.embed_url} title={meta.title} id={meta.id} artist={artist?.name ?? meta.artist_id} />
+          <div className="mt-3">
+            <iframe
+              src={meta.embed_url}
+              title={`${meta.title} player`}
+              className="w-full h-42 border-0"
+              allow="autoplay"
+            />
+          </div>
         </div>
       )}
     </div>

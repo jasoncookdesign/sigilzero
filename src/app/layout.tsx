@@ -1,6 +1,8 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
+import AudioProvider from "../components/audio/AudioProvider";
+import AudioPlayer from "../components/audio/AudioPlayer";
 
 export const metadata: Metadata = {
   title: "SIGIL.ZERO",
@@ -15,7 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header className="border-b border-gray-800 bg-black">
+        <AudioProvider>
+          <header className="border-b border-gray-800 bg-black">
           <div className="container-sigil py-6">
             <h1 className="text-center text-2xl font-bold tracking-widest text-white">
               SIGIL.ZERO
@@ -23,15 +26,16 @@ export default function RootLayout({
           </div>
         </header>
 
-        <main className="container-sigil py-12 min-h-screen">
-          {children}
-        </main>
+          <main className="container-sigil py-12 min-h-screen">{children}</main>
 
-        <footer className="border-t border-gray-800 bg-black">
-          <div className="container-sigil py-8 text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} SIGIL.ZERO
-          </div>
-        </footer>
+          <AudioPlayer />
+
+          <footer className="border-t border-gray-800 bg-black">
+            <div className="container-sigil py-8 text-center text-sm text-gray-500">
+              © {new Date().getFullYear()} SIGIL.ZERO
+            </div>
+          </footer>
+        </AudioProvider>
       </body>
     </html>
   );
