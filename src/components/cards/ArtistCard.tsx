@@ -12,67 +12,32 @@ export default function ArtistCard({ artist }: Props) {
   return (
     <Card href={`/artists/${artist.slug}`}>
       <div>
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            paddingBottom: "100%",
-            overflow: "hidden",
-            borderBottom: "1px solid #111",
-          }}
-        >
+        <div className="relative w-full overflow-hidden border-b border-gray-900 pb-full bg-gray-900">
           {artist.photo ? (
             <Image
               src={artist.photo}
               alt={artist.name}
               fill
-              style={{ objectFit: "cover" }}
+              className="object-cover"
             />
           ) : (
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "0.85rem",
-                opacity: 0.6,
-              }}
-            >
-              No photo
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-sm text-gray-600">No photo</span>
             </div>
           )}
         </div>
 
-        <div style={{ padding: "0.75rem 0.9rem 1rem" }}>
-          <h3
-            style={{
-              fontSize: "1rem",
-              margin: 0,
-              marginBottom: "0.35rem",
-            }}
-          >
+        <div className="p-3 sm:p-4">
+          <h3 className="h-sm mb-2">
             {artist.name}
           </h3>
 
-          <div
-            style={{
-              fontSize: "0.85rem",
-              opacity: 0.8,
-              marginBottom: "0.25rem",
-            }}
-          >
+          <div className="mb-2 text-sm text-muted">
             {artist.roles.join(" / ")}
           </div>
 
           {artist.location && (
-            <div
-              style={{
-                fontSize: "0.8rem",
-                opacity: 0.7,
-              }}
-            >
+            <div className="text-xs text-gray-600">
               {artist.location}
             </div>
           )}

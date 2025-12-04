@@ -50,53 +50,27 @@ export default function ReleasesCatalog({
 
   return (
     <div>
-      <h2
-        style={{
-          fontSize: "2rem",
-          marginBottom: "1rem",
-          textAlign: "center",
-        }}
-      >
+      <h2 className="text-4xl mb-4 text-center">
         Releases
       </h2>
 
       {/* Filter bar */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "minmax(0, 2fr) repeat(3, minmax(0, 1fr))",
-          gap: "0.75rem",
-          marginBottom: "1.5rem",
-        }}
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 mb-6">
         {/* Search */}
         <input
           type="text"
           placeholder="Search title or catalog #"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          style={{
-            padding: "0.4rem 0.6rem",
-            borderRadius: "4px",
-            border: "1px solid #333",
-            background: "#050505",
-            color: "inherit",
-            fontSize: "0.9rem",
-          }}
+          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm"
         />
 
         {/* Series */}
         <select
+          aria-label="Filter by series"
           value={seriesId}
           onChange={(e) => setSeriesId(e.target.value)}
-          style={{
-            padding: "0.4rem 0.6rem",
-            borderRadius: "4px",
-            border: "1px solid #333",
-            background: "#050505",
-            color: "inherit",
-            fontSize: "0.9rem",
-          }}
+          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm"
         >
           <option value="all">All series</option>
           {seriesRegistry.map((s) => (
@@ -108,16 +82,10 @@ export default function ReleasesCatalog({
 
         {/* Type */}
         <select
+          aria-label="Filter by type"
           value={type}
           onChange={(e) => setType(e.target.value)}
-          style={{
-            padding: "0.4rem 0.6rem",
-            borderRadius: "4px",
-            border: "1px solid #333",
-            background: "#050505",
-            color: "inherit",
-            fontSize: "0.9rem",
-          }}
+          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm"
         >
           <option value="all">All types</option>
           {allTypes.map((t) => (
@@ -129,16 +97,10 @@ export default function ReleasesCatalog({
 
         {/* Artist */}
         <select
+          aria-label="Filter by artist"
           value={artistId}
           onChange={(e) => setArtistId(e.target.value)}
-          style={{
-            padding: "0.4rem 0.6rem",
-            borderRadius: "4px",
-            border: "1px solid #333",
-            background: "#050505",
-            color: "inherit",
-            fontSize: "0.9rem",
-          }}
+          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm"
         >
           <option value="all">All artists</option>
           {allArtists.map((a) => (
@@ -150,13 +112,7 @@ export default function ReleasesCatalog({
       </div>
 
       {/* Grid */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "1.5rem",
-        }}
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map(({ meta }) => {
           const series = seriesById[meta.series_id] ?? null;
           return <ReleaseCard key={meta.id} release={meta} series={series} />;
@@ -164,13 +120,7 @@ export default function ReleasesCatalog({
       </div>
 
       {filtered.length === 0 && (
-        <p
-          style={{
-            marginTop: "1rem",
-            fontSize: "0.9rem",
-            opacity: 0.7,
-          }}
-        >
+        <p className="mt-4 text-sm opacity-70">
           No releases match the current filters.
         </p>
       )}

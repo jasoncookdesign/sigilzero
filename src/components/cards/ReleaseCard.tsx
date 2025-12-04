@@ -14,49 +14,25 @@ export default function ReleaseCard({ release, series }: Props) {
   return (
     <Card href={`/releases/${release.slug}`}>
       <div>
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            paddingBottom: "100%",
-            overflow: "hidden",
-          }}
-        >
+        <div className="relative w-full overflow-hidden bg-gray-900 pb-full">
           <Image
             src={release.cover_art}
             alt={release.title}
             fill
-            style={{ objectFit: "cover" }}
+            className="object-cover"
           />
         </div>
 
-        <div style={{ padding: "0.75rem 0.9rem 1rem" }}>
-          <div
-            style={{
-              fontSize: "0.8rem",
-              opacity: 0.7,
-              marginBottom: "0.25rem",
-            }}
-          >
+        <div className="p-3 sm:p-4">
+          <div className="text-label mb-2">
             {release.catalog_number}
           </div>
 
-          <h3
-            style={{
-              fontSize: "1rem",
-              margin: 0,
-              marginBottom: "0.4rem",
-            }}
-          >
+          <h3 className="h-sm mb-2 line-clamp-2">
             {release.title}
           </h3>
 
-          <div
-            style={{
-              fontSize: "0.8rem",
-              opacity: 0.75,
-            }}
-          >
+          <div className="text-sm text-muted">
             {series ? series.name : release.series_id} • {release.release_date}
           </div>
         </div>

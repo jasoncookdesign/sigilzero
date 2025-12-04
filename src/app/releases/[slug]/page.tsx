@@ -39,78 +39,39 @@ export default async function ReleasePage({ params }: ParamsPromise) {
 
   return (
     <div>
-      <h1
-        style={{
-          fontSize: "2rem",
-          marginBottom: "0.25rem",
-        }}
-      >
+      <h1 className="text-4xl mb-1">
         {meta.title}
       </h1>
 
-      <p
-        style={{
-          fontSize: "0.9rem",
-          opacity: 0.8,
-          marginBottom: "0.5rem",
-        }}
-      >
+      <p className="text-sm text-muted mb-2">
         {meta.catalog_number} · {meta.release_date}
         {series && ` · ${series.name}`}
       </p>
 
-      <p
-        style={{
-          fontSize: "0.95rem",
-          marginBottom: "1rem",
-        }}
-      >
+      <p className="text-sm mb-4">
         {meta.primary_artists
           .map((id) => artistById[id]?.name ?? id)
           .join(", ")}
       </p>
 
       {meta.label_copy_short && (
-        <p
-          style={{
-            fontSize: "0.95rem",
-            lineHeight: 1.6,
-            marginBottom: "1.25rem",
-          }}
-        >
+        <p className="text-sm leading-relaxed mb-5">
           {meta.label_copy_short}
         </p>
       )}
 
       {body && (
-        <div
-          style={{
-            fontSize: "0.95rem",
-            lineHeight: 1.6,
-            marginBottom: "1.75rem",
-          }}
-        >
+        <div className="text-sm leading-relaxed mb-7">
           {body}
         </div>
       )}
 
       {meta.tracks.length > 0 && (
         <section>
-          <h2
-            style={{
-              fontSize: "1.2rem",
-              marginBottom: "0.5rem",
-            }}
-          >
+          <h2 className="h-md mb-2">
             Tracklist
           </h2>
-          <ol
-            style={{
-              paddingLeft: "1.2rem",
-              fontSize: "0.95rem",
-              lineHeight: 1.5,
-            }}
-          >
+          <ol className="pl-4 text-sm leading-relaxed">
             {meta.tracks
               .slice()
               .sort((a, b) => a.position - b.position)

@@ -36,47 +36,25 @@ export default async function SeriesPage({ params }: ParamsPromise) {
 
   return (
     <div>
-      <h1
-        style={{
-          fontSize: "2rem",
-          marginBottom: "0.5rem",
-        }}
-      >
+      <h1 className="text-4xl mb-2">
         {meta.name}
       </h1>
 
       {meta.tagline && (
-        <p
-          style={{
-            fontSize: "0.95rem",
-            opacity: 0.85,
-            marginBottom: "0.75rem",
-          }}
-        >
+        <p className="text-sm text-muted mb-3">
           {meta.tagline}
         </p>
       )}
 
       {body && (
-        <div
-          style={{
-            fontSize: "0.95rem",
-            lineHeight: 1.6,
-            marginBottom: "1.5rem",
-          }}
-        >
+        <div className="text-sm leading-relaxed mb-6">
           {body}
         </div>
       )}
 
       {releases.length > 0 && (
         <section>
-          <h2
-            style={{
-              fontSize: "1.3rem",
-              marginBottom: "0.75rem",
-            }}
-          >
+          <h2 className="h-md mb-3">
             Releases in this series
           </h2>
           <ul>

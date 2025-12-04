@@ -2,16 +2,10 @@
 
 export default function AboutPage() {
   return (
-    <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-      <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>About SIGIL.ZERO</h1>
+    <div className="max-w-2xl mx-auto">
+      <h1 className="text-4xl mb-4">About SIGIL.ZERO</h1>
 
-      <p
-        style={{
-          lineHeight: 1.6,
-          fontSize: "0.95rem",
-          marginBottom: "1rem",
-        }}
-      >
+      <p className="leading-relaxed text-sm mb-4">
         SIGIL.ZERO is an occult-tinged electronic music imprint focused on
         high–impact, buy-on-sight releases. The catalog leans into dark,
         hypnotic, and industrial edges of techno and adjacent sounds, with a
@@ -19,13 +13,7 @@ export default function AboutPage() {
         usability.
       </p>
 
-      <p
-        style={{
-          lineHeight: 1.6,
-          fontSize: "0.95rem",
-          marginBottom: "1rem",
-        }}
-      >
+      <p className="leading-relaxed text-sm mb-4">
         In the first phase of the label, the focus is on building a tight
         catalog of weapon-grade tracks and establishing a clear sonic and visual
         identity. Over time, SIGIL.ZERO will grow into a trusted mark for
@@ -33,15 +21,10 @@ export default function AboutPage() {
         and know it will land.
       </p>
 
-      <p
-        style={{
-          lineHeight: 1.6,
-          fontSize: "0.95rem",
-        }}
-      >
+      <p className="leading-relaxed text-sm">
         The label is based in Austin, TX, and run as a tightly curated project
         with close collaboration between artists, designers, and DJs who live
-        inside the culture they’re soundtracking.
+        inside the culture they're soundtracking.
       </p>
     </div>
   );

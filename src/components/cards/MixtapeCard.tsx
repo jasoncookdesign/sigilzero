@@ -12,37 +12,22 @@ type Props = {
 export default function MixtapeCard({ mixtape, artist }: Props) {
   return (
     <Card href={`/mixtapes/${mixtape.slug}`}>
-      <div style={{ padding: "1rem" }}>
-        <h3 style={{ margin: "0 0 0.25rem 0" }}>{mixtape.title}</h3>
+      <div className="p-3 sm:p-4">
+        <h3 className="h-sm mb-2">{
+          mixtape.title
+        }</h3>
 
-        <div
-          style={{
-            fontSize: "0.85rem",
-            opacity: 0.75,
-            marginBottom: "0.3rem",
-          }}
-        >
+        <div className="mb-2 text-sm text-muted">
           {mixtape.date}
         </div>
 
         {artist && (
-          <div
-            style={{
-              fontSize: "0.85rem",
-              opacity: 0.8,
-              marginBottom: "0.3rem",
-            }}
-          >
+          <div className="mb-2 text-sm text-muted">
             {artist.name}
           </div>
         )}
 
-        <div
-          style={{
-            fontSize: "0.8rem",
-            opacity: 0.7,
-          }}
-        >
+        <div className="text-xs text-gray-600">
           {mixtape.platform}
           {mixtape.event_name && ` · ${mixtape.event_name}`}
           {mixtape.location && ` · ${mixtape.location}`}

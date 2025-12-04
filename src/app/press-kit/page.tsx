@@ -11,39 +11,23 @@ export default function PressKitPage() {
   const flagship = releases.find((r) => r.meta.flagship) ?? releases[0];
 
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-      <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Press Kit</h1>
+    <div className="max-w-3xl mx-auto">
+      <h1 className="text-4xl mb-4">Press Kit</h1>
 
       {/* Label overview */}
-      <section style={{ marginBottom: "1.75rem" }}>
-        <h2
-          style={{
-            fontSize: "1.25rem",
-            marginBottom: "0.5rem",
-          }}
-        >
+      <section className="mb-7">
+        <h2 className="h-md mb-2">
           Label Overview
         </h2>
 
-        <p
-          style={{
-            lineHeight: 1.6,
-            fontSize: "0.95rem",
-            marginBottom: "0.75rem",
-          }}
-        >
+        <p className="leading-relaxed text-sm mb-3">
           <strong>{label.name}</strong> is an electronic music label focused on
           dark, hypnotic, and high–energy club music. The catalog is curated for
           DJs and listeners who seek quality–controlled, system-ready tracks
           with a distinct aesthetic edge.
         </p>
 
-        <p
-          style={{
-            lineHeight: 1.6,
-            fontSize: "0.95rem",
-          }}
-        >
+        <p className="leading-relaxed text-sm">
           Based in {label.location ?? "Austin, TX"}, the label operates as a
           tightly curated imprint with a long-term view on catalog value and
           artist development rather than high-volume release cycles.
@@ -51,25 +35,12 @@ export default function PressKitPage() {
       </section>
 
       {/* Key links */}
-      <section style={{ marginBottom: "1.75rem" }}>
-        <h2
-          style={{
-            fontSize: "1.25rem",
-            marginBottom: "0.5rem",
-          }}
-        >
+      <section className="mb-7">
+        <h2 className="h-md mb-2">
           Key Links
         </h2>
 
-        <ul
-          style={{
-            listStyle: "none",
-            padding: 0,
-            margin: 0,
-            fontSize: "0.95rem",
-            lineHeight: 1.6,
-          }}
-        >
+        <ul className="list-none p-0 m-0 text-sm leading-relaxed">
           {label.social?.instagram && (
             <li>
               Instagram:{" "}
@@ -111,67 +82,28 @@ export default function PressKitPage() {
 
       {/* Flagship release */}
       {flagship && (
-        <section style={{ marginBottom: "1.75rem" }}>
-          <h2
-            style={{
-              fontSize: "1.25rem",
-              marginBottom: "0.5rem",
-            }}
-          >
+        <section className="mb-7">
+          <h2 className="h-md mb-2">
             Flagship Release
           </h2>
 
-          <p
-            style={{
-              lineHeight: 1.6,
-              fontSize: "0.95rem",
-              marginBottom: "0.5rem",
-            }}
-          >
+          <p className="leading-relaxed text-sm mb-2">
             Highlight release from the catalog:
           </p>
 
-          <div
-            style={{
-              border: "1px solid #222",
-              borderRadius: "8px",
-              padding: "0.75rem 0.9rem",
-              background: "#050505",
-              fontSize: "0.95rem",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "0.8rem",
-                opacity: 0.7,
-                marginBottom: "0.2rem",
-              }}
-            >
+          <div className="border border-gray-800 rounded-lg p-3 bg-gray-950 text-sm">
+            <div className="text-xs opacity-70 mb-1">
               {flagship.meta.catalog_number}
             </div>
-            <div
-              style={{
-                fontSize: "1rem",
-                marginBottom: "0.15rem",
-              }}
-            >
+            <div className="mb-1">
               {flagship.meta.title}
             </div>
-            <div
-              style={{
-                fontSize: "0.8rem",
-                opacity: 0.75,
-                marginBottom: "0.4rem",
-              }}
-            >
+            <div className="text-xs opacity-75 mb-2">
               {flagship.meta.release_date}
             </div>
             <Link
               href={`/releases/${flagship.meta.slug}`}
-              style={{
-                fontSize: "0.9rem",
-                textDecoration: "none",
-              }}
+              className="text-sm"
             >
               View release →
             </Link>
@@ -181,21 +113,11 @@ export default function PressKitPage() {
 
       {/* Contact */}
       <section>
-        <h2
-          style={{
-            fontSize: "1.25rem",
-            marginBottom: "0.5rem",
-          }}
-        >
+        <h2 className="h-md mb-2">
           Contact
         </h2>
 
-        <p
-          style={{
-            lineHeight: 1.6,
-            fontSize: "0.95rem",
-          }}
-        >
+        <p className="leading-relaxed text-sm">
           For press inquiries, label info, or assets, contact:{" "}
           {label.contact_email ?? label.demo_email ?? "info@sigilzero.com"}
         </p>

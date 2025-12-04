@@ -6,13 +6,7 @@ export default function ArtistsPage() {
 
   return (
     <div>
-      <h2
-        style={{
-          fontSize: "2rem",
-          marginBottom: "1.5rem",
-          textAlign: "center",
-        }}
-      >
+      <h2 className="text-4xl mb-6 text-center">
         Artists
       </h2>
 

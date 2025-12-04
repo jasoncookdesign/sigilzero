@@ -14,39 +14,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        style={{
-          margin: 0,
-          padding: 0,
-          background: "#000",
-          color: "#fff",
-          fontFamily: "sans-serif",
-        }}
-      >
-        <header
-          style={{
-            padding: "1rem",
-            borderBottom: "1px solid #333",
-            textAlign: "center",
-          }}
-        >
-          <h1 style={{ margin: 0, fontSize: "1.5rem", letterSpacing: "0.05em" }}>
-            SIGIL.ZERO
-          </h1>
+      <body>
+        <header className="border-b border-gray-800 bg-black">
+          <div className="container-sigil py-6">
+            <h1 className="text-center text-2xl font-bold tracking-widest text-white">
+              SIGIL.ZERO
+            </h1>
+          </div>
         </header>
 
-        <main style={{ padding: "2rem", minHeight: "70vh" }}>{children}</main>
+        <main className="container-sigil py-12 min-h-screen">
+          {children}
+        </main>
 
-        <footer
-          style={{
-            padding: "1rem",
-            borderTop: "1px solid #333",
-            textAlign: "center",
-            opacity: 0.6,
-            fontSize: "0.9rem",
-          }}
-        >
-          © {new Date().getFullYear()} SIGIL.ZERO
+        <footer className="border-t border-gray-800 bg-black">
+          <div className="container-sigil py-8 text-center text-sm text-gray-500">
+            © {new Date().getFullYear()} SIGIL.ZERO
+          </div>
         </footer>
       </body>
     </html>

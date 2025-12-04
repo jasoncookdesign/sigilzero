@@ -48,53 +48,27 @@ export default function MixtapesCatalog({ mixtapes, artists }: Props) {
 
   return (
     <div>
-      <h2
-        style={{
-          fontSize: "2rem",
-          marginBottom: "1rem",
-          textAlign: "center",
-        }}
-      >
+      <h2 className="text-4xl mb-4 text-center">
         Mixtapes
       </h2>
 
       {/* Filter bar */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "minmax(0, 2fr) repeat(2, minmax(0, 1fr))",
-          gap: "0.75rem",
-          marginBottom: "1.5rem",
-        }}
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-6">
         {/* Search */}
         <input
           type="text"
           placeholder="Search title, event, or location"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          style={{
-            padding: "0.4rem 0.6rem",
-            borderRadius: "4px",
-            border: "1px solid #333",
-            background: "#050505",
-            color: "inherit",
-            fontSize: "0.9rem",
-          }}
+          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm"
         />
 
         {/* Artist */}
         <select
+          aria-label="Filter by artist"
           value={artistId}
           onChange={(e) => setArtistId(e.target.value)}
-          style={{
-            padding: "0.4rem 0.6rem",
-            borderRadius: "4px",
-            border: "1px solid #333",
-            background: "#050505",
-            color: "inherit",
-            fontSize: "0.9rem",
-          }}
+          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm"
         >
           <option value="all">All artists</option>
           {allArtists.map((a) => (
@@ -106,16 +80,10 @@ export default function MixtapesCatalog({ mixtapes, artists }: Props) {
 
         {/* Platform */}
         <select
+          aria-label="Filter by platform"
           value={platform}
           onChange={(e) => setPlatform(e.target.value)}
-          style={{
-            padding: "0.4rem 0.6rem",
-            borderRadius: "4px",
-            border: "1px solid #333",
-            background: "#050505",
-            color: "inherit",
-            fontSize: "0.9rem",
-          }}
+          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm"
         >
           <option value="all">All platforms</option>
           {allPlatforms.map((p) => (
@@ -127,13 +95,7 @@ export default function MixtapesCatalog({ mixtapes, artists }: Props) {
       </div>
 
       {/* Grid */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: "1.5rem",
-        }}
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map(({ meta }) => {
           const artist = artistById[meta.artist_id] ?? null;
           return <MixtapeCard key={meta.id} mixtape={meta} artist={artist} />;
@@ -141,13 +103,7 @@ export default function MixtapesCatalog({ mixtapes, artists }: Props) {
       </div>
 
       {filtered.length === 0 && (
-        <p
-          style={{
-            marginTop: "1rem",
-            fontSize: "0.9rem",
-            opacity: 0.7,
-          }}
-        >
+        <p className="mt-4 text-sm opacity-70">
           No mixtapes match the current filters.
         </p>
       )}

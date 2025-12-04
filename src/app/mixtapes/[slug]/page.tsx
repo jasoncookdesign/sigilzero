@@ -36,66 +36,36 @@ export default async function MixtapePage({ params }: ParamsPromise) {
 
   return (
     <div>
-      <h1
-        style={{
-          fontSize: "2rem",
-          marginBottom: "0.5rem",
-        }}
-      >
+      <h1 className="text-4xl mb-2">
         {meta.title}
       </h1>
 
-      <p
-        style={{
-          fontSize: "0.9rem",
-          opacity: 0.8,
-          marginBottom: "0.5rem",
-        }}
-      >
+      <p className="text-sm text-muted mb-2">
         {artist ? artist.name : meta.artist_id}
         {meta.date && ` · ${meta.date}`}
         {meta.location && ` · ${meta.location}`}
       </p>
 
       {meta.event_name && (
-        <p
-          style={{
-            fontSize: "0.9rem",
-            opacity: 0.85,
-            marginBottom: "0.75rem",
-          }}
-        >
+        <p className="text-sm opacity-85 mb-3">
           {meta.event_name}
           {meta.event_series && ` · ${meta.event_series}`}
         </p>
       )}
 
       {body && (
-        <div
-          style={{
-            fontSize: "0.95rem",
-            lineHeight: 1.6,
-            marginBottom: "1.5rem",
-          }}
-        >
+        <div className="text-sm leading-relaxed mb-6">
           {body}
         </div>
       )}
 
       {meta.embed_url && (
-        <div
-          style={{
-            marginTop: "1rem",
-            marginBottom: "1.5rem",
-          }}
-        >
+        <div className="my-4 mb-6">
           <iframe
             src={meta.embed_url}
-            style={{
-              width: "100%",
-              height: "166px",
-              border: "none",
-            }}
+            title={`${meta.title} player`}
+            className="w-full h-42"
+            style={{ border: "none" }}
             allow="autoplay"
           />
         </div>

@@ -11,31 +11,15 @@ type Props = {
 export default function SeriesCard({ series }: Props) {
   return (
     <Card href={`/series/${series.slug}`}>
-      <div style={{ padding: "1rem" }}>
-        <div
-          style={{
-            fontSize: "0.85rem",
-            opacity: 0.75,
-            marginBottom: "0.25rem",
-          }}
-        >
+      <div className="p-3 sm:p-4">
+        <div className="text-label mb-2">
           {series.short_label ?? series.name}
         </div>
-        <h3
-          style={{
-            fontSize: "1.1rem",
-            margin: "0 0 0.4rem 0",
-          }}
-        >
+        <h3 className="h-sm mb-2">
           {series.name}
         </h3>
         {series.tagline && (
-          <div
-            style={{
-              fontSize: "0.9rem",
-              opacity: 0.8,
-            }}
-          >
+          <div className="text-sm text-muted">
             {series.tagline}
           </div>
         )}

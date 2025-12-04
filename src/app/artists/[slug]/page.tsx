@@ -43,51 +43,25 @@ export default async function ArtistPage({ params }: ParamsPromise) {
 
   return (
     <div>
-      <h1
-        style={{
-          fontSize: "2rem",
-          marginBottom: "0.5rem",
-        }}
-      >
+      <h1 className="text-4xl mb-2">
         {meta.name}
       </h1>
 
       {meta.location && (
-        <p
-          style={{
-            fontSize: "0.9rem",
-            opacity: 0.8,
-            marginBottom: "0.75rem",
-          }}
-        >
+        <p className="text-sm text-muted mb-3">
           {meta.location}
         </p>
       )}
 
       {body && (
-        <div
-          style={{
-            fontSize: "0.95rem",
-            lineHeight: 1.6,
-            marginBottom: "1.5rem",
-          }}
-        >
+        <div className="text-sm leading-relaxed mb-6">
           {body}
         </div>
       )}
 
       {releases.length > 0 && (
-        <section
-          style={{
-            marginTop: "1.5rem",
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "1.3rem",
-              marginBottom: "0.75rem",
-            }}
-          >
+        <section className="mt-6">
+          <h2 className="h-md mb-3">
             Releases
           </h2>
           <ul>
@@ -101,17 +75,8 @@ export default async function ArtistPage({ params }: ParamsPromise) {
       )}
 
       {mixtapes.length > 0 && (
-        <section
-          style={{
-            marginTop: "1.5rem",
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "1.3rem",
-              marginBottom: "0.75rem",
-            }}
-          >
+        <section className="mt-6">
+          <h2 className="h-md mb-3">
             Mixtapes
           </h2>
           <ul>

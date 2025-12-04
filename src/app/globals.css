@@ -1,17 +1,69 @@
-/* src/app/globals.css */
+@import "tailwindcss";
 
-* {
-  box-sizing: border-box;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-black text-white;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  button {
+    @apply transition-colors duration-200;
+  }
 }
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
+@layer components {
+  .container-sigil {
+    @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
 
-body {
-  background: #000;
-  color: #fff;
-  font-family: system-ui, sans-serif;
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply border border-white text-white hover:bg-white hover:text-black;
+  }
+
+  .btn-secondary {
+    @apply border border-gray-600 text-gray-100 hover:border-white hover:text-white;
+  }
+
+  .btn-accent {
+    @apply border border-red-600 bg-red-600 text-white hover:bg-red-700 hover:border-red-700;
+  }
+
+  .card {
+    @apply overflow-hidden rounded-lg border border-gray-800 bg-gray-950 transition-all duration-200 hover:border-gray-700 hover:shadow-lg;
+  }
+
+  .h-display {
+    @apply text-4xl font-bold tracking-tight sm:text-5xl;
+  }
+
+  .h-lg {
+    @apply text-3xl font-bold tracking-tight;
+  }
+
+  .h-md {
+    @apply text-2xl font-bold;
+  }
+
+  .h-sm {
+    @apply text-xl font-bold;
+  }
+
+  .text-label {
+    @apply text-xs font-medium uppercase tracking-widest text-gray-500;
+  }
+
+  .text-muted {
+    @apply text-gray-400;
+  }
 }

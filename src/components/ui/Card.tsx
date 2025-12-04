@@ -10,14 +10,7 @@ type CardProps = {
 
 export function Card({ href, children }: CardProps) {
   const inner = (
-    <div
-      style={{
-        border: "1px solid #222",
-        borderRadius: "8px",
-        overflow: "hidden",
-        background: "#050505",
-      }}
-    >
+    <div className="card">
       {children}
     </div>
   );
@@ -26,11 +19,7 @@ export function Card({ href, children }: CardProps) {
     return (
       <Link
         href={href}
-        style={{
-          textDecoration: "none",
-          color: "inherit",
-          display: "block",
-        }}
+        className="block text-inherit no-underline"
       >
         {inner}
       </Link>
