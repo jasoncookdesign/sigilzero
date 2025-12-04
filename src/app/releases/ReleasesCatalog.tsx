@@ -23,6 +23,11 @@ export default function ReleasesCatalog({
   const [seriesId, setSeriesId] = useState<string>("all");
   const [type, setType] = useState<string>("all");
   const [artistId, setArtistId] = useState<string>("all");
+  const [genres, setGenres] = useState<string[]>([]);
+  const [moods, setMoods] = useState<string[]>([]);
+  const [year, setYear] = useState<string>("all");
+  const [bpmMin, setBpmMin] = useState<string>("");
+  const [bpmMax, setBpmMax] = useState<string>("");
 
   const seriesById = useMemo(
     () => Object.fromEntries(seriesRegistry.map((s) => [s.id, s])),
@@ -34,43 +39,119 @@ export default function ReleasesCatalog({
     [artists]
   );
 
+  const allTypes = useMemo(
+    () => Array.from(new Set(releases.map((r) => r.meta.type))).sort(),
+    [releases]
+  );
+
+  const allArtists = useMemo(
+    () =>
+      artists
+        .map((a) => a.meta)
+        .sort((a, b) => a.name.localeCompare(b.name)),
+    [artists]
+  );
+
+  const allGenres = useMemo(
+    () =>
+      Array.from(
+        new Set(releases.flatMap((r) => r.meta.genres))
+      ).sort(),
+    [releases]
+  );
+
+  const allMoods = useMemo(
+    () =>
+      Array.from(
+        new Set(releases.flatMap((r) => r.meta.moods))
+      ).sort(),
+    [releases]
+  );
+
+  const allYears = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          releases.map((r) => new Date(r.meta.release_date).getFullYear())
+        )
+      ).sort((a, b) => b - a),
+    [releases]
+  );
+
   const filtered = useMemo(() => {
     return filterReleases(releases, {
       query,
       seriesIds: seriesId === "all" ? undefined : [seriesId],
       types: type === "all" ? undefined : [type],
       artistIds: artistId === "all" ? undefined : [artistId],
+      genres: genres.length > 0 ? genres : undefined,
+      moods: moods.length > 0 ? moods : undefined,
+      year: year === "all" ? undefined : parseInt(year, 10),
+      bpmMin: bpmMin ? parseInt(bpmMin, 10) : undefined,
+      bpmMax: bpmMax ? parseInt(bpmMax, 10) : undefined,
     });
-  }, [releases, query, seriesId, type, artistId]);
+  }, [releases, query, seriesId, type, artistId, genres, moods, year, bpmMin, bpmMax]);
 
-  const allTypes = Array.from(new Set(releases.map((r) => r.meta.type))).sort();
-  const allArtists = artists
-    .map((a) => a.meta)
-    .sort((a, b) => a.name.localeCompare(b.name));
+  const isFiltered =
+    query ||
+    seriesId !== "all" ||
+    type !== "all" ||
+    artistId !== "all" ||
+    genres.length > 0 ||
+    moods.length > 0 ||
+    year !== "all" ||
+    bpmMin ||
+    bpmMax;
+
+  const clearFilters = () => {
+    setQuery("");
+    setSeriesId("all");
+    setType("all");
+    setArtistId("all");
+    setGenres([]);
+    setMoods([]);
+    setYear("all");
+    setBpmMin("");
+    setBpmMax("");
+  };
+
+  const toggleGenre = (g: string) => {
+    setGenres((prev) =>
+      prev.includes(g) ? prev.filter((x) => x !== g) : [...prev, g]
+    );
+  };
+
+  const toggleMood = (m: string) => {
+    setMoods((prev) =>
+      prev.includes(m) ? prev.filter((x) => x !== m) : [...prev, m]
+    );
+  };
 
   return (
     <div>
-      <h2 className="text-4xl mb-4 text-center">
+      <h2 className="text-4xl mb-6 text-center">
         Releases
       </h2>
 
-      {/* Filter bar */}
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 mb-6">
-        {/* Search */}
+      {/* Search input */}
+      <div className="mb-4">
         <input
           type="text"
-          placeholder="Search title or catalog #"
+          placeholder="Search titles, catalog #, tracks, or artists..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm"
+          className="w-full px-3 py-2 rounded border border-gray-700 bg-gray-950 text-sm focus:outline-none focus:border-gray-600"
         />
+      </div>
 
+      {/* Dropdown filters - Row 1 */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 mb-4">
         {/* Series */}
         <select
           aria-label="Filter by series"
           value={seriesId}
           onChange={(e) => setSeriesId(e.target.value)}
-          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm"
+          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm focus:outline-none focus:border-gray-600"
         >
           <option value="all">All series</option>
           {seriesRegistry.map((s) => (
@@ -85,7 +166,7 @@ export default function ReleasesCatalog({
           aria-label="Filter by type"
           value={type}
           onChange={(e) => setType(e.target.value)}
-          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm"
+          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm focus:outline-none focus:border-gray-600"
         >
           <option value="all">All types</option>
           {allTypes.map((t) => (
@@ -100,7 +181,7 @@ export default function ReleasesCatalog({
           aria-label="Filter by artist"
           value={artistId}
           onChange={(e) => setArtistId(e.target.value)}
-          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm"
+          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm focus:outline-none focus:border-gray-600"
         >
           <option value="all">All artists</option>
           {allArtists.map((a) => (
@@ -109,7 +190,110 @@ export default function ReleasesCatalog({
             </option>
           ))}
         </select>
+
+        {/* Year */}
+        <select
+          aria-label="Filter by year"
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
+          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm focus:outline-none focus:border-gray-600"
+        >
+          <option value="all">All years</option>
+          {allYears.map((y) => (
+            <option key={y} value={y}>
+              {y}
+            </option>
+          ))}
+        </select>
       </div>
+
+      {/* BPM range filters */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+        <input
+          type="number"
+          placeholder="Min BPM"
+          value={bpmMin}
+          onChange={(e) => setBpmMin(e.target.value)}
+          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm focus:outline-none focus:border-gray-600"
+          min="0"
+          max="300"
+        />
+        <input
+          type="number"
+          placeholder="Max BPM"
+          value={bpmMax}
+          onChange={(e) => setBpmMax(e.target.value)}
+          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm focus:outline-none focus:border-gray-600"
+          min="0"
+          max="300"
+        />
+      </div>
+
+      {/* Genre pills */}
+      {allGenres.length > 0 && (
+        <div className="mb-4">
+          <label className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wide">
+            Genres
+          </label>
+          <div className="flex flex-wrap gap-2">
+            {allGenres.map((g) => (
+              <button
+                key={g}
+                onClick={() => toggleGenre(g)}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                  genres.includes(g)
+                    ? "bg-white text-black border border-white"
+                    : "bg-gray-900 text-gray-300 border border-gray-700 hover:border-gray-600"
+                }`}
+              >
+                {g}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Mood pills */}
+      {allMoods.length > 0 && (
+        <div className="mb-4">
+          <label className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wide">
+            Moods
+          </label>
+          <div className="flex flex-wrap gap-2">
+            {allMoods.map((m) => (
+              <button
+                key={m}
+                onClick={() => toggleMood(m)}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                  moods.includes(m)
+                    ? "bg-white text-black border border-white"
+                    : "bg-gray-900 text-gray-300 border border-gray-700 hover:border-gray-600"
+                }`}
+              >
+                {m}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Active filters display and clear button */}
+      {isFiltered && (
+        <div className="mb-6 p-3 bg-gray-900 rounded border border-gray-800">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div className="text-sm text-gray-300">
+              Showing <span className="font-semibold">{filtered.length}</span> of{" "}
+              <span className="font-semibold">{releases.length}</span> releases
+            </div>
+            <button
+              onClick={clearFilters}
+              className="px-3 py-1 text-sm bg-gray-800 text-white rounded hover:bg-gray-700 transition-colors border border-gray-700"
+            >
+              Clear filters
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -121,7 +305,7 @@ export default function ReleasesCatalog({
 
       {filtered.length === 0 && (
         <p className="mt-4 text-sm opacity-70">
-          No releases match the current filters.
+          No releases match the current filters. <button onClick={clearFilters} className="underline hover:text-white">Clear filters</button>
         </p>
       )}
     </div>
