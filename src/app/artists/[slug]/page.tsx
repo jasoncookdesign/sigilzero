@@ -6,6 +6,8 @@ import {
 } from "../../../lib/content/load-artists";
 import { loadAllReleases } from "../../../lib/content/load-releases";
 import { loadAllMixtapes } from "../../../lib/content/load-mixtapes";
+import { safeGetInstagramPosts } from "../../../lib/instagram/fetch-posts";
+import InstagramFeed from "../../../components/artists/InstagramFeed";
 
 type ParamsPromise = {
   params: Promise<{
@@ -41,6 +43,11 @@ export default async function ArtistPage({ params }: ParamsPromise) {
     (m) => m.meta.artist_id === meta.id
   );
 
+  // Fetch Instagram posts if handle is available
+  const instagramPosts = meta.instagram_handle
+    ? await safeGetInstagramPosts(meta.instagram_handle, 3)
+    : [];
+
   return (
     <div>
       <h1 className="text-4xl mb-2">
@@ -56,6 +63,12 @@ export default async function ArtistPage({ params }: ParamsPromise) {
       {body && (
         <div className="text-sm leading-relaxed mb-6">
           {body}
+        </div>
+      )}
+
+      {instagramPosts && instagramPosts.length > 0 && (
+        <div className="mb-8">
+          <InstagramFeed posts={instagramPosts} />
         </div>
       )}
 
