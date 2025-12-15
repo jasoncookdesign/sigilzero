@@ -67,7 +67,10 @@ export default {
         '5xl': ['3rem', { lineHeight: '1' }],
       },
       fontFamily: {
-        sans: ['system-ui', 'sans-serif'],
+        heading: ["var(--font-heading)", "serif"],
+        body: ["var(--font-body)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
+        sans: ["var(--font-body)", "sans-serif"],
       },
     },
   },

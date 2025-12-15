@@ -7,6 +7,29 @@
 
   body {
     @apply bg-black text-white;
+    font-family: var(--font-body, sans-serif);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading, serif);
+    font-weight: 600;
+  }
+
+  code,
+  pre {
+    font-family: var(--font-mono, monospace);
+    font-weight: 400;
+  }
+
+  kbd,
+  samp {
+    font-family: var(--font-mono, monospace);
+    font-weight: 400;
   }
 
   a {
@@ -54,18 +77,31 @@
 
   .h-display {
     @apply text-4xl font-bold tracking-tight sm:text-5xl;
+    font-family: var(--font-heading, serif);
   }
 
   .h-lg {
     @apply text-3xl font-bold tracking-tight;
+    font-family: var(--font-heading, serif);
   }
 
   .h-md {
     @apply text-2xl font-bold;
+    font-family: var(--font-heading, serif);
   }
 
   .h-sm {
     @apply text-xl font-bold;
+    font-family: var(--font-heading, serif);
+  }
+
+  /* Typography utility classes */
+  .heading {
+    font-family: var(--font-heading, serif);
+  }
+
+  .mono {
+    font-family: var(--font-mono, monospace);
   }
 
   .text-label {

@@ -1,8 +1,33 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
+import { Cormorant_Garamond, Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
 import AudioProvider from "../components/audio/AudioProvider";
 import AudioPlayer from "../components/audio/AudioPlayer";
+
+// Heading font: Cormorant Garamond (weights: 500, 600, 700)
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+// Body font: Inter (weights: 400, 500, 600)
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+// Monospace font: Space Mono (weights: 400, 700)
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "SIGIL.ZERO",
@@ -15,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${cormorant.variable} ${inter.variable} ${spaceMono.variable}`}>
       <body>
         <AudioProvider>
           <header className="border-b border-gray-800 bg-black">
