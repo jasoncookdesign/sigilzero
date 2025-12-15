@@ -23,8 +23,8 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="border-b border-gray-800 bg-black">
-      <div className="container-sigil py-4">
+    <nav className="bg-black border-b border-gray-800">
+      <div className="py-4 container-sigil">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-xl font-bold tracking-widest text-white heading">
@@ -32,7 +32,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="items-center hidden gap-6 md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -50,7 +50,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
+            className="p-2 text-gray-400 transition-colors md:hidden hover:text-white"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -74,7 +74,7 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-800 pt-4">
+          <div className="pt-4 pb-4 mt-4 border-t border-gray-800 md:hidden">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <Link
