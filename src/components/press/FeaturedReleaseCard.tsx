@@ -1,16 +1,20 @@
 import React from "react";
-import Image from "next/image";
 import type { Release } from "../../lib/schemas/release";
+import PlaceholderImage from "../PlaceholderImage";
 
 export default function FeaturedReleaseCard({ release }: { release: Release }) {
   return (
     <div className="bg-gray-900 rounded border border-gray-800 overflow-hidden">
       <div className="relative w-full h-56 bg-gray-800">
-        {release.cover_art ? (
-          <Image src={release.cover_art} alt={release.title} fill className="object-cover" />
-        ) : (
-          <div className="flex items-center justify-center h-full text-gray-500">No art</div>
-        )}
+        <PlaceholderImage
+          src={release.cover_art}
+          alt={release.title}
+          width={400}
+          height={400}
+          fill
+          placeholderText={release.catalog_number}
+          className="object-cover"
+        />
       </div>
       <div className="p-4">
         <h3 className="text-lg font-semibold">{release.title}</h3>

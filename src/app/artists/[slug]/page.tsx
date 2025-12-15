@@ -8,6 +8,7 @@ import { loadAllReleases } from "../../../lib/content/load-releases";
 import { loadAllMixtapes } from "../../../lib/content/load-mixtapes";
 import { safeGetInstagramPosts } from "../../../lib/instagram/fetch-posts";
 import InstagramFeed from "../../../components/artists/InstagramFeed";
+import PlaceholderImage from "../../../components/PlaceholderImage";
 
 type ParamsPromise = {
   params: Promise<{
@@ -50,6 +51,18 @@ export default async function ArtistPage({ params }: ParamsPromise) {
 
   return (
     <div>
+      <div className="relative w-full h-80 mb-6 overflow-hidden rounded-lg bg-gray-900">
+        <PlaceholderImage
+          src={meta.photo}
+          alt={meta.name}
+          width={800}
+          height={600}
+          fill
+          placeholderText={meta.name}
+          className="object-cover"
+        />
+      </div>
+
       <h1 className="text-4xl mb-2">
         {meta.name}
       </h1>

@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { Card } from "../ui/Card";
 import type { ReleaseDocument } from "../../lib/content/load-releases";
 import type { SeriesRegistryItem } from "../../lib/content/load-series-registry";
+import PlaceholderImage from "../PlaceholderImage";
 
 type Props = {
   release: ReleaseDocument["meta"];
@@ -14,11 +14,14 @@ export default function ReleaseCard({ release, series }: Props) {
   return (
     <Card href={`/releases/${release.slug}`}>
       <div>
-        <div className="relative w-full overflow-hidden bg-gray-900 pb-full">
-          <Image
+        <div className="relative w-full h-48 overflow-hidden bg-gray-900">
+          <PlaceholderImage
             src={release.cover_art}
             alt={release.title}
+            width={400}
+            height={300}
             fill
+            placeholderText={release.catalog_number}
             className="object-cover"
           />
         </div>

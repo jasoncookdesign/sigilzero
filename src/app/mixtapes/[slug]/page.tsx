@@ -6,6 +6,7 @@ import {
 } from "../../../lib/content/load-mixtapes";
 import { loadAllArtists } from "../../../lib/content/load-artists";
 import MixtapePlayButton from "../../../components/mixtapes/MixtapePlayButton";
+import PlaceholderImage from "../../../components/PlaceholderImage";
 
 type ParamsPromise = {
   params: Promise<{
@@ -37,6 +38,18 @@ export default async function MixtapePage({ params }: ParamsPromise) {
 
   return (
     <div>
+      <div className="relative w-full h-64 mb-6 overflow-hidden rounded-lg bg-gray-900">
+        <PlaceholderImage
+          src={meta.cover_image}
+          alt={meta.title}
+          width={800}
+          height={400}
+          fill
+          placeholderText={meta.title}
+          className="object-cover"
+        />
+      </div>
+
       <h1 className="text-4xl mb-2">
         {meta.title}
       </h1>

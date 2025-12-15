@@ -1,6 +1,6 @@
 import React from "react";
-import Image from "next/image";
 import type { InstagramPost } from "../../lib/instagram/fetch-posts";
+import PlaceholderImage from "../PlaceholderImage";
 
 export default function InstagramFeed({ posts }: { posts: InstagramPost[] }) {
   if (!posts || posts.length === 0) return null;
@@ -21,10 +21,13 @@ export default function InstagramFeed({ posts }: { posts: InstagramPost[] }) {
             className="group relative overflow-hidden rounded-lg aspect-square bg-gray-900 hover:opacity-80 transition-opacity"
           >
             {post.media_type === "IMAGE" || post.media_type === "CAROUSEL_ALBUM" ? (
-              <Image
+              <PlaceholderImage
                 src={post.media_url}
                 alt={post.caption || "Instagram post"}
+                width={600}
+                height={600}
                 fill
+                placeholderText="Loading..."
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
             ) : post.media_type === "VIDEO" ? (

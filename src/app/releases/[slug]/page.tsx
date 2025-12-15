@@ -7,6 +7,7 @@ import {
 import { loadSeriesRegistry } from "../../../lib/content/load-series-registry";
 import { loadAllArtists } from "../../../lib/content/load-artists";
 import ReleaseTrackList from "../../../components/releases/ReleaseTrackList";
+import PlaceholderImage from "../../../components/PlaceholderImage";
 
 type ParamsPromise = {
   params: Promise<{
@@ -40,6 +41,18 @@ export default async function ReleasePage({ params }: ParamsPromise) {
 
   return (
     <div>
+      <div className="relative w-full h-80 mb-6 overflow-hidden rounded-lg bg-gray-900">
+        <PlaceholderImage
+          src={meta.cover_art}
+          alt={meta.title}
+          width={800}
+          height={600}
+          fill
+          placeholderText={meta.catalog_number}
+          className="object-cover"
+        />
+      </div>
+
       <h1 className="text-4xl mb-1">
         {meta.title}
       </h1>

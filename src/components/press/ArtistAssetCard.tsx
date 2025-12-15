@@ -1,16 +1,20 @@
 import React from "react";
-import Image from "next/image";
 import type { Artist } from "../../lib/schemas/artist";
+import PlaceholderImage from "../PlaceholderImage";
 
 export default function ArtistAssetCard({ artist }: { artist: Artist }) {
   return (
     <div className="bg-gray-900 rounded border border-gray-800 overflow-hidden">
       <div className="relative w-full h-56 bg-gray-800">
-        {artist.photo ? (
-          <Image src={artist.photo} alt={artist.name} fill className="object-cover" />
-        ) : (
-          <div className="flex items-center justify-center h-full text-gray-500">No photo</div>
-        )}
+        <PlaceholderImage
+          src={artist.photo}
+          alt={artist.name}
+          width={400}
+          height={400}
+          fill
+          placeholderText={artist.name}
+          className="object-cover"
+        />
       </div>
       <div className="p-4">
         <h3 className="text-lg font-semibold">{artist.name}</h3>
