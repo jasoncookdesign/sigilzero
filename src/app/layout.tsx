@@ -4,6 +4,7 @@ import { Cormorant_Garamond, Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
 import AudioProvider from "../components/audio/AudioProvider";
 import AudioPlayer from "../components/audio/AudioPlayer";
+import Navigation from "../components/Navigation";
 
 // Heading font: Cormorant Garamond (weights: 500, 600, 700)
 const cormorant = Cormorant_Garamond({
@@ -43,13 +44,7 @@ export default function RootLayout({
     <html lang="en" className={`${cormorant.variable} ${inter.variable} ${spaceMono.variable}`}>
       <body>
         <AudioProvider>
-          <header className="border-b border-gray-800 bg-black">
-          <div className="container-sigil py-6">
-            <h1 className="text-center text-2xl font-bold tracking-widest text-white">
-              SIGIL.ZERO
-            </h1>
-          </div>
-        </header>
+          <Navigation />
 
           <main className="min-h-screen">{children}</main>
 
