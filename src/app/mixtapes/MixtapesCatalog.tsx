@@ -6,6 +6,7 @@ import type { MixtapeDocument } from "../../lib/content/load-mixtapes";
 import type { ArtistDocument } from "../../lib/content/load-artists";
 import { filterMixtapes } from "../../lib/filters/mixtapes";
 import MixtapeCard from "../../components/cards/MixtapeCard";
+import Section from "../../components/Section";
 
 type Props = {
   mixtapes: MixtapeDocument[];
@@ -126,21 +127,22 @@ export default function MixtapesCatalog({ mixtapes, artists }: Props) {
   };
 
   return (
-    <div>
-      <h2 className="text-4xl mb-6 text-center">
-        Mixtapes
-      </h2>
+    <Section>
+      <div className="container-sigil px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl mb-6 text-center">
+          Mixtapes
+        </h2>
 
-      {/* Search input */}
-      <div className="mb-4">
-        <input
-          type="text"
-          placeholder="Search titles, events, locations, or artists..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className="w-full px-3 py-2 rounded border border-gray-700 bg-gray-950 text-sm focus:outline-none focus:border-gray-600"
-        />
-      </div>
+        {/* Search input */}
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Search titles, events, locations, or artists..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="w-full px-3 py-2 rounded border border-gray-700 bg-gray-950 text-sm focus:outline-none focus:border-gray-600"
+          />
+        </div>
 
       {/* Dropdown filters */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 mb-4">
@@ -293,6 +295,7 @@ export default function MixtapesCatalog({ mixtapes, artists }: Props) {
           No mixtapes match the current filters. <button onClick={clearFilters} className="underline hover:text-white">Clear filters</button>
         </p>
       )}
-    </div>
+      </div>
+    </Section>
   );
 }

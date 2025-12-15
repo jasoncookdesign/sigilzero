@@ -1,16 +1,19 @@
 import { loadAllArtists } from "../../lib/content/load-artists";
 import ArtistsGrid from "./ArtistsGrid";
+import Section from "../../components/Section";
 
 export default function ArtistsPage() {
   const artists = loadAllArtists();
 
   return (
-    <div>
-      <h2 className="text-4xl mb-6 text-center">
-        Artists
-      </h2>
+    <Section>
+      <div className="container-sigil px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl mb-6 text-center">
+          Artists
+        </h2>
 
-      <ArtistsGrid artists={artists} />
-    </div>
+        <ArtistsGrid artists={artists} />
+      </div>
+    </Section>
   );
 }

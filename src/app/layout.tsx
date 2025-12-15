@@ -26,7 +26,7 @@ export default function RootLayout({
           </div>
         </header>
 
-          <main className="container-sigil py-12 min-h-screen">{children}</main>
+          <main className="min-h-screen">{children}</main>
 
           <AudioPlayer />
 

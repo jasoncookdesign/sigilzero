@@ -12,6 +12,7 @@ import ReleaseCard from "../components/cards/ReleaseCard";
 import MixtapeCard from "../components/cards/MixtapeCard";
 import ArtistCard from "../components/cards/ArtistCard";
 import SeriesCard from "../components/cards/SeriesCard";
+import Section from "../components/Section";
 
 function sortByDateDesc<T extends { meta: { release_date?: string; date?: string } }>(
   items: T[],
@@ -53,132 +54,142 @@ export default function HomePage() {
     .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-0">
       {/* HERO */}
-      <section className="text-center py-12">
-        <h1 className="h-display mb-3 text-white uppercase">
-          SIGIL.ZERO
-        </h1>
+      <Section className="text-center">
+        <div className="container-sigil px-4 sm:px-6 lg:px-8">
+          <h1 className="h-display mb-3 text-white uppercase">
+            SIGIL.ZERO
+          </h1>
 
-        <p className="text-sm text-muted max-w-lg mx-auto mb-6 leading-relaxed">
-          An occult-leaning electronic music imprint focused on dark, hypnotic,
-          high–impact club records. Curated for DJs and listeners who want
-          system-ready tracks with a distinct edge.
-        </p>
+          <p className="text-sm text-muted max-w-lg mx-auto mb-6 leading-relaxed">
+            An occult-leaning electronic music imprint focused on dark, hypnotic,
+            high–impact club records. Curated for DJs and listeners who want
+            system-ready tracks with a distinct edge.
+          </p>
 
-        <div className="flex justify-center gap-3 flex-wrap">
-          <Link
-            href="/releases"
-            className="btn btn-primary text-sm"
-          >
-            View catalog
-          </Link>
-          <Link
-            href="/artists"
-            className="btn btn-secondary text-sm opacity-85"
-          >
-            Explore the roster
-          </Link>
+          <div className="flex justify-center gap-3 flex-wrap">
+            <Link
+              href="/releases"
+              className="btn btn-primary text-sm"
+            >
+              View catalog
+            </Link>
+            <Link
+              href="/artists"
+              className="btn btn-secondary text-sm opacity-85"
+            >
+              Explore the roster
+            </Link>
+          </div>
         </div>
-      </section>
+      </Section>
 
       {/* LATEST RELEASE */}
       {latestRelease && (
-        <section>
-          <div className="flex justify-between items-baseline mb-3">
-            <h2 className="h-md">
-              Latest Release
-            </h2>
+        <Section>
+          <div className="container-sigil px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-baseline mb-3">
+              <h2 className="h-md">
+                Latest Release
+              </h2>
 
-            <Link
-              href="/releases"
-              className="text-xs opacity-80"
-            >
-              View all releases →
-            </Link>
-          </div>
+              <Link
+                href="/releases"
+                className="text-xs opacity-80"
+              >
+                View all releases →
+              </Link>
+            </div>
 
-          <div className="max-w-xs">
-            <ReleaseCard
-              release={latestRelease.meta}
-              series={
-                seriesRegistry.find(
-                  (s) => s.id === latestRelease.meta.series_id
-                ) ?? null
-              }
-            />
+            <div className="max-w-xs">
+              <ReleaseCard
+                release={latestRelease.meta}
+                series={
+                  seriesRegistry.find(
+                    (s) => s.id === latestRelease.meta.series_id
+                  ) ?? null
+                }
+              />
+            </div>
           </div>
-        </section>
+        </Section>
       )}
 
       {/* LATEST MIXTAPE */}
       {latestMixtape && (
-        <section>
-          <div className="flex justify-between items-baseline mb-3">
-            <h2 className="h-md">
-              Latest Mixtape
-            </h2>
+        <Section>
+          <div className="container-sigil px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-baseline mb-3">
+              <h2 className="h-md">
+                Latest Mixtape
+              </h2>
 
-            <Link
-              href="/mixtapes"
-              className="text-xs opacity-80"
-            >
-              View all mixtapes →
-            </Link>
-          </div>
+              <Link
+                href="/mixtapes"
+                className="text-xs opacity-80"
+              >
+                View all mixtapes →
+              </Link>
+            </div>
 
-          <div className="max-w-md">
-            <MixtapeCard
-              mixtape={latestMixtape.meta}
-              artist={artistById[latestMixtape.meta.artist_id] ?? null}
-            />
+            <div className="max-w-md">
+              <MixtapeCard
+                mixtape={latestMixtape.meta}
+                artist={artistById[latestMixtape.meta.artist_id] ?? null}
+              />
+            </div>
           </div>
-        </section>
+        </Section>
       )}
 
       {/* SERIES OVERVIEW */}
       {activeSeries.length > 0 && (
-        <section>
-          <h2 className="h-md mb-3">
-            Label Series
-          </h2>
+        <Section>
+          <div className="container-sigil px-4 sm:px-6 lg:px-8">
+            <h2 className="h-md mb-3">
+              Label Series
+            </h2>
 
-          <p className="text-sm text-muted max-w-lg mb-4 leading-relaxed">
-            SIGIL.ZERO is organized into a small set of curated series, each
-            with its own flavor and use-case on the dancefloor. Think of them as
-            sigils for different kinds of nights.
-          </p>
+            <p className="text-sm text-muted max-w-lg mb-4 leading-relaxed">
+              SIGIL.ZERO is organized into a small set of curated series, each
+              with its own flavor and use-case on the dancefloor. Think of them as
+              sigils for different kinds of nights.
+            </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {activeSeries.map((s) => (
-              <SeriesCard key={s.id} series={s} />
-            ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {activeSeries.map((s) => (
+                <SeriesCard key={s.id} series={s} />
+              ))}
+            </div>
           </div>
-        </section>
+        </Section>
       )}
 
       {/* FEATURED ARTISTS */}
       {featuredArtists.length > 0 && (
-        <section>
-          <div className="flex justify-between items-baseline mb-3">
-            <h2 className="h-md">
-              Featured Artists
-            </h2>
+        <Section>
+          <div className="container-sigil px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-baseline mb-3">
+              <h2 className="h-md">
+                Featured Artists
+              </h2>
 
-            <Link
-              href="/artists"
-              className="text-xs opacity-80"
-            >
-              View all artists →
-            </Link>
-          </div>
+              <Link
+                href="/artists"
+                className="text-xs opacity-80"
+              >
+                View all artists →
+              </Link>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredArtists.map((artist) => (
-              <ArtistCard key={artist.id} artist={artist} />
-            ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredArtists.map((artist) => (
+                <ArtistCard key={artist.id} artist={artist} />
+              ))}
+            </div>
           </div>
-        </section>
+        </Section>
       )}
 
       {/* PRESS / DEMO CTA */}

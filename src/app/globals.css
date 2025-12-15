@@ -19,6 +19,15 @@
 }
 
 @layer components {
+  /* Banded section backgrounds - alternates between two dark shades */
+  .section-band {
+    @apply bg-gray-950;
+  }
+
+  .section-band:nth-of-type(even) {
+    @apply bg-gray-800;
+  }
+
   .container-sigil {
     @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
   }

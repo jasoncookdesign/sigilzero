@@ -9,6 +9,7 @@ import { loadAllMixtapes } from "../../../lib/content/load-mixtapes";
 import { safeGetInstagramPosts } from "../../../lib/instagram/fetch-posts";
 import InstagramFeed from "../../../components/artists/InstagramFeed";
 import PlaceholderImage from "../../../components/PlaceholderImage";
+import Section from "../../../components/Section";
 
 type ParamsPromise = {
   params: Promise<{
@@ -51,68 +52,78 @@ export default async function ArtistPage({ params }: ParamsPromise) {
 
   return (
     <div>
-      <div className="relative w-full h-80 mb-6 overflow-hidden rounded-lg bg-gray-900">
-        <PlaceholderImage
-          src={meta.photo}
-          alt={meta.name}
-          width={800}
-          height={600}
-          fill
-          placeholderText={meta.name}
-          className="object-cover"
-        />
-      </div>
+      <Section>
+        <div className="container-sigil px-4 sm:px-6 lg:px-8">
+          <div className="relative w-full h-80 mb-6 overflow-hidden rounded-lg bg-gray-900">
+            <PlaceholderImage
+              src={meta.photo}
+              alt={meta.name}
+              width={800}
+              height={600}
+              fill
+              placeholderText={meta.name}
+              className="object-cover"
+            />
+          </div>
 
-      <h1 className="text-4xl mb-2">
-        {meta.name}
-      </h1>
+          <h1 className="text-4xl mb-2">
+            {meta.name}
+          </h1>
 
-      {meta.location && (
-        <p className="text-sm text-muted mb-3">
-          {meta.location}
-        </p>
-      )}
+          {meta.location && (
+            <p className="text-sm text-muted mb-3">
+              {meta.location}
+            </p>
+          )}
 
-      {body && (
-        <div className="text-sm leading-relaxed mb-6">
-          {body}
+          {body && (
+            <div className="text-sm leading-relaxed mb-6">
+              {body}
+          </div>
+        )}
         </div>
-      )}
+      </Section>
 
       {instagramPosts && instagramPosts.length > 0 && (
-        <div className="mb-8">
-          <InstagramFeed posts={instagramPosts} />
-        </div>
+        <Section>
+          <div className="container-sigil px-4 sm:px-6 lg:px-8">
+            <InstagramFeed posts={instagramPosts} />
+          </div>
+        </Section>
       )}
 
       {releases.length > 0 && (
-        <section className="mt-6">
-          <h2 className="h-md mb-3">
-            Releases
-          </h2>
-          <ul>
-            {releases.map((r) => (
-              <li key={r.meta.id}>
-                <a href={`/releases/${r.meta.slug}`}>{r.meta.title}</a>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <Section>
+          <div className="container-sigil px-4 sm:px-6 lg:px-8">
+            <h2 className="h-md mb-3">
+              Releases
+            </h2>
+            <ul>
+              {releases.map((r) => (
+                <li key={r.meta.id}>
+                  <a href={`/releases/${r.meta.slug}`}>{r.meta.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Section>
       )}
 
       {mixtapes.length > 0 && (
-        <section className="mt-6">
-          <h2 className="h-md mb-3">
-            Mixtapes
-          </h2>
-          <ul>
-            {mixtapes.map((m) => (
-              <li key={m.meta.id}>
-                <a href={`/mixtapes/${m.meta.slug}`}>{m.meta.title}</a>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <Section>
+          <div className="container-sigil px-4 sm:px-6 lg:px-8">
+            <h2 className="h-md mb-3">
+              Mixtapes
+            </h2>
+            <ul>
+              {mixtapes.map((m) => (
+                <li key={m.meta.id}>
+                  <a href={`/mixtapes/${m.meta.slug}`}>{m.meta.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Section>
       )}
     </div>
   );

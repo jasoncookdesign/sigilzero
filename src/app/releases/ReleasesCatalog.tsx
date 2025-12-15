@@ -7,6 +7,7 @@ import type { SeriesRegistryItem } from "../../lib/content/load-series-registry"
 import type { ArtistDocument } from "../../lib/content/load-artists";
 import { filterReleases } from "../../lib/filters/releases";
 import ReleaseCard from "../../components/cards/ReleaseCard";
+import Section from "../../components/Section";
 
 type Props = {
   releases: ReleaseDocument[];
@@ -128,21 +129,22 @@ export default function ReleasesCatalog({
   };
 
   return (
-    <div>
-      <h2 className="text-4xl mb-6 text-center">
-        Releases
-      </h2>
+    <Section>
+      <div className="container-sigil px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl mb-6 text-center">
+          Releases
+        </h2>
 
-      {/* Search input */}
-      <div className="mb-4">
-        <input
-          type="text"
-          placeholder="Search titles, catalog #, tracks, or artists..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className="w-full px-3 py-2 rounded border border-gray-700 bg-gray-950 text-sm focus:outline-none focus:border-gray-600"
-        />
-      </div>
+        {/* Search input */}
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Search titles, catalog #, tracks, or artists..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="w-full px-3 py-2 rounded border border-gray-700 bg-gray-950 text-sm focus:outline-none focus:border-gray-600"
+          />
+        </div>
 
       {/* Dropdown filters - Row 1 */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 mb-4">
@@ -308,6 +310,7 @@ export default function ReleasesCatalog({
           No releases match the current filters. <button onClick={clearFilters} className="underline hover:text-white">Clear filters</button>
         </p>
       )}
-    </div>
+      </div>
+    </Section>
   );
 }
