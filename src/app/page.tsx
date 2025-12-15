@@ -56,8 +56,8 @@ export default function HomePage() {
   return (
     <div className="flex flex-col gap-0">
       {/* HERO */}
-      <Section className="text-center">
-        <div className="container-sigil px-4 sm:px-6 lg:px-8">
+      <Section className="text-center home-hero-bg">
+        <div className="container-sigil px-4 sm:px-6 lg:px-8 relative z-10">
           <h1 className="h-display mb-3 text-white uppercase">
             SIGIL.ZERO
           </h1>
