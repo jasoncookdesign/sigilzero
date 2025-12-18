@@ -57,27 +57,33 @@ export default function HomePage() {
     <div className="flex flex-col gap-0">
       {/* HERO */}
       <Section className="text-center home-hero-bg">
-        <div className="container-sigil px-4 sm:px-6 lg:px-8 relative z-10">
-          <h1 className="h-display mb-3 text-white uppercase">
-            SIGIL.ZERO
+        <div className="relative z-10 px-4 container-sigil sm:px-6 lg:px-8">
+          <h1 className="flex items-center justify-center mb-3">
+            <span className="sr-only">SIGIL.ZERO</span>
+            <img
+              src="./assets/images/site_elements/logos/SZLogo_WonB_Wide.png"
+              alt=""
+              aria-hidden="true"
+              className="w-auto h-fit"
+            />
           </h1>
 
-          <p className="text-sm text-muted max-w-lg mx-auto mb-6 leading-relaxed">
-            An occult-leaning electronic music imprint focused on dark, hypnotic,
-            high–impact club records. Curated for DJs and listeners who want
+          <p className="max-w-lg mx-auto mb-6 text-sm leading-relaxed text-muted">
+            An electronic music imprint focused on dark, hypnotic, high–
+            impact club records. Curated for DJs and listeners who want
             system-ready tracks with a distinct edge.
           </p>
 
-          <div className="flex justify-center gap-3 flex-wrap">
+          <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/releases"
-              className="btn btn-primary text-sm"
+              className="text-sm btn btn-primary"
             >
               View catalog
             </Link>
             <Link
               href="/artists"
-              className="btn btn-secondary text-sm opacity-85"
+              className="text-sm btn btn-secondary opacity-85"
             >
               Explore the roster
             </Link>
@@ -88,8 +94,8 @@ export default function HomePage() {
       {/* LATEST RELEASE */}
       {latestRelease && (
         <Section>
-          <div className="container-sigil px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-baseline mb-3">
+          <div className="px-4 container-sigil sm:px-6 lg:px-8">
+            <div className="flex items-baseline justify-between mb-3">
               <h2 className="h-md">
                 Latest Release
               </h2>
@@ -119,8 +125,8 @@ export default function HomePage() {
       {/* LATEST MIXTAPE */}
       {latestMixtape && (
         <Section>
-          <div className="container-sigil px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-baseline mb-3">
+          <div className="px-4 container-sigil sm:px-6 lg:px-8">
+            <div className="flex items-baseline justify-between mb-3">
               <h2 className="h-md">
                 Latest Mixtape
               </h2>
@@ -146,18 +152,18 @@ export default function HomePage() {
       {/* SERIES OVERVIEW */}
       {activeSeries.length > 0 && (
         <Section>
-          <div className="container-sigil px-4 sm:px-6 lg:px-8">
-            <h2 className="h-md mb-3">
+          <div className="px-4 container-sigil sm:px-6 lg:px-8">
+            <h2 className="mb-3 h-md">
               Label Series
             </h2>
 
-            <p className="text-sm text-muted max-w-lg mb-4 leading-relaxed">
+            <p className="max-w-lg mb-4 text-sm leading-relaxed text-muted">
               SIGIL.ZERO is organized into a small set of curated series, each
               with its own flavor and use-case on the dancefloor. Think of them as
               sigils for different kinds of nights.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {activeSeries.map((s) => (
                 <SeriesCard key={s.id} series={s} />
               ))}
@@ -169,8 +175,8 @@ export default function HomePage() {
       {/* FEATURED ARTISTS */}
       {featuredArtists.length > 0 && (
         <Section>
-          <div className="container-sigil px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-baseline mb-3">
+          <div className="px-4 container-sigil sm:px-6 lg:px-8">
+            <div className="flex items-baseline justify-between mb-3">
               <h2 className="h-md">
                 Featured Artists
               </h2>
@@ -183,7 +189,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {featuredArtists.map((artist) => (
                 <ArtistCard key={artist.id} artist={artist} />
               ))}
@@ -194,24 +200,24 @@ export default function HomePage() {
 
       {/* PRESS / DEMO CTA */}
       <Section>
-        <div className="container-sigil px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="px-4 container-sigil sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div>
-              <h3 className="text-lg font-semibold mb-3">
+              <h3 className="mb-3 text-lg font-semibold">
                 For press & promoters
               </h3>
-              <p className="text-sm text-gray-400 leading-relaxed">
+              <p className="text-sm leading-relaxed text-gray-400">
                 Need a quick overview, key links, or assets? Start with the{" "}
                 <Link href="/press-kit" className="text-white hover:underline">press kit</Link>.
               </p>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold mb-3">
+              <h3 className="mb-3 text-lg font-semibold">
                 For producers & remixers
               </h3>
-              <p className="text-sm text-gray-400 leading-relaxed">
-                Want to release with SIGIL.ZERO? Read the label ethos on the{" "}
+              <p className="text-sm leading-relaxed text-gray-400">
+                Want to release your track on SIGIL.ZERO? Read the label ethos on the{" "}
                 <Link href="/about" className="text-white hover:underline">about page</Link> and watch for demo
                 submission details.
               </p>

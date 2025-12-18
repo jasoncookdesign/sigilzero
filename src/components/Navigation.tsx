@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navItems = [
@@ -23,12 +24,18 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="bg-black border-b border-gray-800">
+    <nav className="sticky top-0 z-50 bg-black border-b border-gray-800">
       <div className="py-4 container-sigil">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-xl font-bold tracking-widest text-white heading">
-            SIGIL.ZERO
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/assets/images/site_elements/logos/SZLogo_Wtrans_Glyph.png"
+              alt="SIGIL.ZERO"
+              width={40}
+              height={40}
+              className="w-auto h-10"
+            />
           </Link>
 
           {/* Desktop Navigation */}

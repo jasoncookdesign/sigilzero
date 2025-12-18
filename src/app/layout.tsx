@@ -1,23 +1,23 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter, Space_Mono } from "next/font/google";
+import { Della_Respira, Mulish, Space_Mono } from "next/font/google";
 import "./globals.css";
 import AudioProvider from "../components/audio/AudioProvider";
 import AudioPlayer from "../components/audio/AudioPlayer";
 import Navigation from "../components/Navigation";
 
 // Heading font: Cormorant Garamond (weights: 500, 600, 700)
-const cormorant = Cormorant_Garamond({
+const della = Della_Respira({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400"],
   variable: "--font-heading",
   display: "swap",
 });
 
 // Body font: Inter (weights: 400, 500, 600)
-const inter = Inter({
+const mulish = Mulish({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "700"],
   variable: "--font-body",
   display: "swap",
 });
@@ -41,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable} ${spaceMono.variable}`}>
+    <html lang="en" className={`${della.variable} ${mulish.variable} ${spaceMono.variable}`}>
       <body>
         <AudioProvider>
           <Navigation />
@@ -50,12 +50,12 @@ export default function RootLayout({
 
           <AudioPlayer />
 
-          <footer className="border-t border-gray-800 bg-gray-950 mt-16">
-            <div className="container-sigil py-12">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <footer className="mt-16 border-t border-gray-800 bg-gray-950">
+            <div className="py-12 container-sigil">
+              <div className="grid grid-cols-1 gap-8 mb-8 md:grid-cols-3">
                 {/* About Column */}
                 <div>
-                  <h3 className="text-lg font-semibold mb-4">SIGIL.ZERO</h3>
+                  <h3 className="mb-4 text-lg font-semibold">SIGIL.ZERO</h3>
                   <p className="text-sm text-gray-400">
                     Dance music imprint for buy-on-sight rave weapons on the darker side.
                   </p>
@@ -63,7 +63,7 @@ export default function RootLayout({
 
                 {/* Links Column */}
                 <div>
-                  <h3 className="text-lg font-semibold mb-4">Explore</h3>
+                  <h3 className="mb-4 text-lg font-semibold">Explore</h3>
                   <ul className="space-y-2 text-sm">
                     <li>
                       <a href="/releases" className="text-gray-400 hover:text-white">
@@ -95,7 +95,7 @@ export default function RootLayout({
 
                 {/* Contact Column */}
                 <div>
-                  <h3 className="text-lg font-semibold mb-4">Connect</h3>
+                  <h3 className="mb-4 text-lg font-semibold">Connect</h3>
                   <ul className="space-y-2 text-sm">
                     <li>
                       <a 
@@ -138,7 +138,7 @@ export default function RootLayout({
               </div>
 
               {/* Bottom Bar */}
-              <div className="pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+              <div className="pt-8 text-sm text-center text-gray-500 border-t border-gray-800">
                 <p>© {new Date().getFullYear()} SIGIL.ZERO. Austin, TX. All rights reserved.</p>
               </div>
             </div>
