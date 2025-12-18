@@ -31,7 +31,7 @@ export default function PressKitPage() {
 
       <Section>
         <div className="px-4 container-sigil sm:px-6 lg:px-8">
-          <h2 className="mb-4 h-md">1. Label Description</h2>
+          <h2 className="mb-4 h-md">Label Description</h2>
           <p className="mb-2">SIGIL.ZERO crafts dark, functional dance music with a focus on immersive, high-impact releases tailored for sound-system environments.</p>
           <p className="text-sm opacity-80">Short: System-ready rave weapons from the darker side. Long: SIGIL.ZERO is dedicated to curating heavyweight dancefloor soundscapes — releasing limited-run records, championing DJs and live artists whose music commands physical spaces and transforms clubs into rituals.</p>
         </div>
@@ -39,7 +39,7 @@ export default function PressKitPage() {
 
       <Section>
         <div className="px-4 container-sigil sm:px-6 lg:px-8">
-          <h2 className="mb-4 h-md">2. Key Links</h2>
+          <h2 className="mb-4 h-md">Key Links</h2>
           <p className="mb-4 text-sm opacity-80">Quick links for the label's social and streaming profiles.</p>
           <ul className="p-0 m-0 mb-4 text-sm leading-relaxed list-none">
           {label.social?.instagram && (
@@ -76,7 +76,7 @@ export default function PressKitPage() {
 
       <Section>
         <div className="px-4 container-sigil sm:px-6 lg:px-8">
-          <h2 className="mb-4 h-md">3. Artist Assets</h2>
+          <h2 className="mb-4 h-md">Artist Assets</h2>
           <p className="mb-4 text-sm opacity-80">Headshots, short bios, socials and downloadable media kits for roster artists.</p>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {artists.map((a) => (
@@ -88,7 +88,7 @@ export default function PressKitPage() {
 
       <Section>
         <div className="px-4 container-sigil sm:px-6 lg:px-8">
-          <h2 className="mb-4 h-md">4. Featured Releases</h2>
+          <h2 className="mb-4 h-md">Featured Releases</h2>
           <p className="mb-4 text-sm opacity-80">Selected releases with cover art, streaming links and short blurbs.</p>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {releases.map((r) => (
@@ -100,7 +100,7 @@ export default function PressKitPage() {
 
       {flagship && (
         <Section>
-          <div className="max-w-3xl px-4 mx-auto container-sigil sm:px-6 lg:px-8">
+          <div className="px-4 container-sigil sm:px-6 lg:px-8">
             <h2 className="mb-4 h-md">Flagship Release</h2>
 
             <p className="mb-2">Highlight release from the catalog:</p>
@@ -116,8 +116,8 @@ export default function PressKitPage() {
       )}
 
       <Section>
-        <div className="max-w-3xl px-4 mx-auto container-sigil sm:px-6 lg:px-8">
-          <h2 className="mb-4 h-md">5. Contact</h2>
+        <div className="px-4 container-sigil sm:px-6 lg:px-8">
+          <h2 className="mb-4 h-md">Contact</h2>
           <p className="text-sm">Press: <a href="mailto:press@sigilzero.com" className="underline">press@sigilzero.com</a></p>
           <p className="mt-2 text-sm">Socials: <a href="https://instagram.com/sigil.zero" target="_blank" rel="noopener noreferrer" className="underline">@sigil.zero</a> · <a href="https://twitter.com/sigilzero" target="_blank" rel="noopener noreferrer" className="underline">@sigilzero</a></p>
         </div>

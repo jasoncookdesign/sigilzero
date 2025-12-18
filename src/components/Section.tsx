@@ -15,7 +15,7 @@ type Props = {
 export default function Section({ children, className = "" }: Props) {
   return (
     <section
-      className={`py-8 section-band ${className}`}
+      className={`py-16 section-band ${className}`}
     >
       {children}
     </section>
