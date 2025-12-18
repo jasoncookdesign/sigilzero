@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/mixtapes/layout,_N_T_/mixtapes/[slug]/layout,_N_T_/mixtapes/[slug]/page,_N_T_/mixtapes/dyson-hope-live-in-austin/"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/mixtapes/$d$slug/__PAGE__",
+    "/mixtapes/$d$slug",
+    "/mixtapes",
+    "/_index",
+    "/_head"
+  ]
+}
