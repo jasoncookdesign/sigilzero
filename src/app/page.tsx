@@ -55,7 +55,6 @@ export default function HomePage() {
   const featuredArtists = artists
     .map((a) => a.meta)
     .filter((a) => a.active)
-    .slice(0, 4)
     .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
@@ -101,9 +100,11 @@ export default function HomePage() {
         <Section>
           <div className="px-4 container-sigil sm:px-6 lg:px-8">
             <div className="flex items-baseline justify-between mb-3">
-              <h2 className="h-md">
-                Latest Releases
-              </h2>
+              <Link href="/releases">
+                <h2 className="transition-colors h-md hover:text-gray-300">
+                  Latest Releases
+                </h2>
+              </Link>
 
               <Link
                 href="/releases"
@@ -135,9 +136,11 @@ export default function HomePage() {
         <Section>
           <div className="px-4 container-sigil sm:px-6 lg:px-8">
             <div className="flex items-baseline justify-between mb-3">
-              <h2 className="h-md">
-                Latest Mixtapes
-              </h2>
+              <Link href="/mixtapes">
+                <h2 className="transition-colors h-md hover:text-gray-300">
+                  Latest Mixtapes
+                </h2>
+              </Link>
 
               <Link
                 href="/mixtapes"
@@ -164,9 +167,11 @@ export default function HomePage() {
       {activeSeries.length > 0 && (
         <Section>
           <div className="px-4 container-sigil sm:px-6 lg:px-8">
-            <h2 className="mb-3 h-md">
-              Label Series
-            </h2>
+            <Link href="/series">
+              <h2 className="mb-3 transition-colors h-md hover:text-gray-300">
+                Label Series
+              </h2>
+            </Link>
 
             <p className="max-w-lg mb-4 text-sm leading-relaxed text-muted">
               SIGIL.ZERO is organized into a small set of curated series, each
@@ -188,15 +193,17 @@ export default function HomePage() {
         <Section>
           <div className="px-4 container-sigil sm:px-6 lg:px-8">
             <div className="flex items-baseline justify-between mb-3">
-              <h2 className="h-md">
-                Artists
-              </h2>
+              <Link href="/artists">
+                <h2 className="transition-colors h-md hover:text-gray-300">
+                  Artists
+                </h2>
+              </Link>
 
               <Link
                 href="/artists"
                 className="text-xs opacity-80"
               >
-                View all artists →
+                View artists →
               </Link>
             </div>
 
