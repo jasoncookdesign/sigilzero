@@ -12,7 +12,7 @@ export default function AboutPage() {
       </Section>
 
       <Section>
-        <div className="container-sigil px-4 sm:px-6 lg:px-8 max-w-2xl mx-auto">
+        <div className="container-sigil px-4 sm:px-6 lg:px-8">
           <p className="leading-relaxed text-sm mb-4">
             SIGIL.ZERO is an occult-tinged electronic music imprint focused on
             high–impact, buy-on-sight releases. The catalog leans into dark,
