@@ -175,6 +175,50 @@ describe('filterReleases', () => {
     });
   });
 
+  describe('artist filtering', () => {
+    it('should filter by primary artist', () => {
+      const docsWithArtists = [
+        { meta: createMockRelease({ id: 'rel-a', primary_artists: ['artist-1'], remix_artists: [] }), body: '' },
+        { meta: createMockRelease({ id: 'rel-b', primary_artists: ['artist-2'], remix_artists: [] }), body: '' },
+        { meta: createMockRelease({ id: 'rel-c', primary_artists: ['artist-3'], remix_artists: [] }), body: '' },
+      ];
+      const result = filterReleases(docsWithArtists, { artistIds: ['artist-1'] });
+      expect(result).toHaveLength(1);
+      expect(result[0].meta.id).toBe('rel-a');
+    });
+
+    it('should filter by remix artist', () => {
+      const docsWithArtists = [
+        { meta: createMockRelease({ id: 'rel-a', primary_artists: ['artist-1'], remix_artists: [] }), body: '' },
+        { meta: createMockRelease({ id: 'rel-b', primary_artists: ['artist-1'], remix_artists: ['artist-2'] }), body: '' },
+        { meta: createMockRelease({ id: 'rel-c', primary_artists: ['artist-3'], remix_artists: ['artist-2'] }), body: '' },
+      ];
+      const result = filterReleases(docsWithArtists, { artistIds: ['artist-2'] });
+      expect(result).toHaveLength(2);
+      const ids = result.map(r => r.meta.id);
+      expect(ids).toContain('rel-b');
+      expect(ids).toContain('rel-c');
+    });
+
+    it('should filter by multiple artists (primary or remix)', () => {
+      const docsWithArtists = [
+        { meta: createMockRelease({ id: 'rel-a', primary_artists: ['artist-1'], remix_artists: [] }), body: '' },
+        { meta: createMockRelease({ id: 'rel-b', primary_artists: ['artist-2'], remix_artists: ['artist-3'] }), body: '' },
+        { meta: createMockRelease({ id: 'rel-c', primary_artists: ['artist-4'], remix_artists: [] }), body: '' },
+      ];
+      const result = filterReleases(docsWithArtists, { artistIds: ['artist-1', 'artist-3'] });
+      expect(result).toHaveLength(2);
+      const ids = result.map(r => r.meta.id);
+      expect(ids).toContain('rel-a'); // Has artist-1 as primary
+      expect(ids).toContain('rel-b'); // Has artist-3 as remix
+    });
+
+    it('should return all when artistIds is undefined', () => {
+      const result = filterReleases(mockDocuments, { artistIds: undefined });
+      expect(result).toHaveLength(4);
+    });
+  });
+
   describe('year filtering', () => {
     it('should filter by year', () => {
       const result = filterReleases(mockDocuments, { year: 2024 });
