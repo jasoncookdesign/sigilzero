@@ -120,4 +120,6 @@ Speed and simplicity over feature accumulation.
 
 ## License
 
-No license file is present. Usage terms are undefined.
+- This repository’s source code is released under the MIT License.
+- Brand identity, artwork, and site content are excluded and remain proprietary.
+
