@@ -12,13 +12,13 @@ export default function SeriesCard({ series }: Props) {
   return (
     <Card href={`/series/${series.slug}`}>
       <div>
-        <div className="relative w-full h-48 overflow-hidden bg-gray-900">
+        <div className="relative w-full aspect-square overflow-hidden bg-gray-900">
           {series.glyph ? (
             <PlaceholderImage
               src={series.glyph}
               alt={series.name}
               width={400}
-              height={300}
+              height={400}
               fill
               placeholderText={series.short_label}
               className="object-cover"

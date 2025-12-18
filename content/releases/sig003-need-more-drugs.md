@@ -35,6 +35,7 @@ background_art: ""
 
 label_copy_short: "Hard, dark, funky breakbeat with Industrial-tinged techno, bass house, and progressive house remixes."
 flagship: true
+active: true
 
 link_groups:
   streaming: "SIG003-streaming"

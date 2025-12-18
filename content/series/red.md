@@ -16,7 +16,7 @@ default_genres:
   - "house"
 
 tagline: "Groove-forward, body-led rhythms for heat and motion."
-active: true
+active: false
 ---
 
 **Red** carries the groove-driven side of SIGIL.ZERO — rolling tech house,

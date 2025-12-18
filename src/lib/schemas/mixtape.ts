@@ -30,6 +30,7 @@ export const MixtapeSchema = z.object({
   tags: z.array(z.string()).default([]),
 
   featured: z.boolean().default(false),
+  active: z.boolean().default(true),
 
   related_releases: z.array(z.string()).default([]),
 

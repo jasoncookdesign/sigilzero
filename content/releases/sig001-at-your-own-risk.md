@@ -25,6 +25,7 @@ cover_art: "/images/releases/at-your-own-risk.jpg"
 background_art: "/images/releases/at-your-own-risk-bg.jpg"
 label_copy_short: "Debut Dyson Hope album of dark, system-focused warehouse techno."
 flagship: false
+active: true
 
 tracks:
   - id: "sig001-a1"

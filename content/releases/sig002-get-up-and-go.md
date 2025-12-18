@@ -25,6 +25,7 @@ cover_art: "/images/releases/get-up-and-go.jpg"
 background_art: "/images/releases/get-up-and-go-bg.jpg"
 label_copy_short: "Follow-up Dyson Hope album of peak-time, high-energy club tools."
 flagship: false
+active: true
 
 tracks:
   - id: "sig002-a1"

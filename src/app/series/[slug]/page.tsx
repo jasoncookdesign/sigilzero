@@ -33,7 +33,7 @@ export default async function SeriesPage({ params }: ParamsPromise) {
   const { meta, body } = seriesDoc;
 
   const releases = loadAllReleases().filter(
-    (r) => r.meta.series_id === meta.id
+    (r) => r.meta.active && r.meta.series_id === meta.id
   );
 
   return (

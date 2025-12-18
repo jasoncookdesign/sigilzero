@@ -17,7 +17,7 @@ default_genres:
   - "industrial"
 
 tagline: "Peak-time occult techno for the ritual hour."
-active: true
+active: false
 ---
 
 **Black** is the core of SIGIL.ZERO — dark, driving, and built for peak-time.

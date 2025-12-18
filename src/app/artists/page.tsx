@@ -4,6 +4,7 @@ import Section from "../../components/Section";
 
 export default function ArtistsPage() {
   const artists = loadAllArtists();
+  const activeArtists = artists.filter((a) => a.meta.active);
 
   return (
     <Section>
@@ -12,7 +13,7 @@ export default function ArtistsPage() {
           Artists
         </h2>
 
-        <ArtistsGrid artists={artists} />
+        <ArtistsGrid artists={activeArtists} />
       </div>
     </Section>
   );

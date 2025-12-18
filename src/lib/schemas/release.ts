@@ -54,6 +54,7 @@ export const ReleaseSchema = z.object({
 
   label_copy_short: z.string().optional(),
   flagship: z.boolean().default(false),
+  active: z.boolean().default(true),
 
   link_groups: LinkGroupsSchema.optional(),
 

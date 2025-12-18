@@ -34,6 +34,7 @@ tags:
   - "ritual"
 
 featured: true
+active: true
 
 related_releases:
   - "sig003"

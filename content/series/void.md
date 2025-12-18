@@ -17,7 +17,7 @@ default_genres:
   - "leftfield"
 
 tagline: "Boundary-pushing experiments from the edges of the dancefloor."
-active: true
+active: false
 ---
 
 **Void** is where SIGIL.ZERO bends the rules — broken rhythms, odd structures,

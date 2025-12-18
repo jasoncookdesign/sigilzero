@@ -54,3 +54,17 @@ export function loadAllSeries(): SeriesDocument[] {
     return a.meta.name.localeCompare(b.meta.name);
   });
 }
+
+/**
+ * Check if there are any active series
+ */
+export function hasActiveSeries(): boolean {
+  const seriesDir = getContentDir("series");
+  const files = getMarkdownFilesInDir(seriesDir);
+
+  return files.some((file) => {
+    const fullPath = path.join(seriesDir, file);
+    const doc = parseSeriesFile(fullPath);
+    return doc.meta.active;
+  });
+}

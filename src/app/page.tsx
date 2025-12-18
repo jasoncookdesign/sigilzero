@@ -32,8 +32,12 @@ export default function HomePage() {
   const seriesDocs = loadAllSeries();
   const seriesRegistry = loadSeriesRegistry();
 
-  const latestRelease = sortByDateDesc(releases, "release_date")[0] ?? null;
-  const latestMixtape = sortByDateDesc(mixtapes, "date")[0] ?? null;
+  const latestReleases = sortByDateDesc(releases, "release_date")
+    .filter((r) => r.meta.active)
+    .slice(0, 2);
+  const latestMixtapes = sortByDateDesc(mixtapes, "date")
+    .filter((m) => m.meta.active)
+    .slice(0, 2);
 
   const artistById = Object.fromEntries(
     artists.map((a) => [a.meta.id, a.meta])
@@ -50,6 +54,7 @@ export default function HomePage() {
 
   const featuredArtists = artists
     .map((a) => a.meta)
+    .filter((a) => a.active)
     .slice(0, 4)
     .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -91,13 +96,13 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* LATEST RELEASE */}
-      {latestRelease && (
+      {/* LATEST RELEASES */}
+      {latestReleases.length > 0 && (
         <Section>
           <div className="px-4 container-sigil sm:px-6 lg:px-8">
             <div className="flex items-baseline justify-between mb-3">
               <h2 className="h-md">
-                Latest Release
+                Latest Releases
               </h2>
 
               <Link
@@ -108,27 +113,30 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="max-w-xs">
-              <ReleaseCard
-                release={latestRelease.meta}
-                series={
-                  seriesRegistry.find(
-                    (s) => s.id === latestRelease.meta.series_id
-                  ) ?? null
-                }
-              />
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {latestReleases.map((release) => (
+                <ReleaseCard
+                  key={release.meta.slug}
+                  release={release.meta}
+                  series={
+                    seriesRegistry.find(
+                      (s) => s.id === release.meta.series_id
+                    ) ?? null
+                  }
+                />
+              ))}
             </div>
           </div>
         </Section>
       )}
 
-      {/* LATEST MIXTAPE */}
-      {latestMixtape && (
+      {/* LATEST MIXTAPES */}
+      {latestMixtapes.length > 0 && (
         <Section>
           <div className="px-4 container-sigil sm:px-6 lg:px-8">
             <div className="flex items-baseline justify-between mb-3">
               <h2 className="h-md">
-                Latest Mixtape
+                Latest Mixtapes
               </h2>
 
               <Link
@@ -139,11 +147,14 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="max-w-md">
-              <MixtapeCard
-                mixtape={latestMixtape.meta}
-                artist={artistById[latestMixtape.meta.artist_id] ?? null}
-              />
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {latestMixtapes.map((mixtape) => (
+                <MixtapeCard
+                  key={mixtape.meta.slug}
+                  mixtape={mixtape.meta}
+                  artist={artistById[mixtape.meta.artist_id] ?? null}
+                />
+              ))}
             </div>
           </div>
         </Section>
@@ -172,13 +183,13 @@ export default function HomePage() {
         </Section>
       )}
 
-      {/* FEATURED ARTISTS */}
+      {/* ARTISTS */}
       {featuredArtists.length > 0 && (
         <Section>
           <div className="px-4 container-sigil sm:px-6 lg:px-8">
             <div className="flex items-baseline justify-between mb-3">
               <h2 className="h-md">
-                Featured Artists
+                Artists
               </h2>
 
               <Link
@@ -204,22 +215,22 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div>
               <h3 className="mb-3 text-lg font-semibold">
-                For press & promoters
-              </h3>
-              <p className="text-sm leading-relaxed text-gray-400">
-                Need a quick overview, key links, or assets? Start with the{" "}
-                <Link href="/press-kit" className="text-white hover:underline">press kit</Link>.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="mb-3 text-lg font-semibold">
                 For producers & remixers
               </h3>
               <p className="text-sm leading-relaxed text-gray-400">
                 Want to release your track on SIGIL.ZERO? Read the label ethos on the{" "}
                 <Link href="/about" className="text-white hover:underline">about page</Link> and watch for demo
                 submission details.
+              </p>
+            </div>
+ 
+            <div>
+              <h3 className="mb-3 text-lg font-semibold">
+                For press & promoters
+              </h3>
+              <p className="text-sm leading-relaxed text-gray-400">
+                Need a quick overview, key links, or assets? Start with the{" "}
+                <Link href="/press-kit" className="text-white hover:underline">press kit</Link>.
               </p>
             </div>
           </div>

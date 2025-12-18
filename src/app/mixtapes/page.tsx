@@ -8,5 +8,7 @@ export default function MixtapesPage() {
   const mixtapes = loadAllMixtapes();
   const artists = loadAllArtists();
 
-  return <MixtapesCatalog mixtapes={mixtapes} artists={artists} />;
+  const activeMixtapes = mixtapes.filter((m) => m.meta.active);
+
+  return <MixtapesCatalog mixtapes={activeMixtapes} artists={artists} />;
 }

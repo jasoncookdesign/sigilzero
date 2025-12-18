@@ -5,6 +5,7 @@ import "./globals.css";
 import AudioProvider from "../components/audio/AudioProvider";
 import AudioPlayer from "../components/audio/AudioPlayer";
 import Navigation from "../components/Navigation";
+import { hasActiveSeries } from "../lib/content/load-series";
 
 // Heading font: Cormorant Garamond (weights: 500, 600, 700)
 const della = Della_Respira({
@@ -40,11 +41,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const showSeries = hasActiveSeries();
+
   return (
     <html lang="en" className={`${della.variable} ${mulish.variable} ${spaceMono.variable}`}>
       <body>
         <AudioProvider>
-          <Navigation />
+          <Navigation showSeries={showSeries} />
 
           <main className="min-h-screen">{children}</main>
 
@@ -80,6 +83,13 @@ export default function RootLayout({
                         Mixtapes
                       </a>
                     </li>
+                    {showSeries && (
+                      <li>
+                        <a href="/series" className="text-gray-400 hover:text-white">
+                          Series
+                        </a>
+                      </li>
+                    )}
                     <li>
                       <a href="/about" className="text-gray-400 hover:text-white">
                         About

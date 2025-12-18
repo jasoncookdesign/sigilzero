@@ -14,12 +14,12 @@ export default function ReleaseCard({ release, series }: Props) {
   return (
     <Card href={`/releases/${release.slug}`}>
       <div>
-        <div className="relative w-full h-48 overflow-hidden bg-gray-900">
+        <div className="relative w-full aspect-square overflow-hidden bg-gray-900">
           <PlaceholderImage
             src={release.cover_art}
             alt={release.title}
             width={400}
-            height={300}
+            height={400}
             fill
             placeholderText={release.catalog_number}
             className="object-cover"

@@ -5,18 +5,22 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-const navItems = [
-  { href: "/releases", label: "Releases" },
-  { href: "/artists", label: "Artists" },
-  { href: "/mixtapes", label: "Mixtapes" },
-  { href: "/series", label: "Series" },
-  { href: "/about", label: "About" },
-  { href: "/press-kit", label: "Press" },
-];
+type NavigationProps = {
+  showSeries?: boolean;
+};
 
-export default function Navigation() {
+export default function Navigation({ showSeries = true }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  const navItems = [
+    { href: "/releases", label: "Releases" },
+    { href: "/artists", label: "Artists" },
+    { href: "/mixtapes", label: "Mixtapes" },
+    ...(showSeries ? [{ href: "/series", label: "Series" }] : []),
+    { href: "/about", label: "About" },
+    { href: "/press-kit", label: "Press" },
+  ];
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";

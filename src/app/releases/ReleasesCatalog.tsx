@@ -13,12 +13,14 @@ type Props = {
   releases: ReleaseDocument[];
   seriesRegistry: SeriesRegistryItem[];
   artists: ArtistDocument[];
+  showSeriesFilter?: boolean;
 };
 
 export default function ReleasesCatalog({
   releases,
   seriesRegistry,
   artists,
+  showSeriesFilter = true,
 }: Props) {
   const [query, setQuery] = useState("");
   const [seriesId, setSeriesId] = useState<string>("all");
@@ -149,19 +151,21 @@ export default function ReleasesCatalog({
       {/* Dropdown filters - Row 1 */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 mb-4">
         {/* Series */}
-        <select
-          aria-label="Filter by series"
-          value={seriesId}
-          onChange={(e) => setSeriesId(e.target.value)}
-          className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm focus:outline-none focus:border-gray-600"
-        >
-          <option value="all">All series</option>
-          {seriesRegistry.map((s) => (
-            <option key={s.id} value={s.id}>
-              {s.short_label ?? s.name}
-            </option>
-          ))}
-        </select>
+        {showSeriesFilter && (
+          <select
+            aria-label="Filter by series"
+            value={seriesId}
+            onChange={(e) => setSeriesId(e.target.value)}
+            className="px-2 py-1 rounded border border-gray-700 bg-gray-950 text-sm focus:outline-none focus:border-gray-600"
+          >
+            <option value="all">All series</option>
+            {seriesRegistry.map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.short_label ?? s.name}
+              </option>
+            ))}
+          </select>
+        )}
 
         {/* Type */}
         <select

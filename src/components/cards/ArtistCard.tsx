@@ -12,12 +12,12 @@ export default function ArtistCard({ artist }: Props) {
   return (
     <Card href={`/artists/${artist.slug}`}>
       <div>
-        <div className="relative w-full h-48 overflow-hidden border-b border-gray-900 bg-gray-900">
+        <div className="relative w-full aspect-square overflow-hidden border-b border-gray-900 bg-gray-900">
           <PlaceholderImage
             src={artist.photo}
             alt={artist.name}
             width={400}
-            height={300}
+            height={400}
             fill
             placeholderText={artist.name}
             className="object-cover"

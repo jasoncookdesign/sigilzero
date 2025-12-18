@@ -18,7 +18,7 @@ default_genres:
   - "bass"
 
 tagline: "The pure essence of SIGIL.ZERO. No constraints. Just sound."
-active: true
+active: false
 ---
 
 The **Core** line represents the foundation of SIGIL.ZERO — music that defines the

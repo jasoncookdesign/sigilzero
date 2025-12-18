@@ -37,12 +37,13 @@ export default async function ArtistPage({ params }: ParamsPromise) {
 
   const releases = loadAllReleases().filter(
     (r) =>
-      r.meta.primary_artists.includes(meta.id) ||
-      r.meta.remix_artists.includes(meta.id)
+      r.meta.active &&
+      (r.meta.primary_artists.includes(meta.id) ||
+      r.meta.remix_artists.includes(meta.id))
   );
 
   const mixtapes = loadAllMixtapes().filter(
-    (m) => m.meta.artist_id === meta.id
+    (m) => m.meta.active && m.meta.artist_id === meta.id
   );
 
   // Fetch Instagram posts if handle is available
