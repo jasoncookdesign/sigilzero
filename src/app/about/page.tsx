@@ -4,8 +4,9 @@ import Section from "../../components/Section";
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col gap-0">
-      <Section className="text-center">
+    <div className="min-h-[50vh]">
+      <div className="flex flex-col gap-0">
+        <Section className="text-center">
         <div className="container-sigil px-4 sm:px-6 lg:px-8">
           <h1 className="h-display mb-6 text-white uppercase">About SIGIL.ZERO</h1>
         </div>
@@ -36,6 +37,7 @@ export default function AboutPage() {
           </p>
         </div>
       </Section>
+    </div>
     </div>
   );
 }

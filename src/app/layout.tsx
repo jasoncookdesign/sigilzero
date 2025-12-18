@@ -49,7 +49,7 @@ export default function RootLayout({
         <AudioProvider>
           <Navigation showSeries={showSeries} />
 
-          <main className="min-h-screen">{children}</main>
+          <main>{children}</main>
 
           <AudioPlayer />
 
