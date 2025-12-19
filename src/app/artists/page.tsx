@@ -8,11 +8,9 @@ export default function ArtistsPage() {
 
   return (
     <Section>
-      <div className="container-sigil px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl mb-6 text-center" data-testid="artists-page-title">
-          Artists
-        </h2>
-
+      <div className="px-4 container-sigil sm:px-6 lg:px-8">
+        <h1 className="mb-6 text-center text-white h-display" data-testid="artists-page-title">Artists</h1>
+ 
         <ArtistsGrid artists={activeArtists} />
       </div>
     </Section>
