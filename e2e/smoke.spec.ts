@@ -26,15 +26,15 @@ test.describe('Smoke Test', () => {
     
     // Test Artists page
     await page.goto('/artists');
-    await expect(page.locator('h1')).toBeVisible();
+    await expect(page.getByTestId('artists-page-title')).toBeVisible();
     
     // Test Releases page
     await page.goto('/releases');
-    await expect(page.locator('h1')).toBeVisible();
+    await expect(page.getByTestId('releases-page-title')).toBeVisible();
     
     // Test Mixtapes page
     await page.goto('/mixtapes');
-    await expect(page.locator('h1')).toBeVisible();
+    await expect(page.getByTestId('mixtapes-page-title')).toBeVisible();
     
     // Test Press Kit page
     await page.goto('/press-kit');
