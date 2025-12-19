@@ -133,7 +133,7 @@ export default function ReleasesCatalog({
   return (
     <Section>
       <div className="container-sigil px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl mb-6 text-center">
+        <h2 className="text-4xl mb-6 text-center" data-testid="releases-page-title">
           Releases
         </h2>
 

@@ -1,0 +1,180 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "SIGIL.ZERO" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "SIGIL.ZERO" [ref=e6]
+      - button "Toggle menu" [ref=e7]:
+        - img [ref=e8]
+  - main [ref=e10]:
+    - generic [ref=e11]:
+      - generic [ref=e13]:
+        - heading "SIGIL.ZERO" [level=1] [ref=e14]:
+          - generic [ref=e15]: SIGIL.ZERO
+          - img [ref=e16]
+        - paragraph [ref=e17]: An electronic music imprint focused on dark, hypnotic, high– impact club records. Curated for DJs and listeners who want system-ready tracks with a distinct edge.
+        - generic [ref=e18]:
+          - link "View catalog" [ref=e19] [cursor=pointer]:
+            - /url: /releases/
+          - link "Explore the roster" [ref=e20] [cursor=pointer]:
+            - /url: /artists/
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - link "Latest Releases" [ref=e24] [cursor=pointer]:
+            - /url: /releases/
+            - heading "Latest Releases" [level=2] [ref=e25]
+          - link "View all releases →" [ref=e26] [cursor=pointer]:
+            - /url: /releases/
+        - generic [ref=e27]:
+          - link "Need More Drugs SIG003 Need More Drugs SIGIL.ZERO • 2025-12-23" [ref=e28] [cursor=pointer]:
+            - /url: /releases/need-more-drugs/
+            - generic [ref=e30]:
+              - img "Need More Drugs" [ref=e32]
+              - generic [ref=e33]:
+                - generic [ref=e34]: SIG003
+                - heading "Need More Drugs" [level=3] [ref=e35]
+                - generic [ref=e36]: SIGIL.ZERO • 2025-12-23
+          - link "Get Up and Go SZ002 Get Up and Go sigilzero-core • 2024-01-01" [ref=e37] [cursor=pointer]:
+            - /url: /releases/get-up-and-go/
+            - generic [ref=e39]:
+              - img "Get Up and Go" [ref=e41]
+              - generic [ref=e42]:
+                - generic [ref=e43]: SZ002
+                - heading "Get Up and Go" [level=3] [ref=e44]
+                - generic [ref=e45]: sigilzero-core • 2024-01-01
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - link "Latest Mixtapes" [ref=e49] [cursor=pointer]:
+            - /url: /mixtapes/
+            - heading "Latest Mixtapes" [level=2] [ref=e50]
+          - link "View all mixtapes →" [ref=e51] [cursor=pointer]:
+            - /url: /mixtapes/
+        - generic [ref=e52]:
+          - link "Dyson Hope - Burning Man 2025 Sound Camp House Dyson Hope - Burning Man 2025 Sound Camp House 2025-08-29 Dyson Hope soundcloud" [ref=e53] [cursor=pointer]:
+            - /url: /mixtapes/dyson-hope-burning-man-2025-sound-camp-house/
+            - generic [ref=e55]:
+              - img "Dyson Hope - Burning Man 2025 Sound Camp House" [ref=e57]
+              - generic [ref=e58]:
+                - heading "Dyson Hope - Burning Man 2025 Sound Camp House" [level=3] [ref=e59]
+                - generic [ref=e60]: 2025-08-29
+                - generic [ref=e61]: Dyson Hope
+                - generic [ref=e62]: soundcloud
+          - link "Dyson Hope - Burning Man 2025 Deep Playa Techno Dyson Hope - Burning Man 2025 Deep Playa Techno 2025-08-28 Dyson Hope soundcloud" [ref=e63] [cursor=pointer]:
+            - /url: /mixtapes/dyson-hope-burning-man-2025-deep-playa-techno/
+            - generic [ref=e65]:
+              - img "Dyson Hope - Burning Man 2025 Deep Playa Techno" [ref=e67]
+              - generic [ref=e68]:
+                - heading "Dyson Hope - Burning Man 2025 Deep Playa Techno" [level=3] [ref=e69]
+                - generic [ref=e70]: 2025-08-28
+                - generic [ref=e71]: Dyson Hope
+                - generic [ref=e72]: soundcloud
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - link "Artists" [ref=e76] [cursor=pointer]:
+            - /url: /artists/
+            - heading "Artists" [level=2] [ref=e77]
+          - link "View artists →" [ref=e78] [cursor=pointer]:
+            - /url: /artists/
+        - generic [ref=e79]:
+          - link "B² B² producer / dj Denver, CO" [ref=e80] [cursor=pointer]:
+            - /url: /artists/b-squared/
+            - generic [ref=e82]:
+              - img "B²" [ref=e84]
+              - generic [ref=e85]:
+                - heading "B²" [level=3] [ref=e86]
+                - generic [ref=e87]: producer / dj
+                - generic [ref=e88]: Denver, CO
+          - link "Brian G Brian G producer / dj Austin, TX" [ref=e89] [cursor=pointer]:
+            - /url: /artists/brian-g/
+            - generic [ref=e91]:
+              - img "Brian G" [ref=e93]
+              - generic [ref=e94]:
+                - heading "Brian G" [level=3] [ref=e95]
+                - generic [ref=e96]: producer / dj
+                - generic [ref=e97]: Austin, TX
+          - link "DJ AnTi DJ AnTi producer / dj Houston, TX" [ref=e98] [cursor=pointer]:
+            - /url: /artists/dj-anti/
+            - generic [ref=e100]:
+              - img "DJ AnTi" [ref=e102]
+              - generic [ref=e103]:
+                - heading "DJ AnTi" [level=3] [ref=e104]
+                - generic [ref=e105]: producer / dj
+                - generic [ref=e106]: Houston, TX
+          - link "Dyson Hope Dyson Hope producer / dj Austin, TX" [ref=e107] [cursor=pointer]:
+            - /url: /artists/dyson-hope/
+            - generic [ref=e109]:
+              - img "Dyson Hope" [ref=e111]
+              - generic [ref=e112]:
+                - heading "Dyson Hope" [level=3] [ref=e113]
+                - generic [ref=e114]: producer / dj
+                - generic [ref=e115]: Austin, TX
+          - link "NOTOTO NOTOTO producer / dj Austin, TX" [ref=e116] [cursor=pointer]:
+            - /url: /artists/nototo/
+            - generic [ref=e118]:
+              - img "NOTOTO" [ref=e120]
+              - generic [ref=e121]:
+                - heading "NOTOTO" [level=3] [ref=e122]
+                - generic [ref=e123]: producer / dj
+                - generic [ref=e124]: Austin, TX
+      - generic [ref=e127]:
+        - generic [ref=e128]:
+          - heading "For producers & remixers" [level=3] [ref=e129]
+          - paragraph [ref=e130]:
+            - text: Want to release your track on SIGIL.ZERO? Read the label ethos on the
+            - link "about page" [ref=e131] [cursor=pointer]:
+              - /url: /about/
+            - text: and watch for demo submission details.
+        - generic [ref=e132]:
+          - heading "For press & promoters" [level=3] [ref=e133]
+          - paragraph [ref=e134]:
+            - text: Need a quick overview, key links, or assets? Start with the
+            - link "press kit" [ref=e135] [cursor=pointer]:
+              - /url: /press-kit/
+            - text: .
+  - contentinfo [ref=e136]:
+    - generic [ref=e137]:
+      - generic [ref=e138]:
+        - generic [ref=e139]:
+          - heading "SIGIL.ZERO" [level=3] [ref=e140]
+          - paragraph [ref=e141]: Dance music imprint for buy-on-sight rave weapons on the darker side.
+        - generic [ref=e142]:
+          - heading "Explore" [level=3] [ref=e143]
+          - list [ref=e144]:
+            - listitem [ref=e145]:
+              - link "Releases" [ref=e146] [cursor=pointer]:
+                - /url: /releases
+            - listitem [ref=e147]:
+              - link "Artists" [ref=e148] [cursor=pointer]:
+                - /url: /artists
+            - listitem [ref=e149]:
+              - link "Mixtapes" [ref=e150] [cursor=pointer]:
+                - /url: /mixtapes
+            - listitem [ref=e151]:
+              - link "About" [ref=e152] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e153]:
+              - link "Press Kit" [ref=e154] [cursor=pointer]:
+                - /url: /press-kit
+        - generic [ref=e155]:
+          - heading "Connect" [level=3] [ref=e156]
+          - list [ref=e157]:
+            - listitem [ref=e158]:
+              - link "Instagram" [ref=e159] [cursor=pointer]:
+                - /url: https://instagram.com/SIGIL.ZERO.RECORDS
+            - listitem [ref=e160]:
+              - link "SoundCloud" [ref=e161] [cursor=pointer]:
+                - /url: https://soundcloud.com/sigil-zero
+            - listitem [ref=e162]:
+              - link "General Inquiries" [ref=e163] [cursor=pointer]:
+                - /url: mailto:info@sigilzero.com
+            - listitem [ref=e164]:
+              - link "Submit Demos" [ref=e165] [cursor=pointer]:
+                - /url: mailto:demos@sigilzero.com
+      - paragraph [ref=e167]: © 2025 SIGIL.ZERO. Austin, TX. All rights reserved.
+  - button "Open Next.js Dev Tools" [ref=e173] [cursor=pointer]:
+    - img [ref=e174]
+  - alert [ref=e177]
+```

@@ -129,7 +129,7 @@ export default function MixtapesCatalog({ mixtapes, artists }: Props) {
   return (
     <Section>
       <div className="container-sigil px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl mb-6 text-center">
+        <h2 className="text-4xl mb-6 text-center" data-testid="mixtapes-page-title">
           Mixtapes
         </h2>
 

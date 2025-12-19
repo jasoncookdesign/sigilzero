@@ -1,0 +1,130 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "SIGIL.ZERO" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "SIGIL.ZERO" [ref=e6]
+      - generic [ref=e7]:
+        - link "Releases" [active] [ref=e8] [cursor=pointer]:
+          - /url: /releases/
+        - link "Artists" [ref=e9] [cursor=pointer]:
+          - /url: /artists/
+        - link "Mixtapes" [ref=e10] [cursor=pointer]:
+          - /url: /mixtapes/
+        - link "About" [ref=e11] [cursor=pointer]:
+          - /url: /about/
+        - link "Press" [ref=e12] [cursor=pointer]:
+          - /url: /press-kit/
+  - main [ref=e13]:
+    - generic [ref=e15]:
+      - heading "Releases" [level=2] [ref=e16]
+      - 'textbox "Search titles, catalog #, tracks, or artists..." [ref=e18]'
+      - generic [ref=e19]:
+        - combobox "Filter by type" [ref=e20]:
+          - option "All types" [selected]
+          - option "album"
+          - option "maxi-single"
+        - combobox "Filter by artist" [ref=e21]:
+          - option "All artists" [selected]
+          - option "B²"
+          - option "Brian G"
+          - option "DJ AnTi"
+          - option "Dyson Hope"
+          - option "NOTOTO"
+        - combobox "Filter by year" [ref=e22]:
+          - option "All years" [selected]
+          - option "2025"
+          - option "2023"
+          - option "2022"
+      - generic [ref=e23]:
+        - spinbutton [ref=e24]
+        - spinbutton [ref=e25]
+      - generic [ref=e26]:
+        - generic [ref=e27]: Genres
+        - generic [ref=e28]:
+          - button "bass house" [ref=e29]
+          - button "breakbeat" [ref=e30]
+          - button "house" [ref=e31]
+          - button "progressive house" [ref=e32]
+          - button "techno" [ref=e33]
+      - generic [ref=e34]:
+        - generic [ref=e35]: Moods
+        - generic [ref=e36]:
+          - button "dark" [ref=e37]
+          - button "driving" [ref=e38]
+          - button "energetic" [ref=e39]
+          - button "industrial" [ref=e40]
+          - button "peak-time" [ref=e41]
+          - button "uplifting" [ref=e42]
+      - generic [ref=e43]:
+        - link "Need More Drugs SIG003 Need More Drugs SIGIL.ZERO • 2025-12-23" [ref=e44] [cursor=pointer]:
+          - /url: /releases/need-more-drugs/
+          - generic [ref=e46]:
+            - img "Need More Drugs" [ref=e48]
+            - generic [ref=e49]:
+              - generic [ref=e50]: SIG003
+              - heading "Need More Drugs" [level=3] [ref=e51]
+              - generic [ref=e52]: SIGIL.ZERO • 2025-12-23
+        - link "Get Up and Go SZ002 Get Up and Go sigilzero-core • 2024-01-01" [ref=e53] [cursor=pointer]:
+          - /url: /releases/get-up-and-go/
+          - generic [ref=e55]:
+            - img "Get Up and Go" [ref=e57]
+            - generic [ref=e58]:
+              - generic [ref=e59]: SZ002
+              - heading "Get Up and Go" [level=3] [ref=e60]
+              - generic [ref=e61]: sigilzero-core • 2024-01-01
+        - link "At Your Own Risk SZ001 At Your Own Risk sigilzero-core • 2023-01-01" [ref=e62] [cursor=pointer]:
+          - /url: /releases/at-your-own-risk/
+          - generic [ref=e64]:
+            - img "At Your Own Risk" [ref=e66]
+            - generic [ref=e67]:
+              - generic [ref=e68]: SZ001
+              - heading "At Your Own Risk" [level=3] [ref=e69]
+              - generic [ref=e70]: sigilzero-core • 2023-01-01
+  - contentinfo [ref=e71]:
+    - generic [ref=e72]:
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - heading "SIGIL.ZERO" [level=3] [ref=e75]
+          - paragraph [ref=e76]: Dance music imprint for buy-on-sight rave weapons on the darker side.
+        - generic [ref=e77]:
+          - heading "Explore" [level=3] [ref=e78]
+          - list [ref=e79]:
+            - listitem [ref=e80]:
+              - link "Releases" [ref=e81] [cursor=pointer]:
+                - /url: /releases
+            - listitem [ref=e82]:
+              - link "Artists" [ref=e83] [cursor=pointer]:
+                - /url: /artists
+            - listitem [ref=e84]:
+              - link "Mixtapes" [ref=e85] [cursor=pointer]:
+                - /url: /mixtapes
+            - listitem [ref=e86]:
+              - link "About" [ref=e87] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e88]:
+              - link "Press Kit" [ref=e89] [cursor=pointer]:
+                - /url: /press-kit
+        - generic [ref=e90]:
+          - heading "Connect" [level=3] [ref=e91]
+          - list [ref=e92]:
+            - listitem [ref=e93]:
+              - link "Instagram" [ref=e94] [cursor=pointer]:
+                - /url: https://instagram.com/SIGIL.ZERO.RECORDS
+            - listitem [ref=e95]:
+              - link "SoundCloud" [ref=e96] [cursor=pointer]:
+                - /url: https://soundcloud.com/sigil-zero
+            - listitem [ref=e97]:
+              - link "General Inquiries" [ref=e98] [cursor=pointer]:
+                - /url: mailto:info@sigilzero.com
+            - listitem [ref=e99]:
+              - link "Submit Demos" [ref=e100] [cursor=pointer]:
+                - /url: mailto:demos@sigilzero.com
+      - paragraph [ref=e102]: © 2025 SIGIL.ZERO. Austin, TX. All rights reserved.
+  - button "Open Next.js Dev Tools" [ref=e108] [cursor=pointer]:
+    - img [ref=e109]
+  - alert [ref=e112]
+```

@@ -29,21 +29,21 @@ test.describe('Navigation', () => {
     await page.goto('/');
     await page.click('text=Artists');
     await expect(page).toHaveURL('/artists');
-    await expect(page.locator('h1')).toContainText('Artists');
+    await expect(page.getByTestId('artists-page-title')).toBeVisible();
   });
 
   test('should navigate to Releases page', async ({ page }) => {
     await page.goto('/');
     await page.click('text=Releases');
     await expect(page).toHaveURL('/releases');
-    await expect(page.locator('h1')).toContainText('Releases');
+    await expect(page.getByTestId('releases-page-title')).toBeVisible();
   });
 
   test('should navigate to Mixtapes page', async ({ page }) => {
     await page.goto('/');
     await page.click('text=Mixtapes');
     await expect(page).toHaveURL('/mixtapes');
-    await expect(page.locator('h1')).toContainText('Mixtapes');
+    await expect(page.getByTestId('mixtapes-page-title')).toBeVisible();
   });
 
   test('should navigate to Press Kit page', async ({ page }) => {

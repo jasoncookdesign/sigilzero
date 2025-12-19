@@ -1,0 +1,247 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "SIGIL.ZERO" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "SIGIL.ZERO" [ref=e6]
+      - generic [ref=e7]:
+        - link "Releases" [ref=e8] [cursor=pointer]:
+          - /url: /releases/
+        - link "Artists" [ref=e9] [cursor=pointer]:
+          - /url: /artists/
+        - link "Mixtapes" [ref=e10] [cursor=pointer]:
+          - /url: /mixtapes/
+        - link "About" [ref=e11] [cursor=pointer]:
+          - /url: /about/
+        - link "Press" [ref=e12] [cursor=pointer]:
+          - /url: /press-kit/
+  - main [ref=e13]:
+    - generic [ref=e14]:
+      - generic [ref=e16]:
+        - heading "Press Kit" [level=1] [ref=e17]
+        - paragraph [ref=e18]: A minimal, cyber-occult imprint for system-ready dance music. Use the assets below for editorial and promotional purposes.
+      - generic [ref=e20]:
+        - heading "Label Description" [level=2] [ref=e21]
+        - paragraph [ref=e22]: SIGIL.ZERO crafts dark, functional dance music with a focus on immersive, high-impact releases tailored for sound-system environments.
+        - paragraph [ref=e23]: "Short: System-ready rave weapons from the darker side. Long: SIGIL.ZERO is dedicated to curating heavyweight dancefloor soundscapes — releasing limited-run records, championing DJs and live artists whose music commands physical spaces and transforms clubs into rituals."
+      - generic [ref=e25]:
+        - heading "Key Links" [level=2] [ref=e26]
+        - paragraph [ref=e27]: Quick links for the label's social and streaming profiles.
+        - list [ref=e28]:
+          - listitem [ref=e29]:
+            - text: "Instagram:"
+            - link "https://instagram.com/SIGIL.ZERO.RECORDS" [ref=e30] [cursor=pointer]:
+              - /url: https://instagram.com/SIGIL.ZERO.RECORDS
+          - listitem [ref=e31]:
+            - text: "SoundCloud:"
+            - link "https://soundcloud.com/sigil-zero" [ref=e32] [cursor=pointer]:
+              - /url: https://soundcloud.com/sigil-zero
+          - listitem [ref=e33]:
+            - text: "Spotify:"
+            - link "https://open.spotify.com/playlist/xxxxxx" [ref=e34] [cursor=pointer]:
+              - /url: https://open.spotify.com/playlist/xxxxxx
+        - heading "Logos" [level=3] [ref=e35]
+        - paragraph [ref=e36]: Download high-res and SVG logos for editorial use.
+        - generic [ref=e37]:
+          - generic [ref=e38]:
+            - img "SIGIL.ZERO (SVG)" [ref=e40]
+            - link "Download SIGIL.ZERO (SVG)" [ref=e41] [cursor=pointer]:
+              - /url: /assets/press/logo.svg
+          - generic [ref=e42]:
+            - img "SIGIL.ZERO (SVG, inverted)" [ref=e44]
+            - link "Download SIGIL.ZERO (SVG, inverted)" [ref=e45] [cursor=pointer]:
+              - /url: /assets/press/logo-inverted.svg
+          - generic [ref=e46]:
+            - img "SIGIL.ZERO Mark (SVG)" [ref=e48]
+            - link "Download SIGIL.ZERO Mark (SVG)" [ref=e49] [cursor=pointer]:
+              - /url: /assets/press/logo-mark.svg
+      - generic [ref=e51]:
+        - heading "Artist Assets" [level=2] [ref=e52]
+        - paragraph [ref=e53]: Headshots, short bios, socials and downloadable media kits for roster artists.
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - img "B²" [ref=e57]
+            - generic [ref=e58]:
+              - heading "B²" [level=3] [ref=e59]
+              - paragraph [ref=e60]: producer, dj
+              - paragraph [ref=e61]: Lane 8, Ben Böhmer
+              - generic [ref=e62]:
+                - generic [ref=e63]:
+                  - link "IG" [ref=e64] [cursor=pointer]:
+                    - /url: https://instagram.com/b_squared.dj
+                  - link "SC" [ref=e65] [cursor=pointer]:
+                    - /url: https://soundcloud.com/b-squared
+                  - link "Spotify" [ref=e66] [cursor=pointer]:
+                    - /url: https://open.spotify.com/artist/000000000000003
+                - link "Download kit" [ref=e67] [cursor=pointer]:
+                  - /url: /assets/press/b-squared-media-kit.zip
+          - generic [ref=e68]:
+            - img "Brian G" [ref=e70]
+            - generic [ref=e71]:
+              - heading "Brian G" [level=3] [ref=e72]
+              - paragraph [ref=e73]: producer, dj
+              - paragraph [ref=e74]: ANNA, Adam Beyer
+              - generic [ref=e75]:
+                - generic [ref=e76]:
+                  - link "IG" [ref=e77] [cursor=pointer]:
+                    - /url: https://instagram.com/briang_techno
+                  - link "SC" [ref=e78] [cursor=pointer]:
+                    - /url: https://soundcloud.com/briang
+                  - link "Spotify" [ref=e79] [cursor=pointer]:
+                    - /url: https://open.spotify.com/artist/000000000000002
+                - link "Download kit" [ref=e80] [cursor=pointer]:
+                  - /url: /assets/press/brian-g-media-kit.zip
+          - generic [ref=e81]:
+            - img "DJ AnTi" [ref=e83]
+            - generic [ref=e84]:
+              - heading "DJ AnTi" [level=3] [ref=e85]
+              - paragraph [ref=e86]: producer, dj
+              - paragraph [ref=e87]: Drumcode, Maceo Plex
+              - generic [ref=e88]:
+                - generic [ref=e89]:
+                  - link "IG" [ref=e90] [cursor=pointer]:
+                    - /url: https://instagram.com/dysonhope
+                  - link "SC" [ref=e91] [cursor=pointer]:
+                    - /url: https://soundcloud.com/dysonhope
+                  - link "Spotify" [ref=e92] [cursor=pointer]:
+                    - /url: https://open.spotify.com/artist/000000000000000
+                - link "Download kit" [ref=e93] [cursor=pointer]:
+                  - /url: /assets/press/dj-anti-media-kit.zip
+          - generic [ref=e94]:
+            - img "Dyson Hope" [ref=e96]
+            - generic [ref=e97]:
+              - heading "Dyson Hope" [level=3] [ref=e98]
+              - paragraph [ref=e99]: producer, dj
+              - paragraph [ref=e100]: Drumcode, Maceo Plex
+              - generic [ref=e101]:
+                - generic [ref=e102]:
+                  - link "IG" [ref=e103] [cursor=pointer]:
+                    - /url: https://instagram.com/dysonhope
+                  - link "SC" [ref=e104] [cursor=pointer]:
+                    - /url: https://soundcloud.com/dysonhope
+                  - link "Spotify" [ref=e105] [cursor=pointer]:
+                    - /url: https://open.spotify.com/artist/000000000000000
+                - link "Download kit" [ref=e106] [cursor=pointer]:
+                  - /url: /assets/press/dyson-hope-media-kit.zip
+          - generic [ref=e107]:
+            - img "NOTOTO" [ref=e109]
+            - generic [ref=e110]:
+              - heading "NOTOTO" [level=3] [ref=e111]
+              - paragraph [ref=e112]: producer, dj
+              - paragraph [ref=e113]: Claude VonStroke, Walker & Royce
+              - generic [ref=e114]:
+                - generic [ref=e115]:
+                  - link "IG" [ref=e116] [cursor=pointer]:
+                    - /url: https://instagram.com/nototo_music
+                  - link "SC" [ref=e117] [cursor=pointer]:
+                    - /url: https://soundcloud.com/nototo
+                  - link "Spotify" [ref=e118] [cursor=pointer]:
+                    - /url: https://open.spotify.com/artist/000000000000001
+                - link "Download kit" [ref=e119] [cursor=pointer]:
+                  - /url: /assets/press/nototo-media-kit.zip
+      - generic [ref=e121]:
+        - heading "Featured Releases" [level=2] [ref=e122]
+        - paragraph [ref=e123]: Selected releases with cover art, streaming links and short blurbs.
+        - generic [ref=e124]:
+          - generic [ref=e125]:
+            - img "Need More Drugs" [ref=e127]
+            - generic [ref=e128]:
+              - heading "Need More Drugs" [level=3] [ref=e129]
+              - paragraph [ref=e130]: SIG003
+              - paragraph [ref=e131]: breakbeat, techno, house
+              - generic [ref=e132]:
+                - link "Details" [ref=e133] [cursor=pointer]:
+                  - /url: /releases/need-more-drugs
+                - link "Stream" [ref=e134] [cursor=pointer]:
+                  - /url: SIG003-streaming
+          - generic [ref=e135]:
+            - img "Get Up and Go" [ref=e137]
+            - generic [ref=e138]:
+              - heading "Get Up and Go" [level=3] [ref=e139]
+              - paragraph [ref=e140]: SZ002
+              - paragraph [ref=e141]: techno
+              - generic [ref=e142]:
+                - link "Details" [ref=e143] [cursor=pointer]:
+                  - /url: /releases/get-up-and-go
+                - link "Stream" [ref=e144] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e145]:
+            - img "At Your Own Risk" [ref=e147]
+            - generic [ref=e148]:
+              - heading "At Your Own Risk" [level=3] [ref=e149]
+              - paragraph [ref=e150]: SZ001
+              - paragraph [ref=e151]: techno
+              - generic [ref=e152]:
+                - link "Details" [ref=e153] [cursor=pointer]:
+                  - /url: /releases/at-your-own-risk
+                - link "Stream" [ref=e154] [cursor=pointer]:
+                  - /url: "#"
+      - generic [ref=e156]:
+        - heading "Flagship Release" [level=2] [ref=e157]
+        - paragraph [ref=e158]: "Highlight release from the catalog:"
+        - generic [ref=e159]:
+          - generic [ref=e160]: SIG003
+          - generic [ref=e161]: Need More Drugs
+          - generic [ref=e162]: 2025-12-23
+          - link "View release →" [ref=e163] [cursor=pointer]:
+            - /url: /releases/need-more-drugs
+      - generic [ref=e165]:
+        - heading "Contact" [level=2] [ref=e166]
+        - paragraph [ref=e167]:
+          - text: "Press:"
+          - link "press@sigilzero.com" [ref=e168] [cursor=pointer]:
+            - /url: mailto:press@sigilzero.com
+        - paragraph [ref=e169]:
+          - text: "Socials:"
+          - link "@sigil.zero" [ref=e170] [cursor=pointer]:
+            - /url: https://instagram.com/sigil.zero
+          - text: ·
+          - link "@sigilzero" [ref=e171] [cursor=pointer]:
+            - /url: https://twitter.com/sigilzero
+  - contentinfo [ref=e172]:
+    - generic [ref=e173]:
+      - generic [ref=e174]:
+        - generic [ref=e175]:
+          - heading "SIGIL.ZERO" [level=3] [ref=e176]
+          - paragraph [ref=e177]: Dance music imprint for buy-on-sight rave weapons on the darker side.
+        - generic [ref=e178]:
+          - heading "Explore" [level=3] [ref=e179]
+          - list [ref=e180]:
+            - listitem [ref=e181]:
+              - link "Releases" [ref=e182] [cursor=pointer]:
+                - /url: /releases
+            - listitem [ref=e183]:
+              - link "Artists" [ref=e184] [cursor=pointer]:
+                - /url: /artists
+            - listitem [ref=e185]:
+              - link "Mixtapes" [ref=e186] [cursor=pointer]:
+                - /url: /mixtapes
+            - listitem [ref=e187]:
+              - link "About" [ref=e188] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e189]:
+              - link "Press Kit" [ref=e190] [cursor=pointer]:
+                - /url: /press-kit
+        - generic [ref=e191]:
+          - heading "Connect" [level=3] [ref=e192]
+          - list [ref=e193]:
+            - listitem [ref=e194]:
+              - link "Instagram" [ref=e195] [cursor=pointer]:
+                - /url: https://instagram.com/SIGIL.ZERO.RECORDS
+            - listitem [ref=e196]:
+              - link "SoundCloud" [ref=e197] [cursor=pointer]:
+                - /url: https://soundcloud.com/sigil-zero
+            - listitem [ref=e198]:
+              - link "General Inquiries" [ref=e199] [cursor=pointer]:
+                - /url: mailto:info@sigilzero.com
+            - listitem [ref=e200]:
+              - link "Submit Demos" [ref=e201] [cursor=pointer]:
+                - /url: mailto:demos@sigilzero.com
+      - paragraph [ref=e203]: © 2025 SIGIL.ZERO. Austin, TX. All rights reserved.
+  - button "Open Next.js Dev Tools" [ref=e209] [cursor=pointer]:
+    - img [ref=e210]
+  - alert [ref=e213]: Press Kit - SIGIL.ZERO
+```

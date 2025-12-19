@@ -3,12 +3,15 @@ import { test, expect } from '@playwright/test';
 test.describe('Releases Filtering', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/releases');
-    // Wait for the page to be fully loaded
-    await page.waitForSelector('h1:has-text("Releases")');
+    // Fail fast if we hit a 404 or error page
+    await expect(page.locator('h1:has-text("404")')).not.toBeVisible();
+    await expect(page.locator('h1:has-text("Error")')).not.toBeVisible();
+    // Wait for catalog page to load
+    await page.getByTestId('releases-page-title').waitFor();
   });
 
   test('should display releases page with filters', async ({ page }) => {
-    await expect(page.locator('h1')).toContainText('Releases');
+    await expect(page.getByTestId('releases-page-title')).toBeVisible();
     
     // Check if filter inputs are visible
     await expect(page.locator('input[placeholder*="Search"]')).toBeVisible();
@@ -113,11 +116,15 @@ test.describe('Releases Filtering', () => {
 test.describe('Mixtapes Filtering', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/mixtapes');
-    await page.waitForSelector('h1:has-text("Mixtapes")');
+    // Fail fast if we hit a 404 or error page
+    await expect(page.locator('h1:has-text("404")')).not.toBeVisible();
+    await expect(page.locator('h1:has-text("Error")')).not.toBeVisible();
+    // Wait for catalog page to load
+    await page.getByTestId('mixtapes-page-title').waitFor();
   });
 
   test('should display mixtapes page with filters', async ({ page }) => {
-    await expect(page.locator('h1')).toContainText('Mixtapes');
+    await expect(page.getByTestId('mixtapes-page-title')).toBeVisible();
     await expect(page.locator('input[placeholder*="Search"]')).toBeVisible();
   });
 
@@ -180,11 +187,15 @@ test.describe('Mixtapes Filtering', () => {
 test.describe('Artists Filtering', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/artists');
-    await page.waitForSelector('h1:has-text("Artists")');
+    // Fail fast if we hit a 404 or error page
+    await expect(page.locator('h1:has-text("404")')).not.toBeVisible();
+    await expect(page.locator('h1:has-text("Error")')).not.toBeVisible();
+    // Wait for catalog page to load
+    await page.getByTestId('artists-page-title').waitFor();
   });
 
   test('should display artists page', async ({ page }) => {
-    await expect(page.locator('h1')).toContainText('Artists');
+    await expect(page.getByTestId('artists-page-title')).toBeVisible();
   });
 
   test('should display artist cards', async ({ page }) => {
@@ -214,7 +225,7 @@ test.describe('Series Page', () => {
     // Either shows series or redirects
     const url = page.url();
     if (url.includes('/series')) {
-      await expect(page.locator('h1')).toContainText('Series');
+      await expect(page.getByTestId('series-page-title')).toBeVisible();
       
       const cards = await page.locator('[class*="grid"] > div').count();
       expect(cards).toBeGreaterThanOrEqual(0);

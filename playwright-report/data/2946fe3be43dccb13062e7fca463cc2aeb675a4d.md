@@ -1,0 +1,108 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "SIGIL.ZERO" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "SIGIL.ZERO" [ref=e6]
+      - generic [ref=e7]:
+        - link "Releases" [ref=e8] [cursor=pointer]:
+          - /url: /releases/
+        - link "Artists" [active] [ref=e9] [cursor=pointer]:
+          - /url: /artists/
+        - link "Mixtapes" [ref=e10] [cursor=pointer]:
+          - /url: /mixtapes/
+        - link "About" [ref=e11] [cursor=pointer]:
+          - /url: /about/
+        - link "Press" [ref=e12] [cursor=pointer]:
+          - /url: /press-kit/
+  - main [ref=e13]:
+    - generic [ref=e15]:
+      - heading "Artists" [level=2] [ref=e16]
+      - generic [ref=e17]:
+        - link "B² B² producer / dj Denver, CO" [ref=e18] [cursor=pointer]:
+          - /url: /artists/b-squared/
+          - generic [ref=e20]:
+            - img "B²" [ref=e22]
+            - generic [ref=e23]:
+              - heading "B²" [level=3] [ref=e24]
+              - generic [ref=e25]: producer / dj
+              - generic [ref=e26]: Denver, CO
+        - link "Brian G Brian G producer / dj Austin, TX" [ref=e27] [cursor=pointer]:
+          - /url: /artists/brian-g/
+          - generic [ref=e29]:
+            - img "Brian G" [ref=e31]
+            - generic [ref=e32]:
+              - heading "Brian G" [level=3] [ref=e33]
+              - generic [ref=e34]: producer / dj
+              - generic [ref=e35]: Austin, TX
+        - link "DJ AnTi DJ AnTi producer / dj Houston, TX" [ref=e36] [cursor=pointer]:
+          - /url: /artists/dj-anti/
+          - generic [ref=e38]:
+            - img "DJ AnTi" [ref=e40]
+            - generic [ref=e41]:
+              - heading "DJ AnTi" [level=3] [ref=e42]
+              - generic [ref=e43]: producer / dj
+              - generic [ref=e44]: Houston, TX
+        - link "Dyson Hope Dyson Hope producer / dj Austin, TX" [ref=e45] [cursor=pointer]:
+          - /url: /artists/dyson-hope/
+          - generic [ref=e47]:
+            - img "Dyson Hope" [ref=e49]
+            - generic [ref=e50]:
+              - heading "Dyson Hope" [level=3] [ref=e51]
+              - generic [ref=e52]: producer / dj
+              - generic [ref=e53]: Austin, TX
+        - link "NOTOTO NOTOTO producer / dj Austin, TX" [ref=e54] [cursor=pointer]:
+          - /url: /artists/nototo/
+          - generic [ref=e56]:
+            - img "NOTOTO" [ref=e58]
+            - generic [ref=e59]:
+              - heading "NOTOTO" [level=3] [ref=e60]
+              - generic [ref=e61]: producer / dj
+              - generic [ref=e62]: Austin, TX
+  - contentinfo [ref=e63]:
+    - generic [ref=e64]:
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - heading "SIGIL.ZERO" [level=3] [ref=e67]
+          - paragraph [ref=e68]: Dance music imprint for buy-on-sight rave weapons on the darker side.
+        - generic [ref=e69]:
+          - heading "Explore" [level=3] [ref=e70]
+          - list [ref=e71]:
+            - listitem [ref=e72]:
+              - link "Releases" [ref=e73] [cursor=pointer]:
+                - /url: /releases
+            - listitem [ref=e74]:
+              - link "Artists" [ref=e75] [cursor=pointer]:
+                - /url: /artists
+            - listitem [ref=e76]:
+              - link "Mixtapes" [ref=e77] [cursor=pointer]:
+                - /url: /mixtapes
+            - listitem [ref=e78]:
+              - link "About" [ref=e79] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e80]:
+              - link "Press Kit" [ref=e81] [cursor=pointer]:
+                - /url: /press-kit
+        - generic [ref=e82]:
+          - heading "Connect" [level=3] [ref=e83]
+          - list [ref=e84]:
+            - listitem [ref=e85]:
+              - link "Instagram" [ref=e86] [cursor=pointer]:
+                - /url: https://instagram.com/SIGIL.ZERO.RECORDS
+            - listitem [ref=e87]:
+              - link "SoundCloud" [ref=e88] [cursor=pointer]:
+                - /url: https://soundcloud.com/sigil-zero
+            - listitem [ref=e89]:
+              - link "General Inquiries" [ref=e90] [cursor=pointer]:
+                - /url: mailto:info@sigilzero.com
+            - listitem [ref=e91]:
+              - link "Submit Demos" [ref=e92] [cursor=pointer]:
+                - /url: mailto:demos@sigilzero.com
+      - paragraph [ref=e94]: © 2025 SIGIL.ZERO. Austin, TX. All rights reserved.
+  - button "Open Next.js Dev Tools" [ref=e100] [cursor=pointer]:
+    - img [ref=e101]
+  - alert [ref=e104]
+```

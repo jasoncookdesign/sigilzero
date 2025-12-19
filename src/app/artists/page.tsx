@@ -9,7 +9,7 @@ export default function ArtistsPage() {
   return (
     <Section>
       <div className="container-sigil px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl mb-6 text-center">
+        <h2 className="text-4xl mb-6 text-center" data-testid="artists-page-title">
           Artists
         </h2>
 
