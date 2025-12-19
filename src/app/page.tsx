@@ -65,7 +65,7 @@ export default function HomePage() {
           <h1 className="flex items-center justify-center mb-3">
             <span className="sr-only">SIGIL.ZERO</span>
             <img
-              src="./assets/images/site_elements/logos/SZLogo_WonB_Wide.png"
+              src="./assets/images/site_elements/logos/SZLogo_wide-WonB-1600.png"
               alt=""
               aria-hidden="true"
               className="w-auto h-fit"

@@ -34,7 +34,7 @@ export default function Navigation({ showSeries = true }: NavigationProps) {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/assets/images/site_elements/logos/SZLogo_Wtrans_Glyph.png"
+              src="/assets/images/site_elements/logos/SZLogo_glyph-Wtrans-400.png"
               alt="SIGIL.ZERO"
               width={40}
               height={40}

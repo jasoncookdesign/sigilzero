@@ -56,7 +56,7 @@ describe('Navigation', () => {
     render(<Navigation />);
     const logo = screen.getByAltText('SIGIL.ZERO');
     expect(logo).toBeInTheDocument();
-    expect(logo).toHaveAttribute('src', '/assets/images/site_elements/logos/SZLogo_Wtrans_Glyph.png');
+    expect(logo).toHaveAttribute('src', '/assets/images/site_elements/logos/SZLogo_glyph-Wtrans-400.png');
   });
 
   it('should render logo link to home', () => {
