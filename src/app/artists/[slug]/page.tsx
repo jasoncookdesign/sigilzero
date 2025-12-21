@@ -6,8 +6,6 @@ import {
 } from "../../../lib/content/load-artists";
 import { loadAllReleases } from "../../../lib/content/load-releases";
 import { loadAllMixtapes } from "../../../lib/content/load-mixtapes";
-import { safeGetInstagramPosts } from "../../../lib/instagram/fetch-posts";
-import InstagramFeed from "../../../components/artists/InstagramFeed";
 import PlaceholderImage from "../../../components/PlaceholderImage";
 import Section from "../../../components/Section";
 
@@ -46,11 +44,6 @@ export default async function ArtistPage({ params }: ParamsPromise) {
     (m) => m.meta.active && m.meta.artist_id === meta.id
   );
 
-  // Fetch Instagram posts if handle is available
-  const instagramPosts = meta.instagram_handle
-    ? await safeGetInstagramPosts(meta.instagram_handle, 3)
-    : [];
-
   return (
     <div>
       <Section>
@@ -84,14 +77,6 @@ export default async function ArtistPage({ params }: ParamsPromise) {
         )}
         </div>
       </Section>
-
-      {instagramPosts && instagramPosts.length > 0 && (
-        <Section>
-          <div className="container-sigil px-4 sm:px-6 lg:px-8">
-            <InstagramFeed posts={instagramPosts} />
-          </div>
-        </Section>
-      )}
 
       {releases.length > 0 && (
         <Section>
