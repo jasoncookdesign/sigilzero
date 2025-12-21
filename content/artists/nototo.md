@@ -24,13 +24,12 @@ social:
   other: []
 
 booking_email: "bookings@sigilzero.com"
-management_email: ""
 
 label_join_year: 2025
 active: true
 
 featured_releases:
-  - "SZ003"
+  - "SIG003"
 
 featured_mixtapes:
   - "nototo-groove-cruise-2025-bass-breakbeat"

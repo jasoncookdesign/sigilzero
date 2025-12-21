@@ -14,17 +14,12 @@ for_fans_of:
 
 photo: "/images/artists/b-squared.jpg"
 
-instagram_handle: "b_squared.dj"
+instagram_handle: "dj.bellab.ig"
 social:
-  instagram: "https://instagram.com/b_squared.dj"
-  soundcloud: "https://soundcloud.com/b-squared"
-  spotify: "https://open.spotify.com/artist/000000000000003"
-  bandcamp: "https://bsquareddj.bandcamp.com"
-  youtube: "https://youtube.com/@b-squared-dj"
-  other: []
+  instagram: "https://instagram.com/dj.bellab.ig"
+  soundcloud: "https://soundcloud.com/djbellab"
 
 booking_email: "bookings@sigilzero.com"
-management_email: ""
 
 label_join_year: 2025
 active: true

@@ -23,7 +23,6 @@ social:
   other: []
 
 booking_email: "bookings@sigilzero.com"
-management_email: ""
 
 label_join_year: 2025
 active: true
