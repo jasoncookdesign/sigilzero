@@ -36,7 +36,7 @@ export default function ReleaseCard({ release, series }: Props) {
           </h3>
 
           <div className="text-sm text-muted">
-            {series.name} {release.series_id.toUpperCase()} • {release.release_date}
+            {release.series_id.toUpperCase()} • {release.release_date}
           </div>
         </div>
       </div>
