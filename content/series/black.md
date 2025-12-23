@@ -12,11 +12,11 @@ background_hex: "#050505"
 glyph: "/images/series/black-glyph.svg"
 
 default_genres:
-  - "techno"
-  - "hard techno"
-  - "industrial"
+  - "dark techno"
+  - "neuro breaks"
+  - "trapstep"
 
-tagline: "Peak-time occult techno for the ritual hour."
+tagline: "Peak-time arcane bass for the ritual hour."
 active: false
 ---
 

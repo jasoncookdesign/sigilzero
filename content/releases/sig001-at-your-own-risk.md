@@ -1,5 +1,5 @@
 ---
-catalog_number: "SZ001"
+catalog_number: "SIG001"
 id: "sig001"
 slug: "at-your-own-risk"
 title: "At Your Own Risk"
@@ -11,15 +11,19 @@ primary_artists:
 
 remix_artists: []
 
-release_date: "2023-01-01"
+release_date: "2022-12-21"
 status: "released"
 
 genres:
   - "techno"
+  - "bass house"
+  - "dubstep"
+  - "moombahcore"
 
 moods:
   - "dark"
   - "driving"
+  - "experimental"
 
 cover_art: "/images/releases/at-your-own-risk.jpg"
 background_art: "/images/releases/at-your-own-risk-bg.jpg"

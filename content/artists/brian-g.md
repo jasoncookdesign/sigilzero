@@ -2,6 +2,7 @@
 id: "brian-g"
 slug: "brian-g"
 name: "Brian G"
+order: 4
 
 roles:
   - "producer"
@@ -9,18 +10,16 @@ roles:
 
 location: "Austin, TX"
 for_fans_of:
-  - "ANNA"
-  - "Adam Beyer"
+  - "Anyma"
+  - "Adriatique"
 
 photo: "/images/artists/brian-g.jpg"
 
-instagram_handle: "briang_techno"
+instagram_handle: "djbriangsd"
 social:
-  instagram: "https://instagram.com/briang_techno"
-  soundcloud: "https://soundcloud.com/briang"
-  spotify: "https://open.spotify.com/artist/000000000000002"
-  bandcamp: "https://briangtechno.bandcamp.com"
-  youtube: "https://youtube.com/@briang"
+  instagram: "https://www.instagram.com/djbriangsd/"
+  soundcloud: "https://soundcloud.com/brian-garlick"
+  spotify: "https://open.spotify.com/artist/2Sy5MosvmK6bGKyEr1jrtn"
   other: []
 
 booking_email: "bookings@sigilzero.com"
@@ -29,16 +28,25 @@ label_join_year: 2025
 active: true
 
 featured_releases:
-  - "SZ003"
+  - "SIG003"
 
 featured_mixtapes: []
 
 genres_primary:
-  - "techno"
+  - "progressive house"
+  - "melodic techno"
+  - "neo trance"
 
 tags:
-  - "driving"
-  - "warehouse"
+  - "euphoric drive"
+  - "playful progression"
+  - "open-air energy"
+  - "melodic optimism"
+  - "crowd connection"
 ---
 
-Brian G leans into heavyweight techno with a focus on tension, release, and big-room impact, bridging classic influences with modern sound design.
+Brian G is a reminder that seriousness and fun don’t have to be opposites. Known for progressive sets that prioritize movement, melody, and connection, his sound leans into joy without sacrificing depth.
+
+Rooted in progressive house and melodic techno with flashes of neo-trance energy, Brian G’s music favors forward motion and big-room feeling—but always with a wink. It’s music that knows when to soar and when to smile, designed for long nights that don’t take themselves too seriously.
+
+His work on SIGIL.ZERO captures that balance: polished, crowd-aware tracks that feel expansive, positive, and effortlessly danceable.

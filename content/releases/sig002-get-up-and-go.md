@@ -11,7 +11,7 @@ primary_artists:
 
 remix_artists: []
 
-release_date: "2024-01-01"
+release_date: "2023-06-21"
 status: "released"
 
 genres:

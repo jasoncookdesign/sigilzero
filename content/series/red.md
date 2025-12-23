@@ -13,7 +13,7 @@ glyph: "/images/series/red-glyph.svg"
 
 default_genres:
   - "tech house"
-  - "house"
+  - "progressive house"
 
 tagline: "Groove-forward, body-led rhythms for heat and motion."
 active: false

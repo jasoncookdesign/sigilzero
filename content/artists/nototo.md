@@ -2,6 +2,7 @@
 id: "nototo"
 slug: "nototo"
 name: "NOTOTO"
+order: 1
 
 roles:
   - "producer"
@@ -36,8 +37,8 @@ featured_mixtapes:
   - "nototo-bass-house-set-2024"
 
 genres_primary:
+  - "breakbeats"
   - "bass house"
-  - "breakbeat"
 
 tags:
   - "playful"

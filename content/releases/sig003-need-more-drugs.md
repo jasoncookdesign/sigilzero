@@ -4,7 +4,7 @@ id: "sig003"
 slug: "need-more-drugs"
 title: "Need More Drugs"
 
-type: "maxi-single"          # single | maxi-single | ep | album 
+type: "maxi-single"     
 series_id: "core"
 
 primary_artists:
@@ -14,7 +14,7 @@ remix_artists:
 
 release_date: "2025-12-23"
 preorder_date: ""
-status: "promo-only"           # released | upcoming | promo-only
+status: "released" 
 
 genres:
   - "breakbeat"

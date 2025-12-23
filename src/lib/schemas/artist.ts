@@ -7,6 +7,7 @@ export const ArtistSchema = z.object({
   id: z.string().min(1),
   slug: z.string().min(1),
   name: z.string().min(1),
+  order: z.number().int().optional(),
 
   roles: z.array(RoleEnum).nonempty(),
 

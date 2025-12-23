@@ -37,7 +37,7 @@ featured: true
 active: true
 
 related_releases:
-  - "sig003"
+  - "sig001"
 ---
 
 A 75-minute journey through the darker edges of the SIGIL.ZERO catalog and

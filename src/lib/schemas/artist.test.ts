@@ -32,6 +32,7 @@ describe('ArtistSchema', () => {
     it('should accept optional fields', () => {
       const withOptionals = {
         ...validArtist,
+        order: 1,
         location: 'Austin, TX',
         for_fans_of: ['Artist A', 'Artist B'],
         photo: '/assets/photos/test.jpg',
@@ -55,6 +56,15 @@ describe('ArtistSchema', () => {
       };
       const result = ArtistSchema.safeParse(withOptionals);
       expect(result.success).toBe(true);
+    });
+
+    it('should accept order as optional integer', () => {
+      const withOrder = { ...validArtist, order: 0 };
+      const result = ArtistSchema.safeParse(withOrder);
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.order).toBe(0);
+      }
     });
   });
 
@@ -169,6 +179,21 @@ describe('ArtistSchema', () => {
       const invalid = { ...validArtist, label_join_year: 2024.5 };
       const result = ArtistSchema.safeParse(invalid);
       expect(result.success).toBe(false);
+    });
+
+    it('should reject non-integer order', () => {
+      const invalid = { ...validArtist, order: 1.5 };
+      const result = ArtistSchema.safeParse(invalid);
+      expect(result.success).toBe(false);
+    });
+
+    it('should accept artist without order field', () => {
+      const withoutOrder = { ...validArtist };
+      const result = ArtistSchema.safeParse(withoutOrder);
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.order).toBeUndefined();
+      }
     });
   });
 });

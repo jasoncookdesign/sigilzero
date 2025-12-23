@@ -75,6 +75,61 @@ describe('load-artists', () => {
         }
       });
     });
+
+    it('should have order property when present', () => {
+      const artists = loadAllArtists();
+      
+      artists.forEach((doc) => {
+        if (doc.meta.order !== undefined) {
+          expect(typeof doc.meta.order).toBe('number');
+          expect(Number.isInteger(doc.meta.order)).toBe(true);
+        }
+      });
+    });
+
+    it('should sort artists by order property', () => {
+      const artists = loadAllArtists();
+      
+      // Filter artists that have order defined
+      const artistsWithOrder = artists.filter((a) => a.meta.order !== undefined);
+      
+      if (artistsWithOrder.length > 1) {
+        for (let i = 1; i < artistsWithOrder.length; i++) {
+          const prevOrder = artistsWithOrder[i - 1].meta.order!;
+          const currOrder = artistsWithOrder[i].meta.order!;
+          expect(currOrder).toBeGreaterThanOrEqual(prevOrder);
+        }
+      }
+    });
+
+    it('should place artists without order after those with order', () => {
+      const artists = loadAllArtists();
+      
+      const withOrder = artists.filter((a) => a.meta.order !== undefined);
+      const withoutOrder = artists.filter((a) => a.meta.order === undefined);
+      
+      if (withOrder.length > 0 && withoutOrder.length > 0) {
+        const lastWithOrderIndex = artists.indexOf(withOrder[withOrder.length - 1]);
+        const firstWithoutOrderIndex = artists.indexOf(withoutOrder[0]);
+        
+        expect(firstWithoutOrderIndex).toBeGreaterThan(lastWithOrderIndex);
+      }
+    });
+
+    it('should sort artists alphabetically by name when orders are equal or undefined', () => {
+      const artists = loadAllArtists();
+      
+      // Check artists without order are alphabetically sorted
+      const withoutOrder = artists.filter((a) => a.meta.order === undefined);
+      
+      if (withoutOrder.length > 1) {
+        for (let i = 1; i < withoutOrder.length; i++) {
+          const prevName = withoutOrder[i - 1].meta.name;
+          const currName = withoutOrder[i].meta.name;
+          expect(prevName.localeCompare(currName)).toBeLessThanOrEqual(0);
+        }
+      }
+    });
   });
 
   describe('loadArtistBySlug', () => {

@@ -2,6 +2,7 @@
 id: "dyson-hope"
 slug: "dyson-hope"
 name: "Dyson Hope"
+order: 0
 
 roles:
   - "producer"
@@ -28,19 +29,31 @@ label_join_year: 2025
 active: true
 
 featured_releases:
+  - "SIG001"
+  - "SIG002"
   - "SIG003"
+  - "SIG004"
 
 featured_mixtapes:
   - "dyson-hope-mixtape-2025"
 
 genres_primary:
-  - "techno"
-  - "hard techno"
+  - "dark techno"
+  - "tech house"
+  - "neuro breakbeats"
+  - "experimental bass"
 
 tags:
-  - "dark"
-  - "industrial"
+  - "industrial mysticism"
+  - "nocturnal pressure"
+  - "analog grit"
+  - "ritual motion"
+  - "controlled chaos"
+  - "underground lineage"
 ---
 
-Dyson Hope is the techno alias of Jason Cook, focused on dark, hypnotic,
-peak-time grooves designed for warehouse systems and late-night drum rituals.
+Dyson Hope is a long-arc artist shaped by transmission towers, warehouse floors, and the long memory of rave culture. Cutting his teeth as an FM radio DJ before descending into the late-’90s Los Angeles underground, his sound was forged in an era where music was discovered at 3 AM, not optimized for feeds. That lineage still shows.
+
+Today, Dyson Hope channels decades of dancefloor intuition into forward-leaning, genre-agnostic records, dark techno pressure, warped breakbeats, experimental bass, and tech house grit braided into a single, coherent signal. His work favors tension over release, hypnosis over excess, and groove as a delivery system for weight.
+
+SIGIL.ZERO serves as both archive and evolution: the first official home for a long-buried back catalog alongside new material that proves the signal never faded—only sharpened.

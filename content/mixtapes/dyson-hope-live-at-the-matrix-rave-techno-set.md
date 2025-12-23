@@ -15,7 +15,9 @@ moods: []
 tags: []
 featured: false
 active: true
-related_releases: []
+related_releases:
+  - "sig003"
+  - "sig004"
 ---
 
 Techno set recorded at The Matrix Rave.

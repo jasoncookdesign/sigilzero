@@ -35,7 +35,7 @@ export function loadArtistBySlug(slug: string): ArtistDocument | null {
 }
 
 /**
- * Load all artists, sorted by name
+ * Load all artists, sorted by order (then by name as fallback)
  */
 export function loadAllArtists(): ArtistDocument[] {
   const artistsDir = getContentDir("artists");
@@ -46,5 +46,14 @@ export function loadAllArtists(): ArtistDocument[] {
     return parseArtistFile(fullPath);
   });
 
-  return docs.sort((a, b) => a.meta.name.localeCompare(b.meta.name));
+  return docs.sort((a, b) => {
+    const orderA = a.meta.order ?? Infinity;
+    const orderB = b.meta.order ?? Infinity;
+    
+    if (orderA !== orderB) {
+      return orderA - orderB;
+    }
+    
+    return a.meta.name.localeCompare(b.meta.name);
+  });
 }

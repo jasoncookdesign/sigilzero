@@ -2,6 +2,7 @@
 id: "b-squared"
 slug: "b-squared"
 name: "B²"
+order: 1
 
 roles:
   - "producer"
@@ -32,12 +33,20 @@ featured_mixtapes:
   - "b-squared-smiles"
 
 genres_primary:
-  - "melodic house"
-  - "progressive"
+  - "progressive house"
+  - "tech house"
+  - "melodic techno"
 
 tags:
-  - "uplifting"
-  - "emotional"
+  - "uplifted momentum"
+  - "emotional control"
+  - "late-night warmth"
+  - "clean propulsion"
+  - "immersive flow"
 ---
 
-B² crafts emotionally charged, melody-forward sets that move between deep, progressive, and vocal moments while keeping the dancefloor glued.
+B² brings clarity, lift, and emotional intelligence to the dancefloor. A fixture of the Denver scene for years, her sets and productions are defined by forward motion that feels earned—melodic without being indulgent, driving without becoming blunt.
+
+Her sound lives in the space where progressive house and melodic techno intersect: long arcs, patient builds, and moments that land with warmth instead of force. There’s a sense of trust in her pacing—music that invites dancers in rather than overwhelming them.
+
+On SIGIL.ZERO, B² translates that DJ sensibility into releases that feel intentional, human, and quietly powerful, tracks designed to move bodies while leaving space for feeling.

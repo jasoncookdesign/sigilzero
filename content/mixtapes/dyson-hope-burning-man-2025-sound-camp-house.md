@@ -15,7 +15,10 @@ moods: []
 tags: []
 featured: false
 active: true
-related_releases: []
+related_releases:
+  - "sig001"
+  - "sig002"
+  - "sig003"
 ---
 
 House set from a Burning Man sound camp.
