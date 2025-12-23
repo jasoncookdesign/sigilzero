@@ -1,16 +1,22 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import useAudio from "../../hooks/useAudio";
+
+type ArtistRef = {
+  slug: string;
+  name: string;
+};
 
 type TrackProps = {
   id: string;
   title: string;
   preview_url?: string | null | undefined;
   duration_seconds?: number | null | undefined;
-  artists?: string[];
+  artists?: ArtistRef[];
   position?: number;
-  remix_artists?: string[];
+  remix_artists?: ArtistRef[];
   bpm?: number | null;
   key?: string | null;
 };
@@ -41,7 +47,8 @@ export default function ReleaseTrackList({
     id: t.id,
     url: t.preview_url || "",
     title: t.title,
-    artist: (t.artists || []).join(", ") || releaseTitle || "SIGIL.ZERO",
+    artist: (t.artists || []).map(a => a.name).join(", ") || releaseTitle || "SIGIL.ZERO",
+    artists: t.artists || [],
     remix_artists: t.remix_artists || [],
     bpm: t.bpm,
     key: t.key,
@@ -60,28 +67,56 @@ export default function ReleaseTrackList({
         <div>
           <button
             onClick={() => playAll(0)}
-            className="px-3 py-1 text-sm bg-white text-black rounded"
+            className="px-3 py-1 text-sm text-black bg-white rounded"
           >
             Play all
           </button>
         </div>
       </div>
 
-      <ol className="divide-y divide-gray-800 rounded-md overflow-hidden">
+      <ol className="overflow-hidden divide-y divide-gray-800 rounded-md">
         {mapped.map((t, i) => {
           const isCurrent = audio.current?.id === t.id;
           return (
             <li key={t.id} className={`flex items-center justify-between gap-4 px-4 py-3 transition-colors ${isCurrent ? "bg-gray-800 border-l-4 border-white" : "bg-gray-900 hover:bg-gray-800"}`}>
-            <div className="flex items-center gap-3 min-w-0">
+            <div className="flex items-center min-w-0 gap-3">
               <div className="w-8 text-xs text-gray-400">{i + 1}</div>
               <div className="min-w-0">
                 <div className="text-sm font-medium truncate">{t.title}</div>
-                <div className="text-xs text-gray-400 truncate">{t.artist}</div>
-                  <div className="text-xs text-gray-400 truncate">
-                    {t.remix_artists && t.remix_artists.length > 0 && (
-                      <span>Remix: {t.remix_artists.join(", ")}</span>
-                    )}
-                  </div>
+                <div className="text-xs text-gray-400 truncate">
+                  {t.artists.length > 0 ? (
+                    t.artists.map((artist, idx) => (
+                      <React.Fragment key={artist.slug}>
+                        {idx > 0 && ", "}
+                        <Link
+                          href={`/artists/${artist.slug}`}
+                          className="transition-colors hover:text-white"
+                        >
+                          {artist.name}
+                        </Link>
+                      </React.Fragment>
+                    ))
+                  ) : (
+                    <span>{t.artist}</span>
+                  )}
+                </div>
+                <div className="text-xs text-gray-400 truncate">
+                  {t.remix_artists && t.remix_artists.length > 0 && (
+                    <span>
+                      Remix: {t.remix_artists.map((artist, idx) => (
+                        <React.Fragment key={artist.slug}>
+                          {idx > 0 && ", "}
+                          <Link
+                            href={`/artists/${artist.slug}`}
+                            className="transition-colors hover:text-white"
+                          >
+                            {artist.name}
+                          </Link>
+                        </React.Fragment>
+                      ))}
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
 

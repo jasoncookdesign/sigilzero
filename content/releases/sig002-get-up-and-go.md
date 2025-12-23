@@ -1,10 +1,10 @@
 ---
-catalog_number: "SZ002"
+catalog_number: "SIG002"
 id: "sig002"
 slug: "get-up-and-go"
 title: "Get Up and Go"
 type: "album"
-series_id: "sigilzero-core"
+series_id: "core"
 
 primary_artists:
   - "dyson-hope"

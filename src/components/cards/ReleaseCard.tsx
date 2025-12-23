@@ -14,7 +14,7 @@ export default function ReleaseCard({ release, series }: Props) {
   return (
     <Card href={`/releases/${release.slug}`}>
       <div>
-        <div className="relative w-full aspect-square overflow-hidden bg-gray-900">
+        <div className="relative w-full overflow-hidden bg-gray-900 aspect-square">
           <PlaceholderImage
             src={release.cover_art}
             alt={release.title}
@@ -27,16 +27,16 @@ export default function ReleaseCard({ release, series }: Props) {
         </div>
 
         <div className="p-3 sm:p-4">
-          <div className="text-label mb-2">
+          <div className="mb-2 text-label">
             {release.catalog_number}
           </div>
 
-          <h3 className="h-sm mb-2 line-clamp-2">
+          <h3 className="mb-2 h-sm line-clamp-2">
             {release.title}
           </h3>
 
           <div className="text-sm text-muted">
-            {series ? series.name : release.series_id} • {release.release_date}
+            {series.name} {release.series_id.toUpperCase()} • {release.release_date}
           </div>
         </div>
       </div>

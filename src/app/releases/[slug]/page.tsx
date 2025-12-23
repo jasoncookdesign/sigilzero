@@ -43,8 +43,8 @@ export default async function ReleasePage({ params }: ParamsPromise) {
   return (
     <div>
       <Section>
-        <div className="container-sigil px-4 sm:px-6 lg:px-8">
-          <div className="relative w-full h-80 mb-6 overflow-hidden rounded-lg bg-gray-900">
+        <div className="px-4 container-sigil sm:px-6 lg:px-8">
+          <div className="relative w-full mb-6 overflow-hidden bg-gray-900 rounded-lg h-80">
             <PlaceholderImage
               src={meta.cover_art}
               alt={meta.title}
@@ -56,26 +56,15 @@ export default async function ReleasePage({ params }: ParamsPromise) {
             />
           </div>
 
-          <h1 className="text-4xl mb-1">
-            {meta.title}
-          </h1>
-
-          <p className="text-sm text-muted mb-2">
-            {meta.catalog_number} · {meta.release_date}
-            {series && ` · ${series.name}`}
-          </p>
-
-          <p className="text-sm mb-4">
+          <h1 className="mb-1 text-4xl">
             {meta.primary_artists
               .map((id) => artistById[id]?.name ?? id)
-              .join(", ")}
-          </p>
+              .join(", ")} - {meta.title}
+          </h1>
 
-          {meta.label_copy_short && (
-            <p className="text-sm leading-relaxed mb-5">
-              {meta.label_copy_short}
-            </p>
-          )}
+          <p className="mb-2 text-sm text-muted">
+            {meta.catalog_number} · {meta.release_date} · {series && `${series.name}`}
+          </p>
 
           {body && (
             <div className="text-sm leading-relaxed mb-7">
@@ -87,7 +76,7 @@ export default async function ReleasePage({ params }: ParamsPromise) {
 
       {meta.tracks.length > 0 && (
         <Section>
-          <div className="container-sigil px-4 sm:px-6 lg:px-8">
+          <div className="px-4 container-sigil sm:px-6 lg:px-8">
             <ReleaseTrackList
               releaseTitle={meta.title}
               tracks={meta.tracks.map((t) => ({
@@ -95,9 +84,15 @@ export default async function ReleasePage({ params }: ParamsPromise) {
                 title: t.title,
                 preview_url: t.preview_url || null,
                 duration_seconds: t.duration_seconds || null,
-                artists: t.primary_artists,
+                artists: t.primary_artists.map((id) => ({
+                  slug: artistById[id]?.slug ?? id,
+                  name: artistById[id]?.name ?? id,
+                })),
                 position: t.position,
-                remix_artists: t.remix_artists || [],
+                remix_artists: (t.remix_artists || []).map((id) => ({
+                  slug: artistById[id]?.slug ?? id,
+                  name: artistById[id]?.name ?? id,
+                })),
                 bpm: t.bpm || null,
                 key: t.key || null,
               }))}

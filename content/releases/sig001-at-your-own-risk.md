@@ -4,7 +4,7 @@ id: "sig001"
 slug: "at-your-own-risk"
 title: "At Your Own Risk"
 type: "album"
-series_id: "sigilzero-core"
+series_id: "core"
 
 primary_artists:
   - "dyson-hope"

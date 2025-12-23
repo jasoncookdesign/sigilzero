@@ -114,7 +114,7 @@ playlists_featured_on: []
 ---
 
 “Need More Drugs” is a dark, driving breakbeat cut that sits at the intersection
-of funky groove and hard bass-drivin grit. Dyson Hope’s remix pushes the tension
+of funky groove and hard bass-driven grit. Dyson Hope’s remix pushes the tension
 into peak-time dark techno territory, while Brian G's rework twists the original into a
 deep, progressive house mutation. The flip, Disco Fever, gets an original treatment
 from Dyson Hope and NOTOTO showcasing hard bassy breakbeat while Dyson Hope's remix
