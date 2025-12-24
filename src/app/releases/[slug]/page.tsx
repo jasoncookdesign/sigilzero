@@ -7,6 +7,7 @@ import {
 import { loadSeriesRegistry } from "../../../lib/content/load-series-registry";
 import { loadAllArtists } from "../../../lib/content/load-artists";
 import { loadLinkGroupById } from "../../../lib/content/load-links";
+import { getReleaseStatus } from "../../../lib/release-status";
 import ReleaseTrackList from "../../../components/releases/ReleaseTrackList";
 import StreamingLinks from "../../../components/releases/StreamingLinks";
 import PlaceholderImage from "../../../components/PlaceholderImage";
@@ -50,6 +51,9 @@ export default async function ReleasePage({ params }: ParamsPromise) {
     ? loadLinkGroupById(meta.link_groups.purchase)
     : null;
 
+  // Get release status
+  const status = getReleaseStatus(meta.release_date);
+
   return (
     <div>
       <Section>
@@ -79,7 +83,15 @@ export default async function ReleasePage({ params }: ParamsPromise) {
               </h1>
 
               <p className="mb-6 text-sm text-muted">
-                {meta.catalog_number} · {meta.release_date} · {series && `${series.name}`}
+                {meta.catalog_number} · {meta.release_date}
+                {status.type && (
+                  <>
+                    {" "}· <span className={status.type === "coming-soon" ? "text-gray-400" : "text-green-400"}>
+                      {status.label}
+                    </span>
+                  </>
+                )}
+                {series && ` · ${series.name}`}
               </p>
 
               {body && (
