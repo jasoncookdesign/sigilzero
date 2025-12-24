@@ -31,7 +31,10 @@ label_copy_short: "Follow-up Dyson Hope album of peak-time, high-energy house tr
 flagship: false
 active: true
 
-link_groups: {}
+link_groups:
+  streaming: "SIG002-streaming"
+  purchase: "SIG002-purchase"
+  other: "SIG002-other"
 
 tracks:
   - id: "sig002-a1"

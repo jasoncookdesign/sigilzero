@@ -1,1 +1,128 @@
-link_groups: {}
+link_groups:
+  SIG001-streaming:
+    label: "Stream At Your Own Risk"
+    links:
+      - name: "Spotify"
+        platform: "spotify"
+        url: "https://open.spotify.com/album/4L9g96VxarGaLxDe4qRzgr?si=k3lcMjjcQuO8fQh93hosoA"
+      - name: "Apple Music"
+        platform: "apple music"
+        url: "https://music.apple.com/us/album/at-your-own-risk/1658466006"
+      - name: "YouTube Music"
+        platform: "youtube"
+        url: "https://youtu.be/CCqhRaw6G7Q?si=W-UWavEgxiJNoJO8"
+      - name: "SoundCloud"
+        platform: "soundcloud"
+        url: "https://soundcloud.com/dyson-hope/sets/at-your-own-risk"
+      - name: "Amazon Music"
+        platform: "amazon music"
+        url: "https://www.amazon.com/At-Your-Own-Risk/dp/B0BP9XHQV6"
+
+  SIG001-purchase:
+    label: "Buy At Your Own Risk"
+    links:
+      - name: "Bandcamp"
+        platform: "bandcamp"
+        url: "https://dysonhope.bandcamp.com/album/at-your-own-risk"
+
+  SIG001-other:
+    label: "More Links"
+    links: []
+
+  SIG002-streaming:
+    label: "Stream Get Up and Go"
+    links:
+      - name: "Spotify"
+        platform: "spotify"
+        url: "https://open.spotify.com/album/7LFC05eLzcjkaJJvCWIMzg?si=0gFwVQjOQjSoC-l5JYEQ-A"
+      - name: "Apple Music"
+        platform: "apple music"
+        url: "https://music.apple.com/us/album/get-up-and-go/1687237468"
+      - name: "YouTube Music"
+        platform: "youtube"
+        url: "https://youtu.be/kA8uwkLW_j0?si=iC75R2eSErleJnBJ"
+      - name: "SoundCloud"
+        platform: "soundcloud"
+        url: "https://soundcloud.com/dyson-hope/sets/get-up-and-go"
+      - name: "Amazon Music"
+        platform: "amazon music"
+        url: "https://www.amazon.com/music/player/albums/B0BP9VWPLV"
+
+  SIG002-purchase:
+    label: "Buy Get Up and Go"
+    links:
+      - name: "Bandcamp"
+        platform: "bandcamp"
+        url: "https://dysonhope.bandcamp.com/album/get-up-and-go"
+
+  SIG002-other:
+    label: "More Links"
+    links: []
+
+  # SIG003 - Need More Drugs (UPDATE BEATPORT URLS WHEN AVAILABLE)
+  SIG003-streaming:
+    label: "Stream Need More Drugs"
+    links:
+      - name: "Spotify"
+        platform: "spotify"
+        url: "https://open.spotify.com/album/0lhFv9wzBzM7bPvyIS9RX6?si=QmiFcSq7SKmYRWpuBKGjMg"
+      - name: "Apple Music"
+        platform: "apple music"
+        url: "https://music.apple.com/us/album/need-more-drugs-ep/1855809964"
+      - name: "YouTube Music"
+        platform: "youtube"
+        url: "https://youtu.be/RTiFvysPD78?si=dFybvORbwKItIGtl"
+      - name: "SoundCloud"
+        platform: "soundcloud"
+        url: "https://soundcloud.com/dyson-hope/sets/need-more-drugs"
+      - name: "Amazon Music"
+        platform: "amazon music"
+        url: "https://www.amazon.com/music/player/albums/B0BP9XHQV6"
+
+  SIG003-purchase:
+    label: "Buy Need More Drugs"
+    links:
+      - name: "Bandcamp"
+        platform: "bandcamp"
+        url: "https://dysonhope.bandcamp.com/album/need-more-drugs"
+      - name: "Beatport"
+        platform: "beatport"
+        url: ""
+
+  SIG003-other:
+    label: "More Links"
+    links: []
+
+  # SIG004 - Got a Body (Example - UPDATE URLS WHEN AVAILABLE)
+  SIG004-streaming:
+    label: "Stream Got a Body"
+    links:
+      - name: "Spotify"
+        platform: "spotify"
+        url: ""
+      - name: "Apple Music"
+        platform: "apple music"
+        url: ""
+      - name: "YouTube Music"
+        platform: "youtube"
+        url: ""
+      - name: "SoundCloud"
+        platform: "soundcloud"
+        url: ""
+      - name: "Amazon Music"
+        platform: "amazon music"
+        url: ""
+
+  SIG004-purchase:
+    label: "Buy Got a Body"
+    links:
+      - name: "Bandcamp"
+        platform: "bandcamp"
+        url: ""
+      - name: "Beatport"
+        platform: "beatport"
+        url: ""
+
+  SIG004-other:
+    label: "More Links"
+    links: []

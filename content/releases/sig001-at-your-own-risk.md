@@ -36,7 +36,10 @@ label_copy_short: "Debut Dyson Hope album – dark, system-focused warehouse tec
 flagship: false
 active: true
 
-link_groups: {}
+link_groups:
+  streaming: "SIG001-streaming"
+  purchase: "SIG001-purchase"
+  other: "SIG001-other"
 
 tracks:
   - id: "sig001-a1"

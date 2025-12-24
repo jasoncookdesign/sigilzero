@@ -6,7 +6,9 @@ import {
 } from "../../../lib/content/load-releases";
 import { loadSeriesRegistry } from "../../../lib/content/load-series-registry";
 import { loadAllArtists } from "../../../lib/content/load-artists";
+import { loadLinkGroupById } from "../../../lib/content/load-links";
 import ReleaseTrackList from "../../../components/releases/ReleaseTrackList";
+import StreamingLinks from "../../../components/releases/StreamingLinks";
 import PlaceholderImage from "../../../components/PlaceholderImage";
 import Section from "../../../components/Section";
 
@@ -39,6 +41,14 @@ export default async function ReleasePage({ params }: ParamsPromise) {
 
   const artists = loadAllArtists().map((a) => a.meta);
   const artistById = Object.fromEntries(artists.map((a) => [a.id, a]));
+
+  // Load link groups if they exist
+  const streamingGroup = meta.link_groups?.streaming
+    ? loadLinkGroupById(meta.link_groups.streaming)
+    : null;
+  const purchaseGroup = meta.link_groups?.purchase
+    ? loadLinkGroupById(meta.link_groups.purchase)
+    : null;
 
   return (
     <div>
@@ -73,10 +83,16 @@ export default async function ReleasePage({ params }: ParamsPromise) {
               </p>
 
               {body && (
-                <div className="text-sm leading-relaxed">
+                <div className="mb-6 text-sm leading-relaxed">
                   {body}
                 </div>
               )}
+
+              {/* Streaming and Purchase Links */}
+              <StreamingLinks
+                streamingGroup={streamingGroup}
+                purchaseGroup={purchaseGroup}
+              />
             </div>
           </div>
         </div>
