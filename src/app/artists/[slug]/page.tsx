@@ -35,11 +35,22 @@ export default async function ArtistPage({ params }: ParamsPromise) {
 
   const { meta, body } = artistDoc;
 
-  const releases = loadAllReleases().filter(
-    (r) =>
+  const releases = loadAllReleases().filter((r) => {
+    // Check release-level primary/remix artists
+    if (
       r.meta.primary_artists.includes(meta.id) ||
       r.meta.remix_artists.includes(meta.id)
-  );
+    ) {
+      return true;
+    }
+
+    // Check track-level artists (for individual track remixes/features)
+    return r.meta.tracks.some(
+      (track) =>
+        track.primary_artists.includes(meta.id) ||
+        track.remix_artists.includes(meta.id)
+    );
+  });
 
   const mixtapes = loadAllMixtapes().filter(
     (m) => m.meta.artist_id === meta.id

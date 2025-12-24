@@ -1,5 +1,6 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Della_Respira, Mulish, Space_Mono } from "next/font/google";
 import "./globals.css";
 import AudioProvider from "../components/audio/AudioProvider";
@@ -58,7 +59,11 @@ export default function RootLayout({
               <div className="grid grid-cols-1 gap-8 mb-8 md:grid-cols-3">
                 {/* About Column */}
                 <div>
-                  <h3 className="mb-4 text-lg font-semibold">SIGIL.ZERO</h3>
+                  <h3 className="mb-4 text-lg font-semibold">
+                    <Link href="/" className="transition-colors hover:text-white">
+                      SIGIL.ZERO
+                    </Link>
+                  </h3>
                   <p className="text-sm text-gray-400">
                     Dance music imprint for buy-on-sight rave weapons on the darker side.
                   </p>
