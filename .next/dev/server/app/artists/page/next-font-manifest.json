@@ -1,0 +1,13 @@
+{
+  "pages": {},
+  "app": {
+    "[project]/src/app/artists/page": [
+      "static/media/7289ce5c3e8b797d-s.p.21d64ef3.woff2",
+      "static/media/fed68dff3ca987ed-s.p.6d07efdc.woff2",
+      "static/media/dc0d9adbac686440-s.p.3b382e45.woff2",
+      "static/media/8d05cfa5faa8406c-s.p.4adea45d.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pagesUsingSizeAdjust": false
+}
