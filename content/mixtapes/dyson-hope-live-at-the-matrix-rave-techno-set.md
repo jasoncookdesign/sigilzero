@@ -2,22 +2,27 @@
 id: "dyson-hope-live-at-the-matrix-rave-techno-set"
 slug: "dyson-hope-live-at-the-matrix-rave-techno-set"
 artist_id: "dyson-hope"
-title: "Dyson Hope - Live at The Matrix Rave (techno set)"
-event_name: ""
-event_series: ""
+title: "Live at The Matrix Rave (Techno Set)"
+event_name: "The Matrix Rave"
 date: "2024-05-15"
-location: ""
+location: "Austin, TX"
 platform: "soundcloud"
 embed_url: "https://soundcloud.com/dyson-hope/dyson-hope-live-at-the-matrix-rave-techno-set"
 cover_image: "/images/mixtapes/dyson-hope-live-at-the-matrix-rave-techno-set.jpg"
-genres: []
-moods: []
-tags: []
+genres:
+  - "Techno"
+  - "Dark Techno"
+  - "Neuro Tech"
+moods:
+  - "dark"
+  - "warehouse"
+  - "peak-time"
 featured: false
 active: true
 related_releases:
-  - "sig003"
+  - "sig001"
+  - "sig002"
   - "sig004"
 ---
 
-Techno set recorded at The Matrix Rave.
+A dark techno set recorded at matrix-themed rave in Austin, TX featuring lots of original unreleased material.

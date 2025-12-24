@@ -1,6 +1,6 @@
 ---
 catalog_number: "SIG002"
-id: "sig002"
+id: "get-up-and-go"
 slug: "get-up-and-go"
 title: "Get Up and Go"
 type: "album"
@@ -12,6 +12,7 @@ primary_artists:
 remix_artists: []
 
 release_date: "2023-06-21"
+preorder_date: ""
 status: "released"
 
 genres:
@@ -21,11 +22,15 @@ moods:
   - "energetic"
   - "uplifting"
 
+bpm_range: ""
+key_center: ""
 cover_art: "/images/releases/get-up-and-go.jpg"
 background_art: "/images/releases/get-up-and-go-bg.jpg"
 label_copy_short: "Follow-up Dyson Hope album of peak-time, high-energy club tools."
 flagship: false
 active: true
+
+link_groups: {}
 
 tracks:
   - id: "sig002-a1"
@@ -84,6 +89,9 @@ tracks:
       - "dyson-hope"
     remix_artists: []
     preview_url: ""
+
+dj_use_cases: []
+playlists_featured_on: []
 ---
 
 Get Up and Go album stub description.

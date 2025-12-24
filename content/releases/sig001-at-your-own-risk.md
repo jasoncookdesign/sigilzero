@@ -1,6 +1,6 @@
 ---
 catalog_number: "SIG001"
-id: "sig001"
+id: "at-your-own-risk"
 slug: "at-your-own-risk"
 title: "At Your Own Risk"
 type: "album"
@@ -12,6 +12,7 @@ primary_artists:
 remix_artists: []
 
 release_date: "2022-12-21"
+preorder_date: ""
 status: "released"
 
 genres:
@@ -25,11 +26,15 @@ moods:
   - "driving"
   - "experimental"
 
+bpm_range: ""
+key_center: ""
 cover_art: "/images/releases/at-your-own-risk.jpg"
 background_art: "/images/releases/at-your-own-risk-bg.jpg"
 label_copy_short: "Debut Dyson Hope album of dark, system-focused warehouse techno."
 flagship: false
 active: true
+
+link_groups: {}
 
 tracks:
   - id: "sig001-a1"
@@ -88,6 +93,9 @@ tracks:
       - "dyson-hope"
     remix_artists: []
     preview_url: ""
+
+dj_use_cases: []
+playlists_featured_on: []
 ---
 
 At Your Own Risk album stub description.

@@ -1,6 +1,6 @@
 ---
 catalog_number: "SIG004"
-id: "sig004"
+id: "got-a-body"
 slug: "got-a-body"
 title: "Got a Body"
 

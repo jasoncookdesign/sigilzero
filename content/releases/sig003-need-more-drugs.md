@@ -1,6 +1,6 @@
 ---
 catalog_number: "SIG003"
-id: "sig003"
+id: "need-more-drugs"
 slug: "need-more-drugs"
 title: "Need More Drugs"
 

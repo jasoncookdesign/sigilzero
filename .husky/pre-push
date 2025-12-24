@@ -1,0 +1,6 @@
+#!/bin/sh
+# Full validations and unit tests before push
+npm run validate:content || exit 1
+npm run test:run || exit 1
+
+exit 0

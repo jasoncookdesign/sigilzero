@@ -94,9 +94,13 @@ for (const file of files) {
     result.warnings.push(`id "${data.id}" doesn't match slug "${data.slug}"`);
   }
 
-  // Check for trailing whitespace in body
-  if (content && content !== content.trim()) {
-    result.warnings.push("Markdown body has leading/trailing whitespace");
+  // Check for excessive leading/trailing blank lines in body (allow one newline)
+  if (content) {
+    const leadingNewlines = (content.match(/^\n+/)?.[0].length || 0);
+    const trailingNewlines = (content.match(/\n+$/)?.[0].length || 0);
+    if (leadingNewlines > 1 || trailingNewlines > 1) {
+      result.warnings.push("Markdown body has excessive leading/trailing blank lines");
+    }
   }
 
   results.push(result);
