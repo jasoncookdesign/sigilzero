@@ -105,19 +105,21 @@ export default function PressKitPage() {
       )}
 
       {/* TODO: Populate Flagship Release section before enabling */}
-      {false && flagship && (
+      {false && (
         <Section>
           <div className="px-4 container-sigil sm:px-6 lg:px-8">
             <h2 className="mb-4 h-md">Flagship Release</h2>
 
             <p className="mb-2">Highlight release from the catalog:</p>
 
-            <div className="p-3 text-sm border border-gray-800 rounded-lg bg-gray-950">
-              <div className="mb-1 text-xs opacity-70">{flagship.meta.catalog_number}</div>
-              <div className="mb-1">{flagship.meta.title}</div>
-              <div className="mb-2 text-xs opacity-75">{flagship.meta.release_date}</div>
-              <a href={`/releases/${flagship.meta.slug}`} className="text-sm underline">View release →</a>
-            </div>
+            {flagship && (
+              <div className="p-3 text-sm border border-gray-800 rounded-lg bg-gray-950">
+                <div className="mb-1 text-xs opacity-70">{flagship?.meta.catalog_number}</div>
+                <div className="mb-1">{flagship?.meta.title}</div>
+                <div className="mb-2 text-xs opacity-75">{flagship?.meta.release_date}</div>
+                <a href={`/releases/${flagship?.meta.slug}`} className="text-sm underline">View release →</a>
+              </div>
+            )}
           </div>
         </Section>
       )}
