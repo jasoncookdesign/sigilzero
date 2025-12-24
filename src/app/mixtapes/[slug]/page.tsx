@@ -5,9 +5,9 @@ import {
   loadMixtapeBySlug,
 } from "../../../lib/content/load-mixtapes";
 import { loadAllArtists } from "../../../lib/content/load-artists";
-import MixtapePlayButton from "../../../components/mixtapes/MixtapePlayButton";
 import PlaceholderImage from "../../../components/PlaceholderImage";
 import Section from "../../../components/Section";
+import SoundCloudEmbed from "../../../components/audio/SoundCloudEmbed";
 
 type ParamsPromise = {
   params: Promise<{
@@ -39,57 +39,61 @@ export default async function MixtapePage({ params }: ParamsPromise) {
 
   return (
     <div>
-      <Section>
-        <div className="container-sigil px-4 sm:px-6 lg:px-8">
-          <div className="relative w-full h-64 mb-6 overflow-hidden rounded-lg bg-gray-900">
-            <PlaceholderImage
-              src={meta.cover_image}
-              alt={meta.title}
-              width={800}
-              height={400}
-              fill
-              placeholderText={meta.title}
-              className="object-cover"
-            />
-          </div>
+      <Section className="relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <PlaceholderImage
+            src={meta.cover_image}
+            alt=""
+            width={1600}
+            height={1600}
+            fill
+            placeholderText={meta.title}
+            className="object-cover"
+          />
+          {/* Dark overlay for dimming */}
+          <div className="absolute inset-0 bg-black/70"></div>
+        </div>
 
-          <h1 className="text-4xl mb-2">
-            {meta.title}
-          </h1>
+        {/* Content Container */}
+        <div className="container-sigil px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl mx-auto py-16 sm:py-24">
+            <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 sm:p-8">
+              <h1 className="text-4xl sm:text-5xl mb-3 text-white">
+                {meta.title}
+              </h1>
 
-          <p className="text-sm text-muted mb-2">
-            {artist ? artist.name : meta.artist_id}
-            {meta.date && ` · ${meta.date}`}
-            {meta.location && ` · ${meta.location}`}
-          </p>
+              <p className="text-sm text-gray-300 mb-2">
+                {artist ? artist.name : meta.artist_id}
+                {meta.date && ` · ${meta.date}`}
+                {meta.location && ` · ${meta.location}`}
+              </p>
 
-          {meta.event_name && (
-            <p className="text-sm opacity-85 mb-3">
-              {meta.event_name}
-              {meta.event_series && ` · ${meta.event_series}`}
-            </p>
-          )}
+              {meta.event_name && (
+                <p className="text-sm text-gray-300 mb-4">
+                  {meta.event_name}
+                  {meta.event_series && ` · ${meta.event_series}`}
+                </p>
+              )}
 
-          {body && (
-            <div className="text-sm leading-relaxed mb-6">
-              {body}
+              {body && (
+                <div className="text-sm leading-relaxed text-gray-200">
+                  {body}
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </Section>
 
-      {meta.embed_url && (
+      {meta.embed_url && meta.platform === "soundcloud" && (
         <Section>
           <div className="container-sigil px-4 sm:px-6 lg:px-8">
-            <MixtapePlayButton embedUrl={meta.embed_url} title={meta.title} id={meta.id} artist={artist?.name ?? meta.artist_id} />
-            <div className="mt-3">
-              <iframe
-                src={meta.embed_url}
-                title={`${meta.title} player`}
-                className="w-full h-42 border-0"
-                allow="autoplay"
-              />
-            </div>
+            <SoundCloudEmbed
+              url={meta.embed_url}
+              title={`${meta.title} by ${artist?.name ?? meta.artist_id}`}
+              visual={true}
+            />
           </div>
         </Section>
       )}

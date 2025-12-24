@@ -8,7 +8,7 @@ date: "2025-07-26"
 location: "Austin, TX"
 platform: "soundcloud"
 embed_url: "https://soundcloud.com/dyson-hope/live-at-the-matrix-rave-bass-set"
-cover_image: "/assets/images/mixtapes/dyson-hope-burning-man-2025-sound-camp-house.jpg"
+cover_image: "/assets/images/mixtapes/dyson-hope-live-at-the-matrix-rave-bass-set.jpg"
 genres:
   - "Trapstep"
   - "Dubstep"
