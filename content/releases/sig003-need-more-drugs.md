@@ -50,11 +50,10 @@ tracks:
       - "dyson-hope"
       - "nototo"
     remix_artists: []
-    isrc: "US-XXX-25-00001"
-    bpm: 134
+    bpm: 140
     key: "F minor | 4A"
     duration_seconds: 360
-    preview_url: ""
+    preview_url: "https://open.spotify.com/track/5b3GXuNLsP8iv4OGCIjHdW?si=cf7a34db829c48e3"
   - id: "SIG003-B"
     title: "Disco Fever"
     position: 2
@@ -62,11 +61,10 @@ tracks:
       - "dyson-hope"
       - "nototo"
     remix_artists: []
-    isrc: "US-XXX-25-00001"
-    bpm: 134
+    bpm: 130
     key: "F minor | 4A"
     duration_seconds: 360
-    preview_url: ""
+    preview_url: "https://open.spotify.com/track/378hbqB74Pg5doqIokwPb2?si=0562c840d931488f"
   - id: "SIG003-C"
     title: "Need More Drugs (Dyson Hope Remix)"
     position: 3
@@ -75,11 +73,10 @@ tracks:
       - "nototo"
     remix_artists:
       - "dyson-hope"
-    isrc: "US-XXX-25-00001"
-    bpm: 134
+    bpm: 140
     key: "F minor | 4A"
     duration_seconds: 360
-    preview_url: ""
+    preview_url: "https://open.spotify.com/track/0P62aA7UV4pObLrSx72Tek?si=6bca28a3b5084b0b"
   - id: "SIG003-D"
     title: "Disco Fever (Dyson Hope Remix)"
     position: 4
@@ -88,11 +85,10 @@ tracks:
       - "nototo"
     remix_artists:
       - "dyson-hope"
-    isrc: "US-XXX-25-00001"
-    bpm: 134
+    bpm: 130
     key: "F minor | 4A"
     duration_seconds: 360
-    preview_url: ""
+    preview_url: "https://open.spotify.com/track/4hN9Ej61fEhZFmuZtQfu6Y?si=ad705d3f92254083"
   - id: "SIG003-E"
     title: "Need More Drugs (Brian G Remix)"
     position: 5
@@ -101,11 +97,10 @@ tracks:
       - "nototo"
     remix_artists:
       - "brian-g"
-    isrc: "US-XXX-25-00001"
     bpm: 134
     key: "F minor | 4A"
     duration_seconds: 360
-    preview_url: ""
+    preview_url: "https://open.spotify.com/track/4ZQQ17e8l54lC6Iod1orjA?si=9b836fec246c4152"
 
 dj_use_cases:
   - "peak-time"

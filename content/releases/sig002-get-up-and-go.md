@@ -43,56 +43,56 @@ tracks:
     primary_artists:
       - "dyson-hope"
     remix_artists: []
-    preview_url: ""
+    preview_url: "https://open.spotify.com/track/0uiWf77RCYUOKGeOjRmVfE?si=37d6ea5c457b471e"
   - id: "sig002-a2"
     title: "Bioethics"
     position: 2
     primary_artists:
       - "dyson-hope"
     remix_artists: []
-    preview_url: ""
+    preview_url: "https://open.spotify.com/track/7Kz4XI88oIaQFgRlkvdyFM?si=8143141d53af40ac"
   - id: "sig002-a3"
     title: "Grooving on the Music"
     position: 3
     primary_artists:
       - "dyson-hope"
     remix_artists: []
-    preview_url: ""
+    preview_url: "https://open.spotify.com/track/7DU82EG5lrj6LxQbAwOcbE?si=280f8858325d4318"
   - id: "sig002-a4"
     title: "Sonar Eclipse"
     position: 4
     primary_artists:
       - "dyson-hope"
     remix_artists: []
-    preview_url: ""
+    preview_url: "https://open.spotify.com/track/0W728xHaPRizqoDocAv9pf?si=88a208ad54f54c75"
   - id: "sig002-b1"
     title: "Dauntless"
     position: 5
     primary_artists:
       - "dyson-hope"
     remix_artists: []
-    preview_url: ""
+    preview_url: "https://open.spotify.com/track/6QxUNEcMxRJrGK4pp7sGLJ?si=2d56a7cf474546b8"
   - id: "sig002-b2"
     title: "A Rare Combination"
     position: 6
     primary_artists:
       - "dyson-hope"
     remix_artists: []
-    preview_url: ""
+    preview_url: "https://open.spotify.com/track/50wg2alTsE9JY0Od0qppyo?si=51410e36b8f946b3"
   - id: "sig002-b3"
     title: "The Influence"
     position: 7
     primary_artists:
       - "dyson-hope"
     remix_artists: []
-    preview_url: ""
+    preview_url: "https://open.spotify.com/track/4Us3LO2KbWqMBdcK16lYai?si=75ca3b87fa474364"
   - id: "sig002-b4"
     title: "Robot Carwash"
     position: 8
     primary_artists:
       - "dyson-hope"
     remix_artists: []
-    preview_url: ""
+    preview_url: "https://open.spotify.com/track/5g2WXRvvCERxN6cC5wKOx8?si=c66da8d8115c42ee"
 
 dj_use_cases: []
 playlists_featured_on: []

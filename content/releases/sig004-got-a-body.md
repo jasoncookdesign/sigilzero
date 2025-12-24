@@ -44,7 +44,6 @@ tracks:
     primary_artists:
       - "dyson-hope"
     remix_artists: []
-    isrc: "US-XXX-25-00001"
     bpm: 130
     key: "F minor | 4A"
     duration_seconds: 360
