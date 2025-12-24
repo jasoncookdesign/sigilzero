@@ -74,31 +74,38 @@ export default function PressKitPage() {
         </div>
       </Section>
 
-      <Section>
-        <div className="px-4 container-sigil sm:px-6 lg:px-8">
-          <h2 className="mb-4 h-md">Artist Assets</h2>
-          <p className="mb-4 text-sm opacity-80">Headshots, short bios, socials and downloadable media kits for roster artists.</p>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {artists.map((a) => (
-              <ArtistAssetCard key={a.id} artist={a} />
-            ))}
+      {/* TODO: Complete Artist Assets section - need high-res headshots, bios, and downloadable media kits before enabling */}
+      {false && (
+        <Section>
+          <div className="px-4 container-sigil sm:px-6 lg:px-8">
+            <h2 className="mb-4 h-md">Artist Assets</h2>
+            <p className="mb-4 text-sm opacity-80">Headshots, short bios, socials and downloadable media kits for roster artists.</p>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {artists.map((a) => (
+                <ArtistAssetCard key={a.id} artist={a} />
+              ))}
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      )}
 
-      <Section>
-        <div className="px-4 container-sigil sm:px-6 lg:px-8">
-          <h2 className="mb-4 h-md">Featured Releases</h2>
-          <p className="mb-4 text-sm opacity-80">Selected releases with cover art, streaming links and short blurbs.</p>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {releases.map((r) => (
-              <FeaturedReleaseCard key={r.id} release={r} />
-            ))}
+      {/* TODO: Complete Featured Releases section - need release descriptions and streaming links before enabling */}
+      {false && (
+        <Section>
+          <div className="px-4 container-sigil sm:px-6 lg:px-8">
+            <h2 className="mb-4 h-md">Featured Releases</h2>
+            <p className="mb-4 text-sm opacity-80">Selected releases with cover art, streaming links and short blurbs.</p>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {releases.map((r) => (
+                <FeaturedReleaseCard key={r.id} release={r} />
+              ))}
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      )}
 
-      {flagship && (
+      {/* TODO: Populate Flagship Release section before enabling */}
+      {false && flagship && (
         <Section>
           <div className="px-4 container-sigil sm:px-6 lg:px-8">
             <h2 className="mb-4 h-md">Flagship Release</h2>
@@ -119,7 +126,7 @@ export default function PressKitPage() {
         <div className="px-4 container-sigil sm:px-6 lg:px-8">
           <h2 className="mb-4 h-md">Contact</h2>
           <p className="text-sm">Press: <a href="mailto:press@sigilzero.com" className="underline">press@sigilzero.com</a></p>
-          <p className="mt-2 text-sm">Socials: <a href="https://instagram.com/sigil.zero" target="_blank" rel="noopener noreferrer" className="underline">@sigil.zero</a> · <a href="https://twitter.com/sigilzero" target="_blank" rel="noopener noreferrer" className="underline">@sigilzero</a></p>
+          <p className="mt-2 text-sm">Instagram: <a href="https://instagram.com/SIGIL.ZERO.RECORDS" target="_blank" rel="noopener noreferrer" className="underline">@SIGIL.ZERO.RECORDS</a></p>
         </div>
       </Section>
     </div>
