@@ -71,7 +71,7 @@ export default async function ArtistPage({ params }: ParamsPromise) {
           )}
 
           {body && (
-            <div className="text-sm leading-relaxed mb-6">
+            <div className="text-sm leading-relaxed mb-6 whitespace-pre-wrap">
               {body}
           </div>
         )}
