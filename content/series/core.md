@@ -9,7 +9,7 @@ color_hex: "#222222"
 accent_hex: "#888888"
 background_hex: "#000000"
 
-glyph: "/images/series/core-glyph.svg"
+glyph: "/assets/images/series/core-glyph.svg"
 
 default_genres:
   - "techno"

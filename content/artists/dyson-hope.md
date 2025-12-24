@@ -13,14 +13,14 @@ for_fans_of:
   - "Drumcode"
   - "Maceo Plex"
 
-photo: "/images/artists/dyson-hope.jpg"
+photo: "/assets/images/artists/dyson-hope.jpg"
 
-instagram_handle: "dysonhope"
+instagram_handle: "dysonhopmusic"
 social:
-  instagram: "https://instagram.com/dysonhope"
-  soundcloud: "https://soundcloud.com/dysonhope"
-  spotify: "https://open.spotify.com/artist/000000000000000"
-  youtube: "https://youtube.com/@dysonhope"
+  instagram: "https://instagram.com/dysonhopemusic"
+  soundcloud: "https://soundcloud.com/dyson-hope"
+  spotify: "https://open.spotify.com/artist/61OXIOIVIfdZtFBZG4cY4J?si=5X7A_--ASsylyhxmlUF-sw"
+  youtube: "https://youtube.com/@DysonHope"
   other: []
 
 booking_email: "bookings@sigilzero.com"

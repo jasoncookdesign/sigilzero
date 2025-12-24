@@ -7,8 +7,8 @@ event_name: ""
 date: "2024-11-15"
 location: "Austin, TX"
 platform: "soundcloud"
-embed_url: "https://soundcloud.com/nototo/nototo-live-summit-2024-antones"
-cover_image: "/images/mixtapes/nototo-live-summit-2024-antones.jpg"
+embed_url: "https://soundcloud.com/nototoatx/nototo-antones-nightclub-atx-summit-2024-after-party"
+cover_image: "/assets/images/mixtapes/nototo-live-summit-2024-antones.jpg"
 genres: []
 moods: []
 featured: false
@@ -16,4 +16,4 @@ active: true
 related_releases: []
 ---
 
-After-party set from Summit 2024 at Antone's.
+After-party set from Summit 2024 at Antone's in Austin, TX.

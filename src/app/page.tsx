@@ -54,8 +54,7 @@ export default function HomePage() {
 
   const featuredArtists = artists
     .map((a) => a.meta)
-    .filter((a) => a.active)
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .filter((a) => a.active);
 
   return (
     <div className="flex flex-col gap-0">

@@ -28,9 +28,11 @@ moods:
 
 bpm_range: ""
 key_center: ""
-cover_art: "/images/releases/at-your-own-risk.jpg"
-background_art: "/images/releases/at-your-own-risk-bg.jpg"
-label_copy_short: "Debut Dyson Hope album of dark, system-focused warehouse techno."
+
+cover_art: "/assets/images/releases/sig001_cover.jpg"
+background_art: ""
+
+label_copy_short: "Debut Dyson Hope album – dark, system-focused warehouse techno, bass, and beats."
 flagship: false
 active: true
 

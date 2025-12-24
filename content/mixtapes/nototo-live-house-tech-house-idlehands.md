@@ -7,8 +7,8 @@ event_name: ""
 date: "2024-09-10"
 location: ""
 platform: "soundcloud"
-embed_url: "https://soundcloud.com/nototo/nototo-live-house-tech-house-idlehands"
-cover_image: "/images/mixtapes/nototo-live-house-tech-house-idlehands.jpg"
+embed_url: "https://soundcloud.com/nototoatx/nototo-live-set-housetech-house-idle-hands"
+cover_image: "/assets/images/mixtapes/nototo-live-house-tech-house-idlehands.jpg"
 genres: []
 moods: []
 featured: false

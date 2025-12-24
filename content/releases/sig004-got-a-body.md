@@ -25,7 +25,7 @@ moods:
 bpm_range: "130-140"
 key_center: "F minor | 4A"
 
-cover_art: "/images/releases/sig004_cover.jpg"
+cover_art: "/assets/images/releases/sig004_cover.jpg"
 background_art: ""
 
 label_copy_short: "Hard, dark, tech house."

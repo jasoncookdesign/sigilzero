@@ -7,8 +7,8 @@ event_name: ""
 date: "2025-11-01"
 location: "Austin, TX"
 platform: "soundcloud"
-embed_url: "https://soundcloud.com/dyson-hope/dyson-hope-live-in-austin"
-cover_image: "/images/mixtapes/dyson-hope-live-in-austin.jpg"
+embed_url: "https://soundcloud.com/dyson-hope/live-in-austin"
+cover_image: "/assets/images/mixtapes/dyson-hope-live-in-austin.jpg"
 genres: 
   - "Trapstep"
 moods: 

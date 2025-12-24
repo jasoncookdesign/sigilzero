@@ -9,7 +9,7 @@ color_hex: "#000000"
 accent_hex: "#FF0000"
 background_hex: "#050505"
 
-glyph: "/images/series/black-glyph.svg"
+glyph: "/assets/images/series/black-glyph.svg"
 
 default_genres:
   - "dark techno"

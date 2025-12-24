@@ -30,7 +30,7 @@ moods:
 bpm_range: "130-140"
 key_center: "F minor | 4A"
 
-cover_art: "/images/releases/sig003_cover.jpg"
+cover_art: "/assets/images/releases/sig003_cover.jpg"
 background_art: ""
 
 label_copy_short: "Hard, dark, funky breakbeat with Industrial-tinged techno, bass house, and progressive house remixes."

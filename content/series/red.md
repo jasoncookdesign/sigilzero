@@ -9,7 +9,7 @@ color_hex: "#D32F2F"
 accent_hex: "#FFBABA"
 background_hex: "#1A0000"
 
-glyph: "/images/series/red-glyph.svg"
+glyph: "/assets/images/series/red-glyph.svg"
 
 default_genres:
   - "tech house"

@@ -13,7 +13,7 @@ for_fans_of:
   - "Nico Moreno"
   - "Eli Brown"
 
-photo: "/images/artists/dj-anti.jpg"
+photo: "/assets/images/artists/dj-anti.jpg"
 
 instagram_handle: "alwaysantidj"
 social:

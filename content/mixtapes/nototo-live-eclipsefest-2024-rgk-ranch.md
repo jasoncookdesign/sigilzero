@@ -7,8 +7,8 @@ event_name: ""
 date: "2024-04-08"
 location: ""
 platform: "soundcloud"
-embed_url: "https://soundcloud.com/nototo/nototo-live-eclipsefest-2024-rgk-ranch"
-cover_image: "/images/mixtapes/nototo-live-eclipsefest-2024-rgk-ranch.jpg"
+embed_url: "https://soundcloud.com/nototoatx/nototo-eclipsefest-rgk-ranch-40724-party-mix"
+cover_image: "/assets/images/mixtapes/nototo-live-eclipsefest-2024-rgk-ranch.jpg"
 genres: []
 moods: []
 featured: false

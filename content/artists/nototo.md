@@ -13,15 +13,13 @@ for_fans_of:
   - "Claude VonStroke"
   - "Walker & Royce"
 
-photo: "/images/artists/nototo.jpg"
+photo: "/assets/images/artists/nototo.jpg"
 
-instagram_handle: "nototo_music"
+instagram_handle: "djnototo"
 social:
-  instagram: "https://instagram.com/nototo_music"
-  soundcloud: "https://soundcloud.com/nototo"
-  spotify: "https://open.spotify.com/artist/000000000000001"
-  bandcamp: "https://nototo.bandcamp.com"
-  youtube: "https://youtube.com/@nototo"
+  instagram: "https://www.instagram.com/djnototo/"
+  soundcloud: "https://soundcloud.com/nototoatx"
+  spotify: "https://open.spotify.com/artist/3KgRytnupNNLB7J8G9iRyC?si=TgP-QRmOQASTqSKdJHMB4A"
   other: []
 
 booking_email: "bookings@sigilzero.com"

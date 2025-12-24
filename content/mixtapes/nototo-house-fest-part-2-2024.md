@@ -7,8 +7,8 @@ event_name: ""
 date: "2024-08-21"
 location: ""
 platform: "soundcloud"
-embed_url: "https://soundcloud.com/nototo/nototo-house-fest-part-2-2024"
-cover_image: "/images/mixtapes/nototo-house-fest-part-2-2024.jpg"
+embed_url: "https://soundcloud.com/nototoatx/housefest-part-ii-bass"
+cover_image: "/assets/images/mixtapes/nototo-house-fest-part-2-2024.jpg"
 genres: []
 moods: []
 featured: false
@@ -16,4 +16,4 @@ active: true
 related_releases: []
 ---
 
-House Fest Part II: deeper, darker.
+House Fest Part II: deeper, darker. Bass set.

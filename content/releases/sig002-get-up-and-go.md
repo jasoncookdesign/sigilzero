@@ -24,9 +24,10 @@ moods:
 
 bpm_range: ""
 key_center: ""
-cover_art: "/images/releases/get-up-and-go.jpg"
-background_art: "/images/releases/get-up-and-go-bg.jpg"
-label_copy_short: "Follow-up Dyson Hope album of peak-time, high-energy club tools."
+cover_art: "/assets/images/releases/sig002_cover.jpg"
+background_art: ""
+
+label_copy_short: "Follow-up Dyson Hope album of peak-time, high-energy house tracks."
 flagship: false
 active: true
 

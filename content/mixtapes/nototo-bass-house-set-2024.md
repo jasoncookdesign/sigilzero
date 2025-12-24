@@ -7,8 +7,8 @@ event_name: ""
 date: "2024-10-01"
 location: ""
 platform: "soundcloud"
-embed_url: "https://soundcloud.com/nototo/nototo-bass-house-set-2024"
-cover_image: "/images/mixtapes/nototo-bass-house-set-2024.jpg"
+embed_url: "https://soundcloud.com/nototoatx/bass-mix-12325"
+cover_image: "/assets/images/mixtapes/nototo-bass-house-set-2024.jpg"
 genres: []
 moods: []
 featured: false

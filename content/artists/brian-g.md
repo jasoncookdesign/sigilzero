@@ -8,12 +8,12 @@ roles:
   - "producer"
   - "dj"
 
-location: "Austin, TX"
+location: "San Diego, CA"
 for_fans_of:
   - "Anyma"
   - "Adriatique"
 
-photo: "/images/artists/brian-g.jpg"
+photo: "/assets/images/artists/brian-g.jpg"
 
 instagram_handle: "djbriangsd"
 social:

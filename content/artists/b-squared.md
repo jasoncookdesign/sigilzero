@@ -13,16 +13,16 @@ for_fans_of:
   - "Lane 8"
   - "Ben Böhmer"
 
-photo: "/images/artists/b-squared.jpg"
+photo: "/assets/images/artists/b-squared.jpg"
 
 instagram_handle: "dj.bellab.ig"
 social:
   instagram: "https://instagram.com/dj.bellab.ig"
   soundcloud: "https://soundcloud.com/djbellab"
 
-booking_email: "bookings@sigilzero.com"
+booking_email: "dj.bellab.ig@gmail.com"
 
-label_join_year: 2025
+label_join_year: 2026
 active: true
 
 featured_releases: []

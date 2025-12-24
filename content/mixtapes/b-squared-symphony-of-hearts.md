@@ -7,8 +7,8 @@ event_name: ""
 date: "2024-04-01"
 location: ""
 platform: "soundcloud"
-embed_url: "https://soundcloud.com/b-squared/b-squared-symphony-of-hearts"
-cover_image: "/images/mixtapes/b-squared-symphony-of-hearts.jpg"
+embed_url: "https://soundcloud.com/djbellab/symphonyofheartswav"
+cover_image: "/assets/images/mixtapes/b-squared-symphony-of-hearts.jpg"
 genres: []
 moods: []
 featured: false

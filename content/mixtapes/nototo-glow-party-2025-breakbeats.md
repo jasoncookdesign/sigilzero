@@ -7,8 +7,8 @@ event_name: ""
 date: "2025-02-15"
 location: ""
 platform: "soundcloud"
-embed_url: "https://soundcloud.com/nototo/nototo-glow-party-2025-breakbeats"
-cover_image: "/images/mixtapes/nototo-glow-party-2025-breakbeats.jpg"
+embed_url: "https://soundcloud.com/nototoatx/nototo-breakbeats-set"
+cover_image: "/assets/images/mixtapes/nototo-glow-party-2025-breakbeats.jpg"
 genres: []
 moods: []
 featured: false

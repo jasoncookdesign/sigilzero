@@ -7,8 +7,8 @@ event_name: ""
 date: "2025-03-10"
 location: ""
 platform: "soundcloud"
-embed_url: "https://soundcloud.com/nototo/nototo-live-disco-ballzz-2025"
-cover_image: "/images/mixtapes/nototo-live-disco-ballzz-2025.jpg"
+embed_url: "https://soundcloud.com/nototoatx/disco-ballzz-house-party-mix-2025-full-set"
+cover_image: "/assets/images/mixtapes/nototo-live-disco-ballzz-2025.jpg"
 genres: []
 moods: []
 featured: false
@@ -16,4 +16,4 @@ active: true
 related_releases: []
 ---
 
-Disco-flavored house and party vibes.
+Disco-flavored house and party vibes recorded live at Disco Ballzz.

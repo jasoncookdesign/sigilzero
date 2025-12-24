@@ -9,7 +9,7 @@ color_hex: "#111111"
 accent_hex: "#555555"
 background_hex: "#000000"
 
-glyph: "/images/series/void-glyph.svg"
+glyph: "/assets/images/series/void-glyph.svg"
 
 default_genres:
   - "experimental"
