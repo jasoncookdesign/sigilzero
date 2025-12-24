@@ -9,7 +9,9 @@ location: ""
 platform: "soundcloud"
 embed_url: "https://soundcloud.com/dyson-hope/burning-man-2025-sound-camp-house"
 cover_image: "/assets/images/mixtapes/dyson-hope-burning-man-2025-sound-camp-house.jpg"
-genres: []
+genres: 
+  - "Tech House"
+  - "Bass House"
 moods: []
 featured: false
 active: true

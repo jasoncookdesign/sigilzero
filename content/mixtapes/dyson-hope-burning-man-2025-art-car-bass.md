@@ -9,7 +9,10 @@ location: ""
 platform: "soundcloud"
 embed_url: "https://soundcloud.com/dyson-hope/burning-man-2025-art-car-bass"
 cover_image: "/assets/images/mixtapes/dyson-hope-burning-man-2025-art-car-bass.jpg"
-genres: []
+genres: 
+  - "Trapstep"
+  - "Neuro Breaks"
+  - "Bass House"
 moods: []
 featured: false
 active: true

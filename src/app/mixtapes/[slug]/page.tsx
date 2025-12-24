@@ -60,13 +60,13 @@ export default async function MixtapePage({ params }: ParamsPromise) {
           <div className="max-w-3xl mx-auto py-16 sm:py-24">
             <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 sm:p-8">
               <h1 className="text-4xl sm:text-5xl mb-3 text-white">
-                {meta.title}
+                {artist ? artist.name : meta.artist_id} - {meta.title}
               </h1>
 
               <p className="text-sm text-gray-300 mb-2">
-                {artist ? artist.name : meta.artist_id}
-                {meta.date && ` · ${meta.date}`}
-                {meta.location && ` · ${meta.location}`}
+                {meta.date && `${meta.date}`}
+                {meta.date && meta.location && ` · `}
+                {meta.location && `${meta.location}`}
               </p>
 
               {meta.event_name && (

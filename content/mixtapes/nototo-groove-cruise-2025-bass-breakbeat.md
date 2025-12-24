@@ -2,7 +2,7 @@
 id: "nototo-groove-cruise-2025-bass-breakbeat"
 slug: "nototo-groove-cruise-2025-bass-breakbeat"
 artist_id: "nototo"
-title: "NOTOTO - Groove Cruise 2025 Bass/Breakbeat Set"
+title: "Groove Cruise 2025 Bass/Breakbeat Set"
 event_name: ""
 date: "2025-01-29"
 location: ""

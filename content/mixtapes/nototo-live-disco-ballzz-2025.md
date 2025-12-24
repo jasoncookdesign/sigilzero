@@ -2,7 +2,7 @@
 id: "nototo-live-disco-ballzz-2025"
 slug: "nototo-live-disco-ballzz-2025"
 artist_id: "nototo"
-title: "NOTOTO - Live at Disco Ballzz 2025"
+title: "Live at Disco Ballzz 2025"
 event_name: ""
 date: "2025-04-13"
 location: ""

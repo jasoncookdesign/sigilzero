@@ -9,7 +9,9 @@ location: ""
 platform: "soundcloud"
 embed_url: "https://soundcloud.com/dyson-hope/burning-man-2025-deep-playa-techno"
 cover_image: "/assets/images/mixtapes/dyson-hope-burning-man-2025-deep-playa-techno.jpg"
-genres: []
+genres: 
+  - "Techno"
+  - "Dark Techno"
 moods: []
 featured: false
 active: true

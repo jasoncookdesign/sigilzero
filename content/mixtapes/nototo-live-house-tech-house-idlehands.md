@@ -2,7 +2,7 @@
 id: "nototo-live-house-tech-house-idlehands"
 slug: "nototo-live-house-tech-house-idlehands"
 artist_id: "nototo"
-title: "NOTOTO - Live House/Tech House at idlehands"
+title: "Live House/Tech House at idlehands"
 event_name: ""
 date: "2025-05-27"
 location: ""

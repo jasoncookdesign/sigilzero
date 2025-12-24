@@ -2,7 +2,7 @@
 id: "nototo-glow-party-2025-breakbeats"
 slug: "nototo-glow-party-2025-breakbeats"
 artist_id: "nototo"
-title: "NOTOTO - Glow Party 2025 Breakbeats Full Live Set"
+title: "Glow Party 2025 Breakbeats Full Live Set"
 event_name: ""
 date: "2025-06-27"
 location: ""

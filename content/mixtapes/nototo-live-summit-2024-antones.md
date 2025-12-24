@@ -2,7 +2,7 @@
 id: "nototo-live-summit-2024-antones"
 slug: "nototo-live-summit-2024-antones"
 artist_id: "nototo"
-title: "NOTOTO - Live at Summit 2024 After-Party, Antone's Nightclub ATX"
+title: "Live at Summit 2024 After-Party, Antone's Nightclub ATX"
 event_name: ""
 date: "2024-04-22"
 location: "Austin, TX"

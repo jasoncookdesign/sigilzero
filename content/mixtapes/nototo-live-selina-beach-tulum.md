@@ -2,7 +2,7 @@
 id: "nototo-live-selina-beach-tulum"
 slug: "nototo-live-selina-beach-tulum"
 artist_id: "nototo"
-title: "NOTOTO - Live at Selina Beach Resort, Tulum"
+title: "Live at Selina Beach Resort, Tulum"
 event_name: ""
 date: "2025-02-05"
 location: ""

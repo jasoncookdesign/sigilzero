@@ -2,7 +2,7 @@
 id: "nototo-house-fest-part-1-2024"
 slug: "nototo-house-fest-part-1-2024"
 artist_id: "nototo"
-title: "NOTOTO - House Fest Part I 2024"
+title: "House Fest Part I 2024"
 event_name: ""
 date: "2024-11-16"
 location: ""
