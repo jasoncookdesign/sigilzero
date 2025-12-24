@@ -60,6 +60,16 @@ Each markdown file requires specific frontmatter fields. Run validation:
 npm run check-frontmatter
 ```
 
+Additional validators:
+
+```bash
+# Fast local validation (frontmatter + mixtapes)
+npm run validate:quick
+
+# Full validation (frontmatter + all content types)
+npm run validate:content
+```
+
 ### Testing
 
 Run unit and integration tests:
@@ -76,6 +86,19 @@ Run end-to-end tests:
 npm run e2e          # Headless
 npm run e2e:ui       # Interactive mode
 npm run e2e:headed   # With browser visible
+```
+
+### Git Hooks
+
+This repository uses Husky to enforce validation and tests during development:
+
+- Pre-commit: runs frontmatter + mixtape validation.
+- Pre-push: runs full content validation and unit tests.
+
+Bypass hooks only if necessary:
+
+```bash
+git commit --no-verify -m "message"
 ```
 
 ## Deployment
@@ -96,6 +119,14 @@ Output is written to `/docs`. The build process:
 4. Preserves CNAME for custom domain
 
 Push to the `main` branch to trigger automatic deployment via GitHub Actions.
+
+CI pipeline runs on push/PR:
+
+```bash
+# Validate content and run tests/build
+npm run validate:content
+npm run ci:test
+```
 
 ## Project Status
 
