@@ -36,13 +36,6 @@ genres_primary:
   - "progressive house"
   - "tech house"
   - "melodic techno"
-
-tags:
-  - "uplifted momentum"
-  - "emotional control"
-  - "late-night warmth"
-  - "clean propulsion"
-  - "immersive flow"
 ---
 
 B² brings clarity, lift, and emotional intelligence to the dancefloor. A fixture of the Denver scene for years, her sets and productions are defined by forward motion that feels earned—melodic without being indulgent, driving without becoming blunt.

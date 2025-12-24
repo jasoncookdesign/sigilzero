@@ -36,13 +36,6 @@ genres_primary:
   - "progressive house"
   - "melodic techno"
   - "neo trance"
-
-tags:
-  - "euphoric drive"
-  - "playful progression"
-  - "open-air energy"
-  - "melodic optimism"
-  - "crowd connection"
 ---
 
 Brian G is a reminder that seriousness and fun don’t have to be opposites. Known for progressive sets that prioritize movement, melody, and connection, his sound leans into joy without sacrificing depth.

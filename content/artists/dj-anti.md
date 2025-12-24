@@ -36,13 +36,6 @@ genres_primary:
   - "drum & bass"
   - "bass house"
   - "hard techno"
-
-tags:
-  - "high-velocity pressure"
-  - "bass aggression"
-  - "warehouse intensity"
-  - "disciplined chaos"
-  - "system-first design"
 ---
 
 DJ AnTi is a shape-shifter with roots in impact. Emerging from the Southern California rave circuit alongside Dyson Hope, he first made his mark in drum & bass—where precision, pressure, and low-end discipline are non-negotiable.

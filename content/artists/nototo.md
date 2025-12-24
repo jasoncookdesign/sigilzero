@@ -39,11 +39,6 @@ featured_mixtapes:
 genres_primary:
   - "breakbeats"
   - "bass house"
-
-tags:
-  - "playful"
-  - "party"
-  - "groove"
 ---
 
 NOTOTO blends bass house, breakbeats, and rave nostalgia into high-energy sets built for packed dancefloors and late-night chaos.

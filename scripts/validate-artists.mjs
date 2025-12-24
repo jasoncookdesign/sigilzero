@@ -38,7 +38,6 @@ const ArtistSchema = z.object({
   featured_releases: z.array(z.string()).default([]),
   featured_mixtapes: z.array(z.string()).default([]),
   genres_primary: z.array(z.string()).default([]),
-  tags: z.array(z.string()).default([]),
 });
 
 const artistsDir = path.join(process.cwd(), "content", "artists");

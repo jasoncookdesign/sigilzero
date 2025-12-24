@@ -42,14 +42,6 @@ genres_primary:
   - "tech house"
   - "neuro breakbeats"
   - "experimental bass"
-
-tags:
-  - "industrial mysticism"
-  - "nocturnal pressure"
-  - "analog grit"
-  - "ritual motion"
-  - "controlled chaos"
-  - "underground lineage"
 ---
 
 Dyson Hope is a long-arc artist shaped by transmission towers, warehouse floors, and the long memory of rave culture. Cutting his teeth as an FM radio DJ before descending into the late-’90s Los Angeles underground, his sound was forged in an era where music was discovered at 3 AM, not optimized for feeds. That lineage still shows.
