@@ -44,33 +44,41 @@ export default async function ReleasePage({ params }: ParamsPromise) {
     <div>
       <Section>
         <div className="px-4 container-sigil sm:px-6 lg:px-8">
-          <div className="relative w-full mb-6 overflow-hidden bg-gray-900 rounded-lg h-80">
-            <PlaceholderImage
-              src={meta.cover_art}
-              alt={meta.title}
-              width={800}
-              height={600}
-              fill
-              placeholderText={meta.catalog_number}
-              className="object-cover"
-            />
-          </div>
-
-          <h1 className="mb-1 text-4xl">
-            {meta.primary_artists
-              .map((id) => artistById[id]?.name ?? id)
-              .join(", ")} - {meta.title}
-          </h1>
-
-          <p className="mb-2 text-sm text-muted">
-            {meta.catalog_number} · {meta.release_date} · {series && `${series.name}`}
-          </p>
-
-          {body && (
-            <div className="text-sm leading-relaxed mb-7">
-              {body}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+            {/* Left column: Image */}
+            <div className="flex items-center">
+              <div className="relative w-full overflow-hidden bg-gray-900 rounded-lg aspect-square">
+                <PlaceholderImage
+                  src={meta.cover_art}
+                  alt={meta.title}
+                  width={800}
+                  height={600}
+                  fill
+                  placeholderText={meta.catalog_number}
+                  className="object-cover"
+                />
+              </div>
             </div>
-          )}
+
+            {/* Right column: Text content */}
+            <div className="flex flex-col justify-center">
+              <h1 className="mb-3 text-4xl">
+                {meta.primary_artists
+                  .map((id) => artistById[id]?.name ?? id)
+                  .join(", ")} - {meta.title}
+              </h1>
+
+              <p className="mb-6 text-sm text-muted">
+                {meta.catalog_number} · {meta.release_date} · {series && `${series.name}`}
+              </p>
+
+              {body && (
+                <div className="text-sm leading-relaxed">
+                  {body}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </Section>
 
