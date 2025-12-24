@@ -10,7 +10,7 @@ type Props = {
 
 export default function SeriesCard({ series }: Props) {
   return (
-    <Card href={`/series/${series.slug}`}>
+    <Card href={`/series/${series.slug}`} data-testid="series-card">
       <div>
         <div className="relative w-full aspect-square overflow-hidden bg-gray-900">
           {series.glyph ? (
