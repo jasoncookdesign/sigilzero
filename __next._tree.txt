@@ -4,4 +4,4 @@
 :HL["/_next/static/media/dc0d9adbac686440-s.p.3b382e45.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/fed68dff3ca987ed-s.p.6d07efdc.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["./assets/images/site_elements/logos/SZLogo_wide-WonB-1600.png","image"]
-0:{"buildId":"T5-5ko7OW13jYWT3FxOOI","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"QCYxXKCLRyHYphY3hhujX","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
