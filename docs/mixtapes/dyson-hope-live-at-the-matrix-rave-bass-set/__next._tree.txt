@@ -1,6 +1,6 @@
-:HL["/_next/static/chunks/5317363fb2046b44.css","style"]
+:HL["/_next/static/chunks/d8526404a71b7291.css","style"]
 :HL["/_next/static/media/7289ce5c3e8b797d-s.p.21d64ef3.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/8d05cfa5faa8406c-s.p.4adea45d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/dc0d9adbac686440-s.p.3b382e45.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/fed68dff3ca987ed-s.p.6d07efdc.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"buildId":"jm5rgHtTDML_h1WwXWWhG","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"mixtapes","paramType":null,"paramKey":"mixtapes","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"d","paramKey":"dyson-hope-live-at-the-matrix-rave-bass-set","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"i1_Azt9oG1vpztgaFpK9C","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"mixtapes","paramType":null,"paramKey":"mixtapes","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"d","paramKey":"dyson-hope-live-at-the-matrix-rave-bass-set","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
