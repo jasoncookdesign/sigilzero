@@ -69,7 +69,7 @@ export default function PressKitPage() {
         </ul>
 
         <h3 className="mb-2 h-sm">Logos</h3>
-        <p className="mb-4 text-sm opacity-80">Download high-res and SVG logos for editorial use.</p>
+        <p className="mb-4 text-sm opacity-80">Download SVG logos for editorial use.</p>
         <LogoGrid />
         </div>
       </Section>
