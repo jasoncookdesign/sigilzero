@@ -25,7 +25,7 @@ export default function PressKitPage() {
       <Section className="text-center">
         <div className="px-4 container-sigil sm:px-6 lg:px-8">
        <h1 className="mb-6 text-center text-white h-display" data-testid="presskit-page-title">Press Kit</h1>
-           <p className="max-w-lg mx-auto text-sm opacity-80">A minimal, cyber-occult imprint for system-ready dance music. Use the assets below for editorial and promotional purposes.</p>
+           <p className="max-w-lg mx-auto text-sm opacity-80">A minimal, cyber-arcane imprint for system-ready dance music. Use the assets below for editorial and promotional purposes.</p>
         </div>
       </Section>
 
