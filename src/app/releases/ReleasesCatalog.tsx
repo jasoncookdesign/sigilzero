@@ -8,6 +8,7 @@ import type { ArtistDocument } from "../../lib/content/load-artists";
 import { filterReleases } from "../../lib/filters/releases";
 import ReleaseCard from "../../components/cards/ReleaseCard";
 import Section from "../../components/Section";
+import FilterIcon from "../../components/icons/FilterIcon";
 
 type Props = {
   releases: ReleaseDocument[];
@@ -23,6 +24,7 @@ export default function ReleasesCatalog({
   showSeriesFilter = true,
 }: Props) {
   const [query, setQuery] = useState("");
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [seriesId, setSeriesId] = useState<string>("all");
   const [type, setType] = useState<string>("all");
   const [artistId, setArtistId] = useState<string>("all");
@@ -146,140 +148,160 @@ export default function ReleasesCatalog({
           />
         </div>
 
-      {/* Dropdown filters - Row 1 */}
-      <div className="grid grid-cols-1 gap-2 mb-4 sm:grid-cols-2 lg:grid-cols-4">
-        {/* Series */}
-        {showSeriesFilter && (
-          <select
-            aria-label="Filter by series"
-            value={seriesId}
-            onChange={(e) => setSeriesId(e.target.value)}
-            className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
+        {/* Filters toggle */}
+        <div className={filtersOpen ? "mb-2" : "mb-6"}>
+          <button
+            type="button"
+            aria-expanded={filtersOpen}
+            aria-controls="releases-filters"
+            onClick={() => setFiltersOpen((o) => !o)}
+            className="flex items-center gap-2 text-xs font-medium tracking-wide uppercase text-gray-400 hover:text-white"
           >
-            <option value="all">All series</option>
-            {seriesRegistry.map((s) => (
-              <option key={s.id} value={s.id}>
-                {s.short_label ?? s.name}
-              </option>
-            ))}
-          </select>
-        )}
-
-        {/* Type */}
-        <select
-          aria-label="Filter by type"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-          className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
-        >
-          <option value="all">All types</option>
-          {allTypes.map((t) => (
-            <option key={t} value={t}>
-              {t}
-            </option>
-          ))}
-        </select>
-
-        {/* Artist */}
-        <select
-          aria-label="Filter by artist"
-          value={artistId}
-          onChange={(e) => setArtistId(e.target.value)}
-          className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
-        >
-          <option value="all">All artists</option>
-          {allArtists.map((a) => (
-            <option key={a.id} value={a.id}>
-              {a.name}
-            </option>
-          ))}
-        </select>
-
-        {/* Year */}
-        <select
-          aria-label="Filter by year"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-          className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
-        >
-          <option value="all">All years</option>
-          {allYears.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* BPM range filters */}
-      <div className="grid grid-cols-1 gap-2 mb-4 sm:grid-cols-2">
-        <input
-          type="number"
-          placeholder="Min BPM"
-          value={bpmMin}
-          onChange={(e) => setBpmMin(e.target.value)}
-          className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
-          min="0"
-          max="300"
-        />
-        <input
-          type="number"
-          placeholder="Max BPM"
-          value={bpmMax}
-          onChange={(e) => setBpmMax(e.target.value)}
-          className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
-          min="0"
-          max="300"
-        />
-      </div>
-
-      {/* Genre pills */}
-      {allGenres.length > 0 && (
-        <div className="mb-4">
-          <label className="block mb-2 text-xs font-medium tracking-wide text-gray-400 uppercase">
-            Genres
-          </label>
-          <div className="flex flex-wrap gap-2">
-            {allGenres.map((g) => (
-              <button
-                key={g}
-                onClick={() => toggleGenre(g)}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  genres.includes(g)
-                    ? "bg-white text-black border border-white"
-                    : "bg-gray-900 text-gray-300 border border-gray-700 hover:border-gray-600"
-                }`}
-              >
-                {g}
-              </button>
-            ))}
-          </div>
+            <FilterIcon className="w-5 h-5" />
+            {filtersOpen ? "Hide Filters" : "More Filters"}
+          </button>
         </div>
-      )}
 
-      {/* Mood pills */}
-      {allMoods.length > 0 && (
-        <div className="mb-4">
-          <label className="block mb-2 text-xs font-medium tracking-wide text-gray-400 uppercase">
-            Moods
-          </label>
-          <div className="flex flex-wrap gap-2">
-            {allMoods.map((m) => (
-              <button
-                key={m}
-                onClick={() => toggleMood(m)}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  moods.includes(m)
-                    ? "bg-white text-black border border-white"
-                    : "bg-gray-900 text-gray-300 border border-gray-700 hover:border-gray-600"
-                }`}
+        {/* Collapsible filters container */}
+        <div
+          id="releases-filters"
+          className={`${filtersOpen ? "" : "hidden"} p-3 mb-4 bg-gray-950 border border-gray-800 rounded`}
+        >
+          {/* Dropdown filters - Row 1 */}
+          <div className="grid grid-cols-1 gap-2 mb-4 sm:grid-cols-2 lg:grid-cols-4">
+            {/* Series */}
+            {showSeriesFilter && (
+              <select
+                aria-label="Filter by series"
+                value={seriesId}
+                onChange={(e) => setSeriesId(e.target.value)}
+                className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
               >
-                {m}
-              </button>
-            ))}
+                <option value="all">All series</option>
+                {seriesRegistry.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.short_label ?? s.name}
+                  </option>
+                ))}
+              </select>
+            )}
+
+            {/* Type */}
+            <select
+              aria-label="Filter by type"
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
+            >
+              <option value="all">All types</option>
+              {allTypes.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+
+            {/* Artist */}
+            <select
+              aria-label="Filter by artist"
+              value={artistId}
+              onChange={(e) => setArtistId(e.target.value)}
+              className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
+            >
+              <option value="all">All artists</option>
+              {allArtists.map((a) => (
+                <option key={a.id} value={a.id}>
+                  {a.name}
+                </option>
+              ))}
+            </select>
+
+            {/* Year */}
+            <select
+              aria-label="Filter by year"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
+            >
+              <option value="all">All years</option>
+              {allYears.map((y) => (
+                <option key={y} value={y}>
+                  {y}
+                </option>
+              ))}
+            </select>
           </div>
+
+          {/* BPM range filters */}
+          <div className="grid grid-cols-1 gap-2 mb-4 sm:grid-cols-2">
+            <input
+              type="number"
+              placeholder="Min BPM"
+              value={bpmMin}
+              onChange={(e) => setBpmMin(e.target.value)}
+              className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
+              min="0"
+              max="300"
+            />
+            <input
+              type="number"
+              placeholder="Max BPM"
+              value={bpmMax}
+              onChange={(e) => setBpmMax(e.target.value)}
+              className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
+              min="0"
+              max="300"
+            />
+          </div>
+
+          {/* Genre pills */}
+          {allGenres.length > 0 && (
+            <div className="mb-4">
+              <label className="block mb-2 text-xs font-medium tracking-wide text-gray-400 uppercase">
+                Genres
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {allGenres.map((g) => (
+                  <button
+                    key={g}
+                    onClick={() => toggleGenre(g)}
+                    className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                      genres.includes(g)
+                        ? "bg-white text-black border border-white"
+                        : "bg-gray-900 text-gray-300 border border-gray-700 hover:border-gray-600"
+                    }`}
+                  >
+                    {g}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Mood pills */}
+          {allMoods.length > 0 && (
+            <div className="mb-2">
+              <label className="block mb-2 text-xs font-medium tracking-wide text-gray-400 uppercase">
+                Moods
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {allMoods.map((m) => (
+                  <button
+                    key={m}
+                    onClick={() => toggleMood(m)}
+                    className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                      moods.includes(m)
+                        ? "bg-white text-black border border-white"
+                        : "bg-gray-900 text-gray-300 border border-gray-700 hover:border-gray-600"
+                    }`}
+                  >
+                    {m}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
-      )}
 
       {/* Active filters display and clear button */}
       {isFiltered && (

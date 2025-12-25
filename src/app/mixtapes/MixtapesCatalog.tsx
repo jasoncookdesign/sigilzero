@@ -7,6 +7,7 @@ import type { ArtistDocument } from "../../lib/content/load-artists";
 import { filterMixtapes } from "../../lib/filters/mixtapes";
 import MixtapeCard from "../../components/cards/MixtapeCard";
 import Section from "../../components/Section";
+import FilterIcon from "../../components/icons/FilterIcon";
 
 type Props = {
   mixtapes: MixtapeDocument[];
@@ -15,6 +16,7 @@ type Props = {
 
 export default function MixtapesCatalog({ mixtapes, artists }: Props) {
   const [query, setQuery] = useState("");
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [artistId, setArtistId] = useState<string>("all");
   const [platform, setPlatform] = useState<string>("all");
   const [genres, setGenres] = useState<string[]>([]);
@@ -142,125 +144,145 @@ export default function MixtapesCatalog({ mixtapes, artists }: Props) {
           />
         </div>
 
-      {/* Dropdown filters */}
-      <div className="grid grid-cols-1 gap-2 mb-4 sm:grid-cols-2 lg:grid-cols-4">
-        {/* Artist */}
-        <select
-          aria-label="Filter by artist"
-          value={artistId}
-          onChange={(e) => setArtistId(e.target.value)}
-          className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
-        >
-          <option value="all">All artists</option>
-          {allArtists.map((a) => (
-            <option key={a.id} value={a.id}>
-              {a.name}
-            </option>
-          ))}
-        </select>
-
-        {/* Platform */}
-        <select
-          aria-label="Filter by platform"
-          value={platform}
-          onChange={(e) => setPlatform(e.target.value)}
-          className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
-        >
-          <option value="all">All platforms</option>
-          {allPlatforms.map((p) => (
-            <option key={p} value={p}>
-              {p}
-            </option>
-          ))}
-        </select>
-
-        {/* Year */}
-        <select
-          aria-label="Filter by year"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-          className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
-        >
-          <option value="all">All years</option>
-          {allYears.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Genre pills */}
-      {allGenres.length > 0 && (
-        <div className="mb-4">
-          <label className="block mb-2 text-xs font-medium tracking-wide text-gray-400 uppercase">
-            Genres
-          </label>
-          <div className="flex flex-wrap gap-2">
-            {allGenres.map((g) => (
-              <button
-                key={g}
-                onClick={() => toggleGenre(g)}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  genres.includes(g)
-                    ? "bg-white text-black border border-white"
-                    : "bg-gray-900 text-gray-300 border border-gray-700 hover:border-gray-600"
-                }`}
-              >
-                {g}
-              </button>
-            ))}
-          </div>
+        {/* Filters toggle */}
+        <div className={filtersOpen ? "mb-2" : "mb-6"}>
+          <button
+            type="button"
+            aria-expanded={filtersOpen}
+            aria-controls="mixtapes-filters"
+            onClick={() => setFiltersOpen((o) => !o)}
+            className="flex items-center gap-2 text-xs font-medium tracking-wide text-gray-400 uppercase hover:text-white"
+          >
+            <FilterIcon className="w-5 h-5" />
+            {filtersOpen ? "Hide Filters" : "More Filters"}
+          </button>
         </div>
-      )}
 
-      {/* Mood pills */}
-      {allMoods.length > 0 && (
-        <div className="mb-4">
-          <label className="block mb-2 text-xs font-medium tracking-wide text-gray-400 uppercase">
-            Moods
-          </label>
-          <div className="flex flex-wrap gap-2">
-            {allMoods.map((m) => (
-              <button
-                key={m}
-                onClick={() => toggleMood(m)}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  moods.includes(m)
-                    ? "bg-white text-black border border-white"
-                    : "bg-gray-900 text-gray-300 border border-gray-700 hover:border-gray-600"
-                }`}
-              >
-                {m}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+        {/* Collapsible filters container */}
+        <div
+          id="mixtapes-filters"
+          className={`${filtersOpen ? "" : "hidden"} p-3 mb-4 bg-gray-950 border border-gray-800 rounded`}
+        >
+          {/* Dropdown filters */}
+          <div className="grid grid-cols-1 gap-2 mb-4 sm:grid-cols-2 lg:grid-cols-4">
+            {/* Artist */}
+            <select
+              aria-label="Filter by artist"
+              value={artistId}
+              onChange={(e) => setArtistId(e.target.value)}
+              className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
+            >
+              <option value="all">All artists</option>
+              {allArtists.map((a) => (
+                <option key={a.id} value={a.id}>
+                  {a.name}
+                </option>
+              ))}
+            </select>
 
-      {/* Tag pills */}
-      {allTags.length > 0 && (
-        <div className="mb-4">
-          <label className="block mb-2 text-xs font-medium tracking-wide text-gray-400 uppercase">
-            Tags
-          </label>
-          <div className="flex flex-wrap gap-2">
-            {allTags.map((t) => (
-              <button
-                key={t}
-                onClick={() => toggleTag(t)}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  tags.includes(t)
-                    ? "bg-white text-black border border-white"
-                    : "bg-gray-900 text-gray-300 border border-gray-700 hover:border-gray-600"
-                }`}
-              >
-                {t}
-              </button>
-            ))}
+            {/* Platform */}
+            <select
+              aria-label="Filter by platform"
+              value={platform}
+              onChange={(e) => setPlatform(e.target.value)}
+              className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
+            >
+              <option value="all">All platforms</option>
+              {allPlatforms.map((p) => (
+                <option key={p} value={p}>
+                  {p}
+                </option>
+              ))}
+            </select>
+
+            {/* Year */}
+            <select
+              aria-label="Filter by year"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
+            >
+              <option value="all">All years</option>
+              {allYears.map((y) => (
+                <option key={y} value={y}>
+                  {y}
+                </option>
+              ))}
+            </select>
           </div>
+
+          {/* Genre pills */}
+          {allGenres.length > 0 && (
+            <div className="mb-4">
+              <label className="block mb-2 text-xs font-medium tracking-wide text-gray-400 uppercase">
+                Genres
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {allGenres.map((g) => (
+                  <button
+                    key={g}
+                    onClick={() => toggleGenre(g)}
+                    className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                      genres.includes(g)
+                        ? "bg-white text-black border border-white"
+                        : "bg-gray-900 text-gray-300 border border-gray-700 hover:border-gray-600"
+                    }`}
+                  >
+                    {g}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Mood pills */}
+          {allMoods.length > 0 && (
+            <div className="mb-4">
+              <label className="block mb-2 text-xs font-medium tracking-wide text-gray-400 uppercase">
+                Moods
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {allMoods.map((m) => (
+                  <button
+                    key={m}
+                    onClick={() => toggleMood(m)}
+                    className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                      moods.includes(m)
+                        ? "bg-white text-black border border-white"
+                        : "bg-gray-900 text-gray-300 border border-gray-700 hover:border-gray-600"
+                    }`}
+                  >
+                    {m}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Tag pills */}
+          {allTags.length > 0 && (
+            <div className="mb-2">
+              <label className="block mb-2 text-xs font-medium tracking-wide text-gray-400 uppercase">
+                Tags
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {allTags.map((t) => (
+                  <button
+                    key={t}
+                    onClick={() => toggleTag(t)}
+                    className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                      tags.includes(t)
+                        ? "bg-white text-black border border-white"
+                        : "bg-gray-900 text-gray-300 border border-gray-700 hover:border-gray-600"
+                    }`}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
-      )}
 
       {/* Active filters display and clear button */}
       {isFiltered && (
