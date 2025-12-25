@@ -6,6 +6,7 @@ import "./globals.css";
 import AudioProvider from "../components/audio/AudioProvider";
 import AudioPlayer from "../components/audio/AudioPlayer";
 import Navigation from "../components/Navigation";
+import PageNavigation from "../components/PageNavigation";
 import { hasActiveSeries } from "../lib/content/load-series";
 
 // Heading font: Cormorant Garamond (weights: 500, 600, 700)
@@ -49,6 +50,7 @@ export default function RootLayout({
       <body>
         <AudioProvider>
           <Navigation showSeries={showSeries} />
+          <PageNavigation />
 
           <main>{children}</main>
 

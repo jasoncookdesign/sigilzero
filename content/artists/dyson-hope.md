@@ -10,8 +10,8 @@ roles:
 
 location: "Austin, TX"
 for_fans_of:
-  - "Drumcode"
-  - "Maceo Plex"
+  - "Enrico Sangiuliano"
+  - "Rohaan"
 
 photo: "/assets/images/artists/dyson-hope.jpg"
 
