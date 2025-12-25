@@ -14,11 +14,11 @@ export default function BackButton() {
   return (
     <button
       onClick={() => router.back()}
-      className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors group"
+      className="text-sm text-gray-400 transition-colors hover:text-white group"
       aria-label="Go back"
     >
       <svg
-        className="w-5 h-5 group-hover:-translate-x-1 transition-transform"
+        className="w-5 h-5 transition-transform group-hover:-translate-x-1"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -30,7 +30,6 @@ export default function BackButton() {
           d="M5 12h14M12 19l-7-7 7-7"
         />
       </svg>
-      <span>Back</span>
     </button>
   );
 }
