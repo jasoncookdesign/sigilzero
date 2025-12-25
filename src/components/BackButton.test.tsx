@@ -28,13 +28,12 @@ describe('BackButton', () => {
     expect(button).toBeInTheDocument();
   });
 
-  it('should display back button with arrow icon and text', () => {
+  it('should display back button with arrow icon', () => {
     (usePathname as any).mockReturnValue('/releases');
     render(<BackButton />);
     
     const button = screen.getByRole('button');
     expect(button).toBeInTheDocument();
-    expect(screen.getByText('Back')).toBeInTheDocument();
     
     const svg = button.querySelector('svg');
     expect(svg).toBeInTheDocument();
@@ -62,10 +61,9 @@ describe('BackButton', () => {
     render(<BackButton />);
     
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('inline-flex');
-    expect(button).toHaveClass('items-center');
-    expect(button).toHaveClass('gap-2');
     expect(button).toHaveClass('text-sm');
+    expect(button).toHaveClass('text-gray-400');
+    expect(button).toHaveClass('transition-colors');
   });
 
   it('should have button with hover styling', () => {
@@ -118,12 +116,15 @@ describe('BackButton', () => {
     expect(button).toHaveAttribute('aria-label', 'Go back');
   });
 
-  it('should maintain consistent gap and padding', () => {
+  it('should maintain consistent sizing', () => {
     (usePathname as any).mockReturnValue('/releases');
     render(<BackButton />);
     
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('gap-2');
     expect(button).toHaveClass('text-sm');
+    
+    const svg = button.querySelector('svg');
+    expect(svg).toHaveClass('w-5');
+    expect(svg).toHaveClass('h-5');
   });
 });
