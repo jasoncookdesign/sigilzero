@@ -17,6 +17,7 @@ type TrackProps = {
   artists?: ArtistRef[];
   position?: number;
   remix_artists?: ArtistRef[];
+  featured_artists?: ArtistRef[];
   bpm?: number | null;
   key?: string | null;
 };
@@ -50,6 +51,7 @@ export default function ReleaseTrackList({
     artist: (t.artists || []).map(a => a.name).join(", ") || releaseTitle || "SIGIL.ZERO",
     artists: t.artists || [],
     remix_artists: t.remix_artists || [],
+    featured_artists: t.featured_artists || [],
     bpm: t.bpm,
     key: t.key,
   }));
@@ -128,6 +130,26 @@ export default function ReleaseTrackList({
                       )}
                     </div>
                     
+                    {t.featured_artists && t.featured_artists.length > 0 && (
+                      <div className="flex items-center gap-1 truncate">
+                        <span className="text-gray-600">·</span>
+                        <span>
+                           {'featuring'} {t.featured_artists.map((artist, idx) => (
+                            <React.Fragment key={artist.slug}>
+                              {idx > 0 && ", "}
+                              <Link
+                                href={`/artists/${artist.slug}`}
+                                className={`transition-colors ${hasUrl ? 'hover:text-white underline decoration-transparent hover:decoration-white' : ''}`}
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                {artist.name}
+                              </Link>
+                            </React.Fragment>
+                          ))}
+                        </span>
+                      </div>
+                    )}
+
                     {t.remix_artists && t.remix_artists.length > 0 && (
                       <div className="flex items-center gap-1 truncate">
                         <span className="text-gray-600">·</span>

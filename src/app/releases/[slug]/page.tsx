@@ -129,6 +129,10 @@ export default async function ReleasePage({ params }: ParamsPromise) {
                   slug: artistById[id]?.slug ?? id,
                   name: artistById[id]?.name ?? id,
                 })),
+                featured_artists: (t.featured_artists || []).map((id) => ({
+                  slug: artistById[id]?.slug ?? id,
+                  name: artistById[id]?.name ?? id,
+                })),
                 bpm: t.bpm || null,
                 key: t.key || null,
               }))}

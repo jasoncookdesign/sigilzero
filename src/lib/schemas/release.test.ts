@@ -50,6 +50,23 @@ describe('ReleaseSchema', () => {
       const result = ReleaseSchema.safeParse(withOptionals);
       expect(result.success).toBe(true);
     });
+
+    it('should accept featured artists on tracks', () => {
+      const result = ReleaseSchema.safeParse({
+        ...validRelease,
+        tracks: [
+          {
+            id: 't1',
+            title: 'Song',
+            position: 1,
+            primary_artists: ['artist-1'],
+            featured_artists: ['artist-2'],
+          },
+        ],
+      });
+
+      expect(result.success).toBe(true);
+    });
   });
 
   describe('required fields', () => {
@@ -136,6 +153,38 @@ describe('ReleaseSchema', () => {
     it('should default tracks to empty array', () => {
       const result = ReleaseSchema.parse(validRelease);
       expect(result.tracks).toEqual([]);
+    });
+
+    it('should default track remix_artists to empty array', () => {
+      const result = ReleaseSchema.parse({
+        ...validRelease,
+        tracks: [
+          {
+            id: 't1',
+            title: 'Song',
+            position: 1,
+            primary_artists: ['artist-1'],
+          },
+        ],
+      });
+
+      expect(result.tracks[0].remix_artists).toEqual([]);
+    });
+
+    it('should default track featured_artists to empty array', () => {
+      const result = ReleaseSchema.parse({
+        ...validRelease,
+        tracks: [
+          {
+            id: 't1',
+            title: 'Song',
+            position: 1,
+            primary_artists: ['artist-1'],
+          },
+        ],
+      });
+
+      expect(result.tracks[0].featured_artists).toEqual([]);
     });
   });
 

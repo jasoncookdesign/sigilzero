@@ -48,7 +48,8 @@ export default async function ArtistPage({ params }: ParamsPromise) {
     return r.meta.tracks.some(
       (track) =>
         track.primary_artists.includes(meta.id) ||
-        track.remix_artists.includes(meta.id)
+        track.remix_artists.includes(meta.id) ||
+        (track.featured_artists ?? []).includes(meta.id)
     );
   });
 

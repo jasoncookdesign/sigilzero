@@ -213,6 +213,31 @@ describe('filterReleases', () => {
       expect(ids).toContain('rel-b'); // Has artist-3 as remix
     });
 
+    it('should include releases where artist is featured on a track', () => {
+      const docsWithArtists = [
+        {
+          meta: createMockRelease({
+            id: 'rel-a',
+            tracks: [
+              {
+                id: 't1',
+                title: 'Track 1',
+                position: 1,
+                primary_artists: ['artist-1'],
+                featured_artists: ['artist-2'],
+              },
+            ],
+          }),
+          body: '',
+        },
+        { meta: createMockRelease({ id: 'rel-b', primary_artists: ['artist-3'], remix_artists: [] }), body: '' },
+      ];
+
+      const result = filterReleases(docsWithArtists, { artistIds: ['artist-2'] });
+      expect(result).toHaveLength(1);
+      expect(result[0].meta.id).toBe('rel-a');
+    });
+
     it('should return all when artistIds is undefined', () => {
       const result = filterReleases(mockDocuments, { artistIds: undefined });
       expect(result).toHaveLength(4);

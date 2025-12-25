@@ -53,12 +53,18 @@ export function filterReleases(
   return releases.filter(({ meta, body }) => {
     // Fuzzy text search: title + catalog_number + track names + artist names
     if (q) {
+      const trackArtists = meta.tracks.flatMap((t) => [
+        ...t.primary_artists,
+        ...(t.remix_artists ?? []),
+        ...(t.featured_artists ?? []),
+      ]);
       const searchText = [
         meta.title,
         meta.catalog_number,
         ...meta.tracks.map((t) => t.title),
         ...meta.primary_artists,
         ...meta.remix_artists,
+        ...trackArtists,
       ].join(" ");
 
       if (!fuzzyMatch(searchText, q)) return false;
@@ -79,6 +85,11 @@ export function filterReleases(
       const allArtistIds = [
         ...meta.primary_artists,
         ...meta.remix_artists,
+        ...meta.tracks.flatMap((t) => [
+          ...t.primary_artists,
+          ...(t.remix_artists ?? []),
+          ...(t.featured_artists ?? []),
+        ]),
       ];
       const intersects = allArtistIds.some((id) =>
         criteria.artistIds!.includes(id)

@@ -9,7 +9,8 @@ const TrackSchema = z.object({
   position: z.number().int().positive(),
 
   primary_artists: z.array(z.string()).nonempty(),
-  remix_artists: z.array(z.string()).default([]),
+  remix_artists: z.array(z.string()).optional().default([]),
+  featured_artists: z.array(z.string()).optional().default([]),
 
   isrc: z.string().optional(),
   bpm: z.number().int().optional(),
@@ -36,7 +37,7 @@ export const ReleaseSchema = z.object({
   series_id: z.string().min(1),
 
   primary_artists: z.array(z.string()).nonempty(),
-  remix_artists: z.array(z.string()).default([]),
+  remix_artists: z.array(z.string()).optional().default([]),
 
   release_date: z.string().min(1), // keep as ISO-ish string; you can refine later
   preorder_date: z.string().optional(),
