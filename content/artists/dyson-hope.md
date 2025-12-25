@@ -21,7 +21,10 @@ social:
   soundcloud: "https://soundcloud.com/dyson-hope"
   spotify: "https://open.spotify.com/artist/61OXIOIVIfdZtFBZG4cY4J?si=5X7A_--ASsylyhxmlUF-sw"
   youtube: "https://youtube.com/@DysonHope"
-  other: []
+  bandcamp: "https://dysonhope.bandcamp.com/"
+  other:
+    - title: "Website"
+      url: "https://dysonhope.com"
 
 booking_email: "bookings@sigilzero.com"
 

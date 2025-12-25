@@ -27,7 +27,18 @@ const ArtistSchema = z.object({
       spotify: z.string().url().optional(),
       bandcamp: z.string().url().optional(),
       youtube: z.string().url().optional(),
-      other: z.array(z.string().url()).optional(),
+      other: z
+        .array(
+          z.union([
+            z.string().url(),
+            z.object({
+              title: z.string().min(1),
+              url: z.string().url(),
+              platform: z.string().optional(),
+            }),
+          ])
+        )
+        .optional(),
     })
     .partial()
     .optional(),

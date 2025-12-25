@@ -10,6 +10,7 @@ import PlaceholderImage from "../../../components/PlaceholderImage";
 import Section from "../../../components/Section";
 import ReleaseCard from "../../../components/cards/ReleaseCard";
 import MixtapeCard from "../../../components/cards/MixtapeCard";
+import ArtistSocialLinks from "../../../components/artists/ArtistSocialLinks";
 
 type ParamsPromise = {
   params: Promise<{
@@ -87,6 +88,13 @@ export default async function ArtistPage({ params }: ParamsPromise) {
                 <p className="text-sm text-gray-300 mb-4">
                   {meta.location}
                 </p>
+              )}
+
+              {/* Social links before description */}
+              {meta.social && (
+                <div className="mb-4">
+                  <ArtistSocialLinks social={meta.social} />
+                </div>
               )}
 
               {body && (
