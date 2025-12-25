@@ -26,7 +26,6 @@ moods:
   - "driving"
   - "experimental"
 
-bpm_range: ""
 key_center: ""
 
 cover_art: "/assets/images/releases/sig001_cover.jpg"
@@ -49,6 +48,7 @@ tracks:
       - "dyson-hope"
     remix_artists: []
     preview_url: "https://open.spotify.com/track/191ue2lIfwl0gEZ76V4HJ1?si=bfa90960cdbc405a"
+    bpm: 130
   - id: "sig001-a2"
     title: "Fallen One"
     position: 2
@@ -56,6 +56,7 @@ tracks:
       - "dyson-hope"
     remix_artists: []
     preview_url: "https://open.spotify.com/track/7i0LmgX5CPsY5oFhF11fYd?si=68f9098bf8c141fe"
+    bpm: 130
   - id: "sig001-a3"
     title: "Ground and Pound"
     position: 3
@@ -64,6 +65,7 @@ tracks:
     featured_artists:
       - "dj-anti"
     preview_url: "https://open.spotify.com/track/0QncyIYqTaljFRBsh0YObF?si=c8344e80a9ee44c8"
+    bpm: 130
   - id: "sig001-a4"
     title: "Population Control"
     position: 4
@@ -71,6 +73,7 @@ tracks:
       - "dyson-hope"
     remix_artists: []
     preview_url: "https://open.spotify.com/track/5m98q3v5GJcG7g660QTH8o?si=a3962093db7b40ad"
+    bpm: 130
   - id: "sig001-b1"
     title: "Discipline"
     position: 5
@@ -78,6 +81,7 @@ tracks:
       - "dyson-hope"
     remix_artists: []
     preview_url: "https://open.spotify.com/track/3VdPnNejlqrDjkQr0UBfCW?si=84a453c6ed2f4c44"
+    bpm: 130
   - id: "sig001-b2"
     title: "Bad Hardware"
     position: 6
@@ -85,6 +89,7 @@ tracks:
       - "dyson-hope"
     remix_artists: []
     preview_url: "https://open.spotify.com/track/68A5FDA2dGIkS5rA42ohUG?si=da52010545624f08"
+    bpm: 130
   - id: "sig001-b3"
     title: "OMG Yes"
     position: 7
@@ -92,6 +97,7 @@ tracks:
       - "dyson-hope"
     remix_artists: []
     preview_url: "https://open.spotify.com/track/07wKMKMwhT60NEytBDFhos?si=8314987ba7774dfb"
+    bpm: 130
   - id: "sig001-b4"
     title: "Game Recognize Game"
     position: 8
@@ -99,6 +105,7 @@ tracks:
       - "dyson-hope"
     remix_artists: []
     preview_url: "https://open.spotify.com/track/3nWbWJODVyk8rft0OZ7Mvt?si=4e56aebcf8964906"
+    bpm: 130
 
 dj_use_cases: []
 playlists_featured_on: []

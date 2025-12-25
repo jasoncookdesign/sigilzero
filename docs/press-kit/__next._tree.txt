@@ -6,4 +6,4 @@
 :HL["/assets/press/logo.svg","image"]
 :HL["/assets/press/logo-inverted.svg","image"]
 :HL["/assets/press/logo-mark.svg","image"]
-0:{"buildId":"dT0UswflPO0-ZWUqx1xED","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"press-kit","paramType":null,"paramKey":"press-kit","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"xMz6BV-zYlvE4R_UyyFog","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"press-kit","paramType":null,"paramKey":"press-kit","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

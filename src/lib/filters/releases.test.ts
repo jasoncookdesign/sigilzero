@@ -31,8 +31,11 @@ describe('filterReleases', () => {
       genres: ['house', 'tech-house'],
       moods: ['energetic'],
       series_id: 'core',
-      bpm_range: '125-128',
       release_date: '2024-01-15',
+      tracks: [
+        { id: 't1', title: 'A', position: 1, primary_artists: ['test-artist'], bpm: 125 },
+        { id: 't2', title: 'B', position: 2, primary_artists: ['test-artist'], bpm: 128 },
+      ],
     }),
     createMockRelease({
       catalog_number: 'SIG101',
@@ -41,8 +44,11 @@ describe('filterReleases', () => {
       genres: ['techno'],
       moods: ['dark', 'hypnotic'],
       series_id: 'black',
-      bpm_range: '130-135',
       release_date: '2024-06-20',
+      tracks: [
+        { id: 't1', title: 'A', position: 1, primary_artists: ['test-artist'], bpm: 130 },
+        { id: 't2', title: 'B', position: 2, primary_artists: ['test-artist'], bpm: 135 },
+      ],
     }),
     createMockRelease({
       catalog_number: 'SIG102',
@@ -60,8 +66,11 @@ describe('filterReleases', () => {
       genres: ['bass-house', 'house'],
       moods: ['energetic', 'groovy'],
       series_id: 'red',
-      bpm_range: '128-130',
       release_date: '2024-03-10',
+      tracks: [
+        { id: 't1', title: 'A', position: 1, primary_artists: ['test-artist'], bpm: 128 },
+        { id: 't2', title: 'B', position: 2, primary_artists: ['test-artist'], bpm: 130 },
+      ],
     }),
   ];
 

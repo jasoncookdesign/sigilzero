@@ -8,6 +8,7 @@ import type { ArtistDocument } from "../../lib/content/load-artists";
 import { filterReleases } from "../../lib/filters/releases";
 import ReleaseCard from "../../components/cards/ReleaseCard";
 import Section from "../../components/Section";
+import { MIN_BPM, MAX_BPM } from "../../lib/constants/bpm";
 import FilterIcon from "../../components/icons/FilterIcon";
 
 type Props = {
@@ -240,8 +241,8 @@ export default function ReleasesCatalog({
               value={bpmMin}
               onChange={(e) => setBpmMin(e.target.value)}
               className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
-              min="0"
-              max="300"
+              min={MIN_BPM}
+              max={MAX_BPM}
             />
             <input
               type="number"
@@ -249,8 +250,8 @@ export default function ReleasesCatalog({
               value={bpmMax}
               onChange={(e) => setBpmMax(e.target.value)}
               className="px-2 py-1 text-sm border border-gray-700 rounded bg-gray-950 focus:outline-none focus:border-gray-600"
-              min="0"
-              max="300"
+              min={MIN_BPM}
+              max={MAX_BPM}
             />
           </div>
 

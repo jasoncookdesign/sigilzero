@@ -27,7 +27,6 @@ moods:
   - "peak-time"
   - "industrial"
 
-bpm_range: "130-140"
 key_center: "F minor | 4A"
 
 cover_art: "/assets/images/releases/sig003_cover.jpg"

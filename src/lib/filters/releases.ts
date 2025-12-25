@@ -1,5 +1,6 @@
 // src/lib/filters/releases.ts
 import type { ReleaseDocument } from "../content/load-releases";
+import { MIN_BPM, MAX_BPM } from "../constants/bpm";
 
 export type ReleaseFilterCriteria = {
   query?: string | undefined;             // text search
@@ -13,16 +14,7 @@ export type ReleaseFilterCriteria = {
   bpmMax?: number | undefined;            // maximum BPM
 };
 
-// Extract min/max BPM from "130-140" string format
-function parseBpmRange(bpmRangeStr: string | undefined): { min: number; max: number } | null {
-  if (!bpmRangeStr) return null;
-  const match = bpmRangeStr.match(/(\d+)\s*-\s*(\d+)/);
-  if (!match || !match[1] || !match[2]) return null;
-  return {
-    min: parseInt(match[1], 10),
-    max: parseInt(match[2], 10),
-  };
-}
+// No longer parse release-level BPM ranges; we aggregate from track BPM values.
 
 // Fuzzy search: checks if query matches in text
 function fuzzyMatch(haystack: string, query: string): boolean {
@@ -119,17 +111,23 @@ export function filterReleases(
       if (year !== criteria.year) return false;
     }
 
-    // BPM range filter
+    // BPM range filter - aggregate from track BPM values
     if (criteria.bpmMin !== undefined || criteria.bpmMax !== undefined) {
-      const range = parseBpmRange(meta.bpm_range);
-      if (!range) return false; // No BPM data, exclude
+      const trackBpms = meta.tracks
+        .map((t) => t.bpm)
+        .filter((bpm): bpm is number => typeof bpm === "number" && !Number.isNaN(bpm));
 
-      const releaseBpmMin = range.min;
-      const releaseBpmMax = range.max;
+      if (trackBpms.length === 0) {
+        // If filtering by BPM but no track BPM data, exclude
+        return false;
+      }
+
+      const releaseBpmMin = Math.min(...trackBpms);
+      const releaseBpmMax = Math.max(...trackBpms);
 
       // Check if release's BPM range overlaps with filter range
-      const filterMin = criteria.bpmMin ?? 0;
-      const filterMax = criteria.bpmMax ?? 300;
+      const filterMin = criteria.bpmMin ?? MIN_BPM;
+      const filterMax = criteria.bpmMax ?? MAX_BPM;
 
       if (releaseBpmMax < filterMin || releaseBpmMin > filterMax) {
         return false;
