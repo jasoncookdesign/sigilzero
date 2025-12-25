@@ -10,8 +10,9 @@ roles:
 
 location: "Denver, CO"
 for_fans_of:
-  - "Lane 8"
-  - "Ben Böhmer"
+  - "Archie Hamilton"
+  - "Korolova"
+  - "Orphic"
 
 photo: "/assets/images/artists/b-squared.jpg"
 
