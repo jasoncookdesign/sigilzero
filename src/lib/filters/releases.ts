@@ -12,6 +12,7 @@ export type ReleaseFilterCriteria = {
   year?: number | undefined;              // 2024, 2025, etc.
   bpmMin?: number | undefined;            // minimum BPM
   bpmMax?: number | undefined;            // maximum BPM
+  keys?: string[] | undefined;            // musical keys (e.g., "F minor | 4A")
 };
 
 // No longer parse release-level BPM ranges; we aggregate from track BPM values.
@@ -103,6 +104,15 @@ export function filterReleases(
         criteria.moods!.includes(m)
       );
       if (!matchesMood) return false;
+    }
+
+    // Musical key filter (track-level)
+    if (criteria.keys && criteria.keys.length > 0) {
+      const trackKeys = meta.tracks
+        .map((t) => t.key)
+        .filter((k): k is string => typeof k === "string" && k.trim().length > 0);
+      const matchesKey = trackKeys.some((k) => criteria.keys!.includes(k));
+      if (!matchesKey) return false;
     }
 
     // Year filter

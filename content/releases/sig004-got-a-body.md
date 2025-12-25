@@ -22,8 +22,6 @@ moods:
   - "peak-time"
   - "industrial"
 
-key_center: "F minor | 4A"
-
 cover_art: "/assets/images/releases/sig004_cover.jpg"
 background_art: ""
 

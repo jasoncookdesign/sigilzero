@@ -43,7 +43,6 @@ describe('ReleaseSchema', () => {
         remix_artists: ['remixer-1'],
         preorder_date: '2024-01-01',
         bpm_range: '128-132',
-        key_center: 'A minor',
         flagship: true,
         active: false,
       };

@@ -42,7 +42,6 @@ const ReleaseSchema = z.object({
   genres: z.array(z.string()).default([]),
   moods: z.array(z.string()).default([]),
   bpm_range: z.string().optional(),
-  key_center: z.string().optional(),
   cover_art: z.string().min(1),
   background_art: z.string().optional(),
   label_copy_short: z.string().optional(),

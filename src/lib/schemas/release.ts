@@ -48,7 +48,7 @@ export const ReleaseSchema = z.object({
   moods: z.array(z.string()).default([]),
 
   bpm_range: z.string().optional(),
-  key_center: z.string().optional(),
+  // Removed release-level key center; use track-level `key` instead
 
   cover_art: z.string().min(1),
   background_art: z.string().optional(),
