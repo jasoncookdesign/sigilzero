@@ -15,7 +15,6 @@ const TrackSchema = z.object({
   isrc: z.string().optional(),
   bpm: z.number().int().optional(),
   key: z.string().optional(),
-  duration_seconds: z.number().int().optional(),
 
   preview_url: z.string().url().optional().or(z.literal("")),
 });
@@ -60,10 +59,7 @@ export const ReleaseSchema = z.object({
   link_groups: LinkGroupsSchema.optional(),
 
   tracks: z.array(TrackSchema).default([]),
-
-  dj_use_cases: z.array(z.string()).default([]),
-  playlists_featured_on: z.array(z.string()).default([]),
-
+  
   // Markdown body / release notes live outside frontmatter
 });
 

@@ -17,7 +17,6 @@ const TrackSchema = z.object({
   isrc: z.string().optional(),
   bpm: z.number().int().optional(),
   key: z.string().optional(),
-  duration_seconds: z.number().int().optional(),
   preview_url: z.string().url().optional().or(z.literal("")),
 });
 
@@ -49,8 +48,6 @@ const ReleaseSchema = z.object({
   active: z.boolean().default(true),
   link_groups: LinkGroupsSchema.optional(),
   tracks: z.array(TrackSchema).default([]),
-  dj_use_cases: z.array(z.string()).default([]),
-  playlists_featured_on: z.array(z.string()).default([]),
 });
 
 const dir = path.join(process.cwd(), "content", "releases");

@@ -13,6 +13,7 @@ genres:
   - "Trapstep"
 moods: 
   - "dark"
+  - "aggressive"
   - "warehouse"
   - "peak-time"
 featured: false
@@ -20,4 +21,4 @@ active: true
 related_releases: []
 ---
 
-A gangsta-themed bass music set recorded Halloween weekend at a Batman-themed rave at Irregardless.13 in Austin, TX.
+Recorded live in Austin during Halloween weekend, this set captures Dyson Hope delivering a dark, gangsta-leaning bass assault at a Batman-themed rave inside Irregardless.13. Heavy trapstep rhythms, menacing low-end pressure, and sharp percussive hits drive a warehouse-ready mix built for masked crowds, late-night energy, and full-throttle peak-time impact.

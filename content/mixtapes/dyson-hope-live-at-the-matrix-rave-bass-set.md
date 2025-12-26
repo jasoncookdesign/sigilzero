@@ -19,10 +19,12 @@ moods:
   - "dark"
   - "warehouse"
   - "peak-time"
+  - "aggressive"
+  - "cyberpunk"
 featured: false
 active: true
 related_releases:
   - "sig001"
 ---
 
-A cyberpunk bass set recorded at matrix-themed rave in Austin, TX.
+Recorded live at The Matrix Rave in Austin, TX, this bass-heavy set captures Dyson Hope in full cyberpunk mode, tearing through trapstep, dubstep, moombahcore, neuro breaks, and drum & bass with relentless intensity. Built for a dark warehouse floor, the mix leans hard into distorted low end, rapid-fire rhythmic shifts, and peak-time pressure, documenting one half of a high-impact dual-set night.

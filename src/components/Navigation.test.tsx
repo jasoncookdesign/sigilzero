@@ -34,7 +34,7 @@ describe('Navigation', () => {
     expect(screen.getByText('Mixtapes')).toBeInTheDocument();
     expect(screen.getByText('Series')).toBeInTheDocument();
     expect(screen.getByText('About')).toBeInTheDocument();
-    expect(screen.getByText('Press')).toBeInTheDocument();
+    expect(screen.getByText('Press Kit')).toBeInTheDocument();
   });
 
   it('should hide Series link when showSeries is false', () => {
@@ -44,7 +44,7 @@ describe('Navigation', () => {
     expect(screen.getByText('Mixtapes')).toBeInTheDocument();
     expect(screen.queryByText('Series')).not.toBeInTheDocument();
     expect(screen.getByText('About')).toBeInTheDocument();
-    expect(screen.getByText('Press')).toBeInTheDocument();
+    expect(screen.getByText('Press Kit')).toBeInTheDocument();
   });
 
   it('should default showSeries to true', () => {
@@ -72,7 +72,7 @@ describe('Navigation', () => {
     expect(screen.getByText('Mixtapes').closest('a')).toHaveAttribute('href', '/mixtapes');
     expect(screen.getByText('Series').closest('a')).toHaveAttribute('href', '/series');
     expect(screen.getByText('About').closest('a')).toHaveAttribute('href', '/about');
-    expect(screen.getByText('Press').closest('a')).toHaveAttribute('href', '/press-kit');
+    expect(screen.getByText('Press Kit').closest('a')).toHaveAttribute('href', '/press-kit');
   });
 
   it('should be sticky positioned at top', () => {

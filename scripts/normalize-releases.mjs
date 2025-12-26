@@ -16,7 +16,7 @@ const fieldOrder = [
   'primary_artists', 'remix_artists', 'release_date', 'preorder_date',
   'status', 'genres', 'moods', 'bpm_range', 'key_center',
   'cover_art', 'background_art', 'label_copy_short', 'flagship',
-  'active', 'link_groups', 'tracks', 'dj_use_cases', 'playlists_featured_on'
+  'active', 'link_groups', 'tracks'
 ];
 
 for (const file of files) {

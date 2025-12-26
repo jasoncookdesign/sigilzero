@@ -21,8 +21,6 @@ describe('ReleaseCard', () => {
     flagship: false,
     active: true,
     tracks: [],
-    dj_use_cases: [],
-    playlists_featured_on: [],
   };
 
   const mockSeries = {

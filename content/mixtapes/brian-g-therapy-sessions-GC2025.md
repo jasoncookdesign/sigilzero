@@ -13,10 +13,14 @@ genres:
   - "Techno"
   - "Tech House"
   - "Progressive House"
-moods: []
+moods:
+  - "hypnotic"
+  - "driving"
+  - "groove-focused"
+
 featured: false
 active: true
 related_releases: []
 ---
 
-Techno set recorded at Groove Cruise 2025.
+Recorded live at Groove Cruise 2025, this Therapy Sessions edition finds Brian G delivering a tightly controlled, groove-driven set that moves seamlessly between driving techno, tech house swing, and progressive momentum. Built for a packed club-theater floor, the mix balances hypnotic repetition with emotional lift, capturing the cathartic, late-night energy of the cruise at full throttle.

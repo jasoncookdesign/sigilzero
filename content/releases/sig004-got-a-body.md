@@ -42,14 +42,9 @@ tracks:
       - "dyson-hope"
     remix_artists: []
     bpm: 130
-    key: "F minor | 4A"
-    duration_seconds: 360
+    key: "E minor | 9A"
     preview_url: ""
 
-dj_use_cases:
-  - "peak-time"
-  - "warehouse"
-playlists_featured_on: []
 ---
 
 "Got a Body" is a dark, sweaty, hypnotic roller built for those moments when the lights drop, bodies get close, and the groove takes control. “Got a Body” works its magic through a simple mantra – a pure movement track straight from the club to your speakers.

@@ -9,8 +9,13 @@ location: ""
 platform: "soundcloud"
 embed_url: "https://soundcloud.com/nototoatx/housefest-set-part-i-house"
 cover_image: "/assets/images/mixtapes/nototo-house-fest-part-1-2024.jpg"
-genres: []
-moods: []
+genres: 
+  - "Bass House"
+  - "Tech House"
+moods: 
+  - "groove-driven"
+  - "clean"
+  - "late-night"
 featured: false
 active: true
 related_releases: []

@@ -13,7 +13,6 @@ type TrackProps = {
   id: string;
   title: string;
   preview_url?: string | null | undefined;
-  duration_seconds?: number | null | undefined;
   artists?: ArtistRef[];
   position?: number;
   remix_artists?: ArtistRef[];
@@ -21,15 +20,6 @@ type TrackProps = {
   bpm?: number | null;
   key?: string | null;
 };
-
-function formatDuration(s?: number | null) {
-  if (!s || !isFinite(s)) return "";
-  const mins = Math.floor(s / 60);
-  const secs = Math.floor(s % 60)
-    .toString()
-    .padStart(2, "0");
-  return `${mins}:${secs}`;
-}
 
 export default function ReleaseTrackList({
   tracks,
@@ -192,13 +182,6 @@ export default function ReleaseTrackList({
                     {t.key}
                   </div>
                 )}
-                <div className={`
-                  text-xs font-mono w-11 text-right
-                  transition-colors duration-200
-                  ${isCurrent ? 'text-gray-300' : hasUrl ? 'text-gray-500 group-hover:text-gray-400' : 'text-gray-600'}
-                `}>
-                  {formatDuration(tracks[i]?.duration_seconds)}
-                </div>
                 {isCurrent && hasUrl && (
                   <div className="flex items-center justify-center w-5 h-5 animate-pulse">
                     <svg className="w-4 h-4 text-white drop-shadow-lg" viewBox="0 0 24 24" fill="currentColor">

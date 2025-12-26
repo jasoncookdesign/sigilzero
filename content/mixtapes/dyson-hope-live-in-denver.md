@@ -13,9 +13,12 @@ genres:
   - "Tech House"
 moods: 
   - "nightclub"
+  - "groove-driven"
+  - "polished"
+  - "late-night"
 featured: true
 active: true
 related_releases: []
 ---
 
-Live club set Halloween weekend recorded Halloween weekend at Goldfinch in Denver, CO.
+Recorded live during Halloween weekend at Goldfinch in Denver for Turndown Service, this set finds Dyson Hope delivering a tightly mixed tech house session built for a packed nightclub floor. Driving grooves, crisp percussion, and playful basslines lock into a confident, forward-moving flow designed to keep energy high and bodies moving deep into the night.

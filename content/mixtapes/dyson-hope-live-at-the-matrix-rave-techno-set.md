@@ -17,6 +17,7 @@ moods:
   - "dark"
   - "warehouse"
   - "peak-time"
+  - "industrial"
 featured: false
 active: true
 related_releases:
@@ -25,4 +26,4 @@ related_releases:
   - "sig004"
 ---
 
-A dark techno set recorded at matrix-themed rave in Austin, TX featuring lots of original unreleased material.
+Recorded live at The Matrix Rave in Austin, TX, this techno-focused set captures Dyson Hope delivering a dark, high-pressure performance built around unreleased originals and neuro-tinged rhythms. Driving kicks, mechanical grooves, and sustained tension define a peak-time warehouse flow, locking the room into a relentless, cyberpunk-inflected pulse throughout the night.

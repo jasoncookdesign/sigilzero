@@ -119,7 +119,6 @@ export default async function ReleasePage({ params }: ParamsPromise) {
                 id: t.id,
                 title: t.title,
                 preview_url: t.preview_url || null,
-                duration_seconds: t.duration_seconds || null,
                 artists: t.primary_artists.map((id) => ({
                   slug: artistById[id]?.slug ?? id,
                   name: artistById[id]?.name ?? id,

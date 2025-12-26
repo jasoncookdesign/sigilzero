@@ -13,10 +13,13 @@ genres:
   - "Techno"
   - "Tech House"
   - "Progressive House"
-moods: []
+moods: 
+  - "hypnotic"
+  - "groove-driven"
+  - "immersive"
 featured: false
 active: true
 related_releases: []
 ---
 
-Techno set for Brian G's radio show.
+Therapy Sessions 30 finds Brian G delivering a focused, groove-driven mix for his long-running radio show, blending techno, tech house, and progressive house into a smooth, tension-building arc. Designed for extended listening, the set balances hypnotic repetition with subtle emotional lift, maintaining forward momentum while letting each track breathe.

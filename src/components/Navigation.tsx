@@ -19,7 +19,7 @@ export default function Navigation({ showSeries = true }: NavigationProps) {
     { href: "/mixtapes", label: "Mixtapes" },
     ...(showSeries ? [{ href: "/series", label: "Series" }] : []),
     { href: "/about", label: "About" },
-    { href: "/press-kit", label: "Press" },
+    { href: "/press-kit", label: "Press Kit" },
   ];
 
   const isActive = (href: string) => {

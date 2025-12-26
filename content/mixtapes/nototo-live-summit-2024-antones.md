@@ -9,11 +9,16 @@ location: "Austin, TX"
 platform: "soundcloud"
 embed_url: "https://soundcloud.com/nototoatx/nototo-antones-nightclub-atx-summit-2024-after-party"
 cover_image: "/assets/images/mixtapes/nototo-live-summit-2024-antones.jpg"
-genres: []
-moods: []
+genres: 
+  - "Bass House"
+  - "Tech House"
+moods: 
+  - "groove-driven"
+  - "energetic"
+  - "club-ready"
 featured: false
 active: true
 related_releases: []
 ---
 
-After-party set from Summit 2024 at Antone's in Austin, TX.
+Recorded live at Antone’s Nightclub in Austin during the Summit 2024 after-party, this set finds NOTOTO delivering a late-night, crowd-focused mix built to extend the energy long after the main event. Driving grooves, playful transitions, and steady momentum shape a dancefloor-ready session designed for packed rooms and after-hours release.
