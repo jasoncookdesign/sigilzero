@@ -130,11 +130,9 @@ npm run ci:test
 
 ## Project Status
 
-Version 1.0 nearing public release.
+Version 1.0 publicly released.
 
-The catalog system is operational. Testing infrastructure is complete. Content is being added.
-
-What remains is refinement of visual design and expansion of the release catalog.
+The catalog system is operational. Testing infrastructure is complete. Content added.
 
 ## Philosophy
 
