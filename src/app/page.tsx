@@ -72,9 +72,7 @@ export default function HomePage() {
           </h1>
 
           <p className="max-w-lg mx-auto mb-6 text-sm leading-relaxed text-muted">
-            An electronic music imprint focused on dark, hypnotic, high–
-            impact club records. Curated for DJs and listeners who want
-            system-ready tracks with a distinct edge.
+            An electronic music imprint focused on dark, high–impact club records. Curated for DJs and listeners who want system-ready tracks with a distinct edge.
           </p>
 
           <div className="flex flex-wrap justify-center gap-3">
