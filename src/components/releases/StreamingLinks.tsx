@@ -60,7 +60,7 @@ export default function StreamingLinks({
       {purchaseLinks.length > 0 && (
         <div>
           <h3 className="mb-3 text-sm font-medium tracking-wide uppercase opacity-60">
-            Purchase
+            Buy
           </h3>
           <div className="flex flex-wrap gap-2">
             {purchaseLinks.map((link, idx) => {
