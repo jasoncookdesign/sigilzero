@@ -123,6 +123,7 @@ export default function HomePage() {
                       (s) => s.id === release.meta.series_id
                     ) ?? null
                   }
+                  artists={artists.map(a => a.meta)}
                 />
               ))}
             </div>

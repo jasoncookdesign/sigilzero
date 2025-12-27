@@ -3,16 +3,35 @@
 import { Card } from "../ui/Card";
 import type { ReleaseDocument } from "../../lib/content/load-releases";
 import type { SeriesRegistryItem } from "../../lib/content/load-series-registry";
+import type { Artist } from "../../lib/schemas/artist";
 import PlaceholderImage from "../PlaceholderImage";
 import { getReleaseStatus } from "../../lib/release-status";
 
 type Props = {
   release: ReleaseDocument["meta"];
   series?: SeriesRegistryItem | null;
+  artists?: Artist[];
 };
 
-export default function ReleaseCard({ release, series }: Props) {
+export default function ReleaseCard({ release, series, artists }: Props) {
   const status = getReleaseStatus(release.release_date);
+
+  // Format artist names from IDs
+  const getArtistNames = () => {
+    if (!artists || artists.length === 0) return null;
+    
+    const artistMap = Object.fromEntries(artists.map(a => [a.id, a.name]));
+    const names = release.primary_artists
+      .map(id => artistMap[id])
+      .filter(Boolean);
+    
+    if (names.length === 0) return null;
+    if (names.length === 1) return names[0];
+    if (names.length === 2) return `${names[0]} & ${names[1]}`;
+    return `${names.slice(0, -1).join(", ")} & ${names[names.length - 1]}`;
+  };
+
+  const artistNames = getArtistNames();
 
   return (
     <Card href={`/releases/${release.slug}`}>
@@ -46,6 +65,12 @@ export default function ReleaseCard({ release, series }: Props) {
           <h3 className="mb-2 h-sm line-clamp-2">
             {release.title}
           </h3>
+
+          {artistNames && (
+            <div className="mb-2 text-sm text-gray-300">
+              {artistNames}
+            </div>
+          )}
 
           <div className="text-sm text-muted">
             {series?.name || release.series_id} • {(release.type?.[0]?.toUpperCase() + release.type?.slice(1))} • {release.release_date}

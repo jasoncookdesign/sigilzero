@@ -36,6 +36,8 @@ export default async function ArtistPage({ params }: ParamsPromise) {
 
   const { meta, body } = artistDoc;
 
+  const allArtists = loadAllArtists();
+
   const releases = loadAllReleases().filter((r) => {
     // Check release-level primary/remix artists
     if (
@@ -115,7 +117,7 @@ export default async function ArtistPage({ params }: ParamsPromise) {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {releases.map((r) => (
-                <ReleaseCard key={r.meta.id} release={r.meta} />
+                <ReleaseCard key={r.meta.id} release={r.meta} artists={allArtists.map(a => a.meta)} />
               ))}
             </div>
           </div>

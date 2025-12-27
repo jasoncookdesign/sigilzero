@@ -326,7 +326,7 @@ export default function ReleasesCatalog({
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map(({ meta }) => {
           const series = seriesById[meta.series_id] ?? null;
-          return <ReleaseCard key={meta.id} release={meta} series={series} />;
+          return <ReleaseCard key={meta.id} release={meta} series={series} artists={artists.map(a => a.meta)} />;
         })}
       </div>
 

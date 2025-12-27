@@ -2,8 +2,34 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import ReleaseCard from './ReleaseCard';
 import type { ReleaseDocument } from '../../lib/content/load-releases';
+import type { Artist } from '../../lib/schemas/artist';
 
 describe('ReleaseCard', () => {
+  const mockArtists: Artist[] = [
+    {
+      id: 'artist-1',
+      slug: 'artist-1',
+      name: 'Test Artist',
+      roles: ['producer'],
+      active: true,
+      featured_releases: [],
+      featured_mixtapes: [],
+      genres_primary: [],
+      tags: [],
+    },
+    {
+      id: 'artist-2',
+      slug: 'artist-2',
+      name: 'Second Artist',
+      roles: ['producer'],
+      active: true,
+      featured_releases: [],
+      featured_mixtapes: [],
+      genres_primary: [],
+      tags: [],
+    },
+  ];
+
   const mockRelease: ReleaseDocument['meta'] = {
     catalog_number: 'SIG001',
     id: 'test-release',
@@ -65,5 +91,24 @@ describe('ReleaseCard', () => {
     render(<ReleaseCard release={mockRelease} />);
     const img = screen.getByAltText('Test Release');
     expect(img).toBeInTheDocument();
+  });
+
+  it('should render artist name when artists prop provided', () => {
+    render(<ReleaseCard release={mockRelease} artists={mockArtists} />);
+    expect(screen.getByText('Test Artist')).toBeInTheDocument();
+  });
+
+  it('should render multiple artists with proper formatting', () => {
+    const releaseWithMultipleArtists = {
+      ...mockRelease,
+      primary_artists: ['artist-1', 'artist-2'],
+    };
+    render(<ReleaseCard release={releaseWithMultipleArtists} artists={mockArtists} />);
+    expect(screen.getByText('Test Artist & Second Artist')).toBeInTheDocument();
+  });
+
+  it('should not render artist names when artists prop not provided', () => {
+    render(<ReleaseCard release={mockRelease} />);
+    expect(screen.queryByText('Test Artist')).not.toBeInTheDocument();
   });
 });

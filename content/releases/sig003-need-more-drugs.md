@@ -9,8 +9,8 @@ series_id: "core"
 
 primary_artists:
   - "dyson-hope"
-remix_artists:
   - "nototo"
+remix_artists:
   - "brian-g"
 
 release_date: "2025-12-23"
