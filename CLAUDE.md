@@ -1,13 +1,14 @@
-# REPO_NAME
+# sigilzero
 
-<One line: what this is and what merging to main does (deploys? nothing?).>
+Source for sigilzero.com, a Next.js 16 static export. Merging to main deploys it: `.github/workflows/deploy.yml` builds the site and publishes it to GitHub Pages.
 
-- Preview / run: <command>
-- Generated output (never hand-edit): <paths, or "none">
-- Repo conventions: <anything specific>
+- Run: `npm run dev`. Tests: `npm run test:run` (Vitest), `npm run e2e` (Playwright), `npm run validate:content` (content schemas). CI runs `npm run ci:test`.
+- Content is Markdown with YAML frontmatter in `content/`, validated by Zod schemas. Logic lives in `src/`.
+- Generated, never hand-edit: `out/`, `docs/` (the build copies `out/` there), `playwright-report/`, `test-results/`.
+- Public repo: keep internal ticket IDs and machine names out of commits, code and docs.
 
 ## TDD exception (recorded ruling)
-<What has no test runner here and is exempt; what gets full TDD.>
+None for code. Content-only changes in `content/` are gated by `validate:content`, not by new tests.
 
 <!-- BEGIN agentic-sdlc disciplines @68c3f3c -->
 
