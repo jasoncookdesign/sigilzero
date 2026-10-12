@@ -30,8 +30,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
-      - name: Check frontmatter
-        run: npm run check-frontmatter
+      # validate:content runs check-frontmatter plus the per-type validators,
+      # so this gate covers everything ci.yml's validation step does.
+      - name: Validate content
+        run: npm run validate:content
       
       - name: Run unit tests
         run: npm run test:run

@@ -1,9 +1,14 @@
 name: Deploy to GitHub Pages
 
+# Production deploys wait for "CI Tests" (test.yml) to pass on main and ship
+# the exact commit it tested. workflow_dispatch is the manual escape hatch: it
+# deploys the selected ref without waiting for CI, and the github-pages
+# environment only accepts main (and gh-pages).
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["CI Tests"]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 env:
@@ -14,17 +19,39 @@ permissions:
   pages: write
   id-token: write
 
+# Only runs that will deploy join the "pages" group. A run whose Build is
+# skipped (failed CI, pull_request run) gets its own throwaway group, so it
+# can't cancel a pending deploy of a commit that passed CI. Keep this
+# condition in sync with the Build job's if.
 concurrency:
-  group: "pages"
+  group: >-
+    ${{ (github.event_name == 'workflow_dispatch' ||
+         (github.event.workflow_run.conclusion == 'success' &&
+          github.event.workflow_run.event == 'push' &&
+          github.event.workflow_run.head_repository.full_name == github.repository))
+        && 'pages' || format('pages-noop-{0}', github.run_id) }}
   cancel-in-progress: false
 
 jobs:
   build:
     name: Build
+    # A workflow_run deploy needs a successful CI Tests run for a push to main
+    # in this repository. The event and repository checks stop a pull request
+    # whose head branch is also named main (for example from a fork) from
+    # being deployed.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
+        with:
+          # The commit CI tested. On workflow_dispatch this is empty, so
+          # checkout uses the dispatched ref.
+          ref: ${{ github.event.workflow_run.head_sha }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v5
