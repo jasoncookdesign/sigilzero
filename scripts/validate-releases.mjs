@@ -35,7 +35,7 @@ const ReleaseSchema = z.object({
   series_id: z.string().min(1),
   primary_artists: z.array(z.string()).nonempty(),
   remix_artists: z.array(z.string()).optional().default([]),
-  release_date: z.string().min(1),
+  release_date: z.iso.date(),
   preorder_date: z.string().optional(),
   status: ReleaseStatusEnum.default("released"),
   genres: z.array(z.string()).default([]),

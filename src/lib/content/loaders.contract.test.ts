@@ -93,3 +93,15 @@ describe("content loaders (fixture contract)", () => {
     });
   });
 });
+
+describe("content loaders reject invalid dates", () => {
+  it("loadAllReleases rejects a release dated 2026-27-02", () => {
+    vi.spyOn(process, "cwd").mockReturnValue(path.join(FIXTURES, "invalid-dates"));
+    expect(() => loadAllReleases()).toThrow(ZodError);
+  });
+
+  it("loadAllMixtapes rejects a mixtape dated 2026-27-02", () => {
+    vi.spyOn(process, "cwd").mockReturnValue(path.join(FIXTURES, "invalid-dates"));
+    expect(() => loadAllMixtapes()).toThrow(ZodError);
+  });
+});

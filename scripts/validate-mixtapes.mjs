@@ -13,7 +13,7 @@ const MixtapeSchema = z.object({
   title: z.string().min(1),
   event_name: z.string().optional(),
   event_series: z.string().optional(),
-  date: z.string().min(1),
+  date: z.iso.date(),
   location: z.string().optional(),
   platform: PlatformEnum,
   embed_url: z.string().url(),

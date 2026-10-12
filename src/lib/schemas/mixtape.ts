@@ -13,7 +13,7 @@ export const MixtapeSchema = z.object({
   event_name: z.string().optional(),
   event_series: z.string().optional(),
 
-  date: z.string().min(1), // ISO string in frontmatter, e.g. "2025-08-14"
+  date: z.iso.date(), // YYYY-MM-DD, a real calendar date, e.g. "2025-08-14"
   location: z.string().optional(),
 
   platform: PlatformEnum,

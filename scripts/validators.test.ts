@@ -35,4 +35,18 @@ describe("content validator scripts", () => {
       expect(status).toBe(1);
     });
   }
+
+  const INVALID_DATES = path.join(ROOT, "src/lib/content/__fixtures__/invalid-dates");
+  for (const { script, field } of [
+    { script: "validate-releases.mjs", field: "release_date" },
+    { script: "validate-mixtapes.mjs", field: "date" },
+  ]) {
+    it(`${script} rejects a date that is not a calendar date`, () => {
+      const { status, output } = runValidator(script, INVALID_DATES);
+
+      expect(output).toContain("bad-date.md");
+      expect(output).toMatch(new RegExp(`• ${field}: \\S`));
+      expect(status).toBe(1);
+    });
+  }
 });
