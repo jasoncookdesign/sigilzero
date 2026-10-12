@@ -3,6 +3,13 @@ import { render, screen } from '@testing-library/react';
 import ReleaseCard from './ReleaseCard';
 import type { ReleaseDocument } from '../../lib/content/load-releases';
 import type { Artist } from '../../lib/schemas/artist';
+import { localDayKey } from '../../lib/release-status';
+
+function dayOffset(days: number): string {
+  const d = new Date();
+  d.setDate(d.getDate() + days);
+  return localDayKey(d);
+}
 
 describe('ReleaseCard', () => {
   const mockArtists: Artist[] = [
@@ -110,5 +117,25 @@ describe('ReleaseCard', () => {
   it('should not render artist names when artists prop not provided', () => {
     render(<ReleaseCard release={mockRelease} />);
     expect(screen.queryByText('Test Artist')).not.toBeInTheDocument();
+  });
+
+  describe('release status badge', () => {
+    it('shows Coming Soon for a release dated after today', () => {
+      render(<ReleaseCard release={{ ...mockRelease, release_date: dayOffset(5) }} />);
+      expect(screen.getByText('Coming Soon')).toBeInTheDocument();
+      expect(screen.queryByText('New Release')).not.toBeInTheDocument();
+    });
+
+    it('shows New Release for a release dated today', () => {
+      render(<ReleaseCard release={{ ...mockRelease, release_date: dayOffset(0) }} />);
+      expect(screen.getByText('New Release')).toBeInTheDocument();
+      expect(screen.queryByText('Coming Soon')).not.toBeInTheDocument();
+    });
+
+    it('shows no badge for an older release', () => {
+      render(<ReleaseCard release={mockRelease} />);
+      expect(screen.queryByText('New Release')).not.toBeInTheDocument();
+      expect(screen.queryByText('Coming Soon')).not.toBeInTheDocument();
+    });
   });
 });
