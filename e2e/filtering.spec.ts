@@ -54,7 +54,7 @@ test.describe('Releases Filtering', () => {
       await expect(seriesSelect).toHaveCount(0);
       return;
     }
-    const seriesId = allSeries()[0]!.id as string;
+    const seriesId = allSeries().find((s) => s.active !== false)!.id as string;
     await seriesSelect.selectOption(seriesId);
     expect(await cardTitles(releaseCards(page))).toEqual(
       titlesOf(releases.filter((r) => r.series_id === seriesId))

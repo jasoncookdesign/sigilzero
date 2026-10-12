@@ -16,13 +16,11 @@ export default defineConfig([
     rules: { "@typescript-eslint/no-require-imports": "off" },
   },
   {
-    // React Compiler rules new in eslint-config-next 16. Existing code trips
-    // them (catalog filters initialised from the URL in an effect, random
-    // waveform bars in the audio player); fixing that is a refactor, so they
-    // warn rather than fail until it's done.
+    // React Compiler rule new in eslint-config-next 16. Both catalogs
+    // initialise their filters from the URL in an effect; moving that into
+    // state initialisers is a refactor, so this warns until it's done.
     rules: {
       "react-hooks/set-state-in-effect": "warn",
-      "react-hooks/purity": "warn",
     },
   },
   globalIgnores([
