@@ -61,7 +61,7 @@ describe('load-mixtapes', () => {
   describe('loadMixtapeBySlug', () => {
     it('should load a specific mixtape by slug', () => {
       const allMixtapes = loadAllMixtapes();
-      if (allMixtapes.length === 0) return;
+      expect(allMixtapes.length).toBeGreaterThan(0);
 
       const firstSlug = allMixtapes[0].meta.slug;
       const mixtape = loadMixtapeBySlug(firstSlug);
@@ -77,7 +77,7 @@ describe('load-mixtapes', () => {
 
     it('should load complete mixtape data including body', () => {
       const allMixtapes = loadAllMixtapes();
-      if (allMixtapes.length === 0) return;
+      expect(allMixtapes.length).toBeGreaterThan(0);
 
       const firstSlug = allMixtapes[0].meta.slug;
       const mixtape = loadMixtapeBySlug(firstSlug);

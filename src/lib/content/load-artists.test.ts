@@ -135,7 +135,7 @@ describe('load-artists', () => {
   describe('loadArtistBySlug', () => {
     it('should load a specific artist by slug', () => {
       const allArtists = loadAllArtists();
-      if (allArtists.length === 0) return;
+      expect(allArtists.length).toBeGreaterThan(0);
 
       const firstSlug = allArtists[0].meta.slug;
       const artist = loadArtistBySlug(firstSlug);
@@ -151,7 +151,7 @@ describe('load-artists', () => {
 
     it('should load complete artist data including bio', () => {
       const allArtists = loadAllArtists();
-      if (allArtists.length === 0) return;
+      expect(allArtists.length).toBeGreaterThan(0);
 
       const firstSlug = allArtists[0].meta.slug;
       const artist = loadArtistBySlug(firstSlug);

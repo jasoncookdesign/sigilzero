@@ -53,7 +53,7 @@ describe('load-releases', () => {
   describe('loadReleaseBySlug', () => {
     it('should load a specific release by slug', () => {
       const allReleases = loadAllReleases();
-      if (allReleases.length === 0) return;
+      expect(allReleases.length).toBeGreaterThan(0);
 
       const firstSlug = allReleases[0].meta.slug;
       const release = loadReleaseBySlug(firstSlug);
@@ -69,7 +69,7 @@ describe('load-releases', () => {
 
     it('should load complete release data including body', () => {
       const allReleases = loadAllReleases();
-      if (allReleases.length === 0) return;
+      expect(allReleases.length).toBeGreaterThan(0);
 
       const firstSlug = allReleases[0].meta.slug;
       const release = loadReleaseBySlug(firstSlug);
