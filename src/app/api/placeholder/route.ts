@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { buildPlaceholdUrl } from "../../../lib/placehold";
+import { buildPlaceholdUrl, type PlaceholdOptions } from "../../../lib/placehold";
 
 // Ensure this route is treated as static for static HTML export
 export const dynamic = "force-static";
@@ -25,14 +25,14 @@ export function GET(req: Request) {
   const bg = url.searchParams.get("bg") ?? undefined;
   const fg = url.searchParams.get("fg") ?? undefined;
   const text = url.searchParams.get("text") ?? undefined;
-  const format = (url.searchParams.get("format") as any) ?? undefined;
+  const format = (url.searchParams.get("format") as PlaceholdOptions["format"] | null) ?? undefined;
   const retinaParam = url.searchParams.get("retina");
 
   if (!w) {
     return NextResponse.json({ error: "width (w) is required" }, { status: 400 });
   }
 
-  const opts: any = { width: parseInt(w, 10) };
+  const opts: PlaceholdOptions = { width: parseInt(w, 10) };
   if (h) opts.height = parseInt(h, 10);
   if (bg) opts.background = bg;
   if (fg) opts.color = fg;

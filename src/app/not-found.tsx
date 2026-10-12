@@ -10,7 +10,7 @@ export default function NotFound() {
             <h1 className="mb-4 text-6xl font-bold">404</h1>
             <h2 className="mb-6 text-2xl text-gray-400">No signal detected</h2>
             <p className="mb-8 text-gray-500">
-              The page you're looking for either never existed, or has phased out of this reality.
+              The page you&apos;re looking for either never existed, or has phased out of this reality.
             </p>
             <Link
               href="/"
