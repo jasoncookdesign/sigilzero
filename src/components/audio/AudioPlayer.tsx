@@ -18,7 +18,8 @@ function SimpleWaveform({ progress }: { progress: number }) {
   return (
     <div className="flex items-end justify-center gap-0.5 h-6">
       {Array.from({ length: bars }).map((_, i) => {
-        const heightPercent = Math.random() * 60 + 20;
+        // Deterministic per bar so server and client render the same markup.
+        const heightPercent = 20 + ((i * 37) % 60);
         const isPlayed = i / bars < progress;
         const heightClass =
           heightPercent < 30

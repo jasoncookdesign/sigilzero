@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { hasActiveSeries } from './content';
 
 test.describe('Navigation', () => {
   test('should display the homepage with correct title', async ({ page }) => {
@@ -53,18 +54,17 @@ test.describe('Navigation', () => {
     await expect(page.locator('h1')).toContainText('Press Kit');
   });
 
-  test('should show Series link if active series exist', async ({ page }) => {
+  test('shows the Series link only when a series is active', async ({ page }) => {
     await page.goto('/');
-    const seriesLink = page.locator('nav a:has-text("Series")');
-    
-    // Check if Series link is visible (it should be since we have active series)
-    const isVisible = await seriesLink.isVisible();
-    
-    if (isVisible) {
-      await seriesLink.click();
-      await expect(page).toHaveURL('/series');
-      await expect(page.locator('h1')).toContainText('Series');
+    const seriesLink = page.locator('nav').getByRole('link', { name: 'Series', exact: true });
+
+    if (!hasActiveSeries()) {
+      await expect(seriesLink).toHaveCount(0);
+      return;
     }
+    await seriesLink.click();
+    await expect(page).toHaveURL(/\/series\/?$/);
+    await expect(page.getByTestId('series-page-title')).toBeVisible();
   });
 
   test('should display footer with correct sections', async ({ page }) => {
@@ -106,34 +106,18 @@ test.describe('Mobile Navigation', () => {
     await expect(nav).toBeVisible();
   });
 
-  test('should navigate on mobile devices', async ({ page }) => {
+  test('opens the menu and navigates on mobile devices', async ({ page }) => {
     await page.goto('/');
-    
-    // On mobile, check if navigation is accessible
-    const navLinks = page.locator('nav a, a[href="/artists"]');
-    const linkCount = await navLinks.count();
-    
-    // Find a visible Artists link
-    let clicked = false;
-    for (let i = 0; i < linkCount; i++) {
-      const link = navLinks.nth(i);
-      const text = await link.textContent();
-      if (text?.includes('Artists')) {
-        const isVisible = await link.isVisible();
-        if (isVisible) {
-          await link.click();
-          clicked = true;
-          break;
-        }
-      }
-    }
-    
-    // If we found and clicked a link, verify navigation
-    if (clicked) {
-      await expect(page).toHaveURL(/\/artists\/?/);
-    } else {
-      // Skip test if no visible navigation on mobile
-      test.skip();
-    }
+    const nav = page.locator('nav');
+    const artistsLink = nav.getByRole('link', { name: 'Artists', exact: true });
+
+    // On a phone the nav links are hidden until the menu is opened.
+    await expect(artistsLink).toBeHidden();
+    await nav.getByRole('button', { name: 'Toggle menu' }).click();
+    await expect(artistsLink).toBeVisible();
+
+    await artistsLink.click();
+    await expect(page).toHaveURL(/\/artists\/?$/);
+    await expect(page.getByTestId('artists-page-title')).toBeVisible();
   });
 });

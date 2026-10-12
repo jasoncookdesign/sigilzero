@@ -42,7 +42,7 @@ export default function PressKitPage() {
       <Section>
         <div className="px-4 container-sigil sm:px-6 lg:px-8">
           <h2 className="mb-4 h-md">Key Links</h2>
-          <p className="mb-4 text-sm opacity-80">Quick links for the label's social and streaming profiles.</p>
+          <p className="mb-4 text-sm opacity-80">Quick links for the label&apos;s social and streaming profiles.</p>
           <ul className="p-0 m-0 mb-4 text-sm leading-relaxed list-none">
           {label.social?.instagram && (
             <li>

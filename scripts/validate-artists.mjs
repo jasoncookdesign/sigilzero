@@ -81,7 +81,7 @@ for (const file of files) {
   } catch (error) {
     result.valid = false;
     if (error instanceof z.ZodError) {
-      result.errors = error.errors.map((e) => ({
+      result.errors = error.issues.map((e) => ({
         path: e.path.join("."),
         message: e.message,
         code: e.code,

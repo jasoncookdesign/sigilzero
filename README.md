@@ -219,7 +219,7 @@ Global site data lives in `/data`:
 - `/data/links.yml` — External link definitions
 - `/data/series.yml` — Series registry
 
-Each markdown file requires specific frontmatter fields. Run validation:
+Each markdown file requires specific frontmatter fields. Dates (`release_date` on releases, `date` on mixtapes) must be real calendar dates in `YYYY-MM-DD` form; validation rejects anything else, such as `2026-27-02`. Run validation:
 
 ```bash
 npm run check-frontmatter
@@ -255,6 +255,20 @@ npm run e2e:headed   # With browser visible
 npm run e2e:debug    # Debug mode
 npm run e2e:report   # Show last Playwright report
 ```
+
+Lint the code (ESLint with Next's core-web-vitals and TypeScript presets, configured in `eslint.config.mjs`):
+
+```bash
+npm run lint
+```
+
+Loader and validator tests read fixture content from `src/lib/content/__fixtures__/` rather than the live `content/` directory.
+
+### Release status and the build day
+
+Release cards and release pages show "Coming Soon" before a release's date (with stream and buy buttons shown but inactive) and "New Release" for 30 days from it. The site is static, so this is evaluated twice: the HTML is rendered for the day of the build, and the browser re-evaluates it for the visitor's local date as soon as the page loads. A release goes live on its date without a redeploy.
+
+`SIGILZERO_BUILD_DAY` is set automatically in `next.config.mjs` to the build's UTC date and inlined into the client bundle so server HTML and hydration agree. It is not meant to be set by hand. The browser side lives in `src/lib/use-today.ts`; the date rule in `src/lib/release-status.ts`.
 
 ### Git Hooks
 

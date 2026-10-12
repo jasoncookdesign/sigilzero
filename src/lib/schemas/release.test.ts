@@ -215,4 +215,17 @@ describe('ReleaseSchema', () => {
       });
     });
   });
+
+  describe('release_date must be a real calendar date', () => {
+    it.each(['2026-27-02', '2026-02-30', '2026-02-29', '2026-2-3', 'soon'])('rejects %s', (value) => {
+      const result = ReleaseSchema.safeParse({ ...validRelease, release_date: value });
+      expect(result.success).toBe(false);
+      expect(result.error?.issues[0]?.path).toEqual(['release_date']);
+    });
+
+    it('accepts a leap day', () => {
+      const result = ReleaseSchema.safeParse({ ...validRelease, release_date: '2024-02-29' });
+      expect(result.success).toBe(true);
+    });
+  });
 });

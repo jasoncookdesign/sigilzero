@@ -87,8 +87,8 @@ export default function HomePage() {
     .map((doc) => doc.meta)
     .filter((s) => s.active)
     .sort((a, b) => {
-      const ao = (a as any).order ?? 0;
-      const bo = (b as any).order ?? 0;
+      const ao = a.order ?? 0;
+      const bo = b.order ?? 0;
       return ao - bo;
     });
 

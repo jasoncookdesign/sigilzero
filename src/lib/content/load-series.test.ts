@@ -41,7 +41,7 @@ describe('load-series', () => {
   describe('loadSeriesBySlug', () => {
     it('should load a specific series by slug', () => {
       const allSeries = loadAllSeries();
-      if (allSeries.length === 0) return;
+      expect(allSeries.length).toBeGreaterThan(0);
 
       const firstSlug = allSeries[0].meta.slug;
       const series = loadSeriesBySlug(firstSlug);

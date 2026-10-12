@@ -38,7 +38,7 @@ export const ReleaseSchema = z.object({
   primary_artists: z.array(z.string()).nonempty(),
   remix_artists: z.array(z.string()).optional().default([]),
 
-  release_date: z.string().min(1), // keep as ISO-ish string; you can refine later
+  release_date: z.iso.date(), // YYYY-MM-DD, a real calendar date
   preorder_date: z.string().optional(),
 
   status: ReleaseStatusEnum.default("released"),

@@ -107,25 +107,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <h3 className="mb-4 text-lg font-semibold">Explore</h3>
                   <ul className="space-y-2 text-sm">
                     <li>
-                      <a href="/releases" className="text-gray-400 hover:text-white">
+                      <Link href="/releases" className="text-gray-400 hover:text-white">
                         Releases
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="/artists" className="text-gray-400 hover:text-white">
+                      <Link href="/artists" className="text-gray-400 hover:text-white">
                         Artists
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="/mixtapes" className="text-gray-400 hover:text-white">
+                      <Link href="/mixtapes" className="text-gray-400 hover:text-white">
                         Mixtapes
-                      </a>
+                      </Link>
                     </li>
                     {showSeries && (
                       <li>
-                        <a href="/series" className="text-gray-400 hover:text-white">
+                        <Link href="/series" className="text-gray-400 hover:text-white">
                           Series
-                        </a>
+                        </Link>
                       </li>
                     )}
                     <li>

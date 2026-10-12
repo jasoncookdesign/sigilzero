@@ -12,7 +12,7 @@ type Props = {
 
 export default function MixtapeCard({ mixtape, artist }: Props) {
   return (
-    <Card href={`/mixtapes/${mixtape.slug}`}>
+    <Card href={`/mixtapes/${mixtape.slug}`} data-testid="mixtape-card">
       <div>
         <div className="relative w-full aspect-square overflow-hidden bg-sigil-grey-900">
           <PlaceholderImage

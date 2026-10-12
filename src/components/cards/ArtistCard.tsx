@@ -12,6 +12,7 @@ export default function ArtistCard({ artist }: Props) {
   return (
     <Card
       href={`/artists/${artist.slug}`}
+      data-testid="artist-card"
       trackingAttrs={{
         "data-track": "true",
         "data-entity": "artist",

@@ -6,6 +6,7 @@ import type { SeriesRegistryItem } from "../../lib/content/load-series-registry"
 import type { Artist } from "../../lib/schemas/artist";
 import PlaceholderImage from "../PlaceholderImage";
 import { getReleaseStatus } from "../../lib/release-status";
+import { useToday } from "../../lib/use-today";
 
 type Props = {
   release: ReleaseDocument["meta"];
@@ -14,7 +15,7 @@ type Props = {
 };
 
 export default function ReleaseCard({ release, series, artists }: Props) {
-  const status = getReleaseStatus(release.release_date);
+  const status = getReleaseStatus(release.release_date, useToday());
 
   // Format artist names from IDs
   const getArtistNames = () => {
@@ -36,6 +37,7 @@ export default function ReleaseCard({ release, series, artists }: Props) {
   return (
     <Card
       href={`/releases/${release.slug}`}
+      data-testid="release-card"
       trackingAttrs={{
         "data-track": "true",
         "data-entity": "release",

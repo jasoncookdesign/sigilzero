@@ -36,7 +36,7 @@ export default function AboutPage() {
                 industrial edges of techno and adjacent underground forms.
                 Releases prioritize DJ usability, physicality, and tension:
                 tracks that cut through a system, lock a room, and reward repeat
-                plays. If it doesn't function as a club track, it doesn't ship.
+                plays. If it doesn&apos;t function as a club track, it doesn&apos;t ship.
               </p>
             </div>
 
@@ -90,7 +90,7 @@ export default function AboutPage() {
                 </p>
 
                 <p className="mb-4 text-sm font-semibold leading-relaxed">
-                  If you're a producer or remixer considering SIGIL.ZERO, ask
+                  If you&apos;re a producer or remixer considering SIGIL.ZERO, ask
                   yourself:
                 </p>
 
@@ -110,7 +110,7 @@ export default function AboutPage() {
                 </ul>
 
                 <p className="mt-4 text-sm leading-relaxed">
-                  If the answer is yes, you're thinking in the right language.
+                  If the answer is yes, you&apos;re thinking in the right language.
                 </p>
               </div>
 
@@ -122,9 +122,9 @@ export default function AboutPage() {
 
                 <p className="mb-4 text-sm leading-relaxed">
                   SIGIL.ZERO is designed to function as a trust mark. When you
-                  see the imprint, you should know what you're getting:
+                  see the imprint, you should know what you&apos;re getting:
                   disciplined sound design, deliberate aesthetics, and records
-                  made by people who live inside the culture they're
+                  made by people who live inside the culture they&apos;re
                   soundtracking.
                 </p>
 
