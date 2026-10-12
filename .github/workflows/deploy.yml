@@ -19,8 +19,17 @@ permissions:
   pages: write
   id-token: write
 
+# Only runs that will deploy join the "pages" group. A run whose Build is
+# skipped (failed CI, pull_request run) gets its own throwaway group, so it
+# can't cancel a pending deploy of a commit that passed CI. Keep this
+# condition in sync with the Build job's if.
 concurrency:
-  group: "pages"
+  group: >-
+    ${{ (github.event_name == 'workflow_dispatch' ||
+         (github.event.workflow_run.conclusion == 'success' &&
+          github.event.workflow_run.event == 'push' &&
+          github.event.workflow_run.head_repository.full_name == github.repository))
+        && 'pages' || format('pages-noop-{0}', github.run_id) }}
   cancel-in-progress: false
 
 jobs:
