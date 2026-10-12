@@ -36,7 +36,7 @@ Content processing uses gray-matter for frontmatter parsing, remark and rehype f
 SIGIL.ZERO uses a browser-side tracker at `/public/assets/js/tracking.js` with a GTM-first pipeline.
 
 - `tracking.js` is vendor-agnostic and only pushes normalized objects into `window.dataLayer`.
-- Google Tag Manager (GTM) is installed once in the root app shell.
+- Google Tag Manager (GTM) is installed once in the root app shell, and loads only when the page hostname is `sigilzero.com` (`src/lib/analytics/gtm.ts`). On localhost, in CI and on any other host, `window.dataLayer` still exists and `tracking.js` still pushes to it, but GTM never loads, so nothing reaches GA4 or Meta.
 - GA4 and Meta are configured in GTM, not in application code.
 - No direct `gtag()` or `fbq()` calls exist in the app code.
 
@@ -116,7 +116,7 @@ And helper methods are available in the console:
 2. Create a Custom Event trigger where `Event name = sigilzero_event`.
 3. Create Data Layer Variables for fields you need (for example `entity`, `action`, `target`, `platform`, `page_type`, `link_url`).
 4. Attach GA4/Meta tags to the custom event trigger.
-5. Use GTM Preview to validate payload values before publishing.
+5. Use GTM Preview against `https://sigilzero.com` to validate payload values before publishing. GTM does not load on localhost, so Preview can't connect to a dev server; use `window.SigilZeroTracking.debugStatus()` and the `dataLayer` there instead.
 
 ### GA4 Setup Workflow
 
