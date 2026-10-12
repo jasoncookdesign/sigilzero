@@ -69,7 +69,7 @@ for (const file of files) {
     result.valid = true;
   } catch (error) {
     if (error instanceof z.ZodError) {
-      result.errors = error.errors.map((e) => ({ path: e.path.join("."), message: e.message }));
+      result.errors = error.issues.map((e) => ({ path: e.path.join("."), message: e.message }));
     }
   }
 
