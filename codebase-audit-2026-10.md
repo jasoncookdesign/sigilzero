@@ -7,7 +7,7 @@ This is a prioritizable backlog, not a fix-everything mandate. Each finding stan
 ## How this was checked
 
 - Baseline: `npx vitest run` (21 files, 313 tests, all pass), `npx playwright test` (37 tests, all pass, against `npm run dev`), `npm run validate:content` (all files valid), `npx next build` (passes, 51 static pages), `npx tsc --noEmit` (160 errors, all in test files).
-- Test integrity: 36 unit mutations and 4 end-to-end mutations. Each one edited a single production line, ran the test file that claims to cover it (or the whole suite), recorded whether any test failed, then restored the file with `git checkout`. A mutation that "survives" means the code was broken and every test still passed. Results are in the appendix.
+- Test integrity: 43 unit mutations and 4 end-to-end mutations. Each one edited a single production line, ran the test file that claims to cover it (or the whole suite), recorded whether any test failed, then restored the file with `git checkout`. A mutation that "survives" means the code was broken and every test still passed. Results are in the appendix.
 - Data model: every field in the four Zod schemas, the three YAML files, and the loader return types was traced to its consumers in `src/app` and `src/components`. A small script checked cross-file references (series ids, link group ids, artist ids, `featured_*`, `related_releases`, slug-to-filename) and date validity across all content.
 - Behavior probes: a throwaway Playwright spec (deleted after the run) checked analytics page context after client-side navigation, the mixtape year filter options, and what the e2e card selector actually matches.
 - Branch protection and workflow runs were read with `gh api` and `gh run list`.
@@ -21,11 +21,12 @@ Severity is impact if left alone: **High** (wrong behavior users or the label ca
 | T1 | High | M | End-to-end filtering and navigation tests pass when filtering is disabled and when zero cards render | Tests |
 | W1 | High | S | Deploys to production are not gated by CI | Weak impl. |
 | W2 | High | M | Release status (Coming Soon / New Release, disabled buy links) is frozen at build time | Weak impl. |
-| D1 | High | M | Series has two sources of truth that have already drifted | Data |
 | T2 | High | S | Loader tests can't detect broken ordering or a removed schema | Tests |
 | T6 | High | S | Release-status logic, which gates stream and buy links, has no tests | Tests |
+| D1 | Medium | M | Series has two sources of truth that have already drifted | Data |
+| W13 | Medium | S | Search matches most of the catalog for short queries (subsequence matching over joined fields) | Weak impl. |
 | D3 | Medium | S | `status` field and date-derived status contradict each other | Data |
-| D2 | Medium | M | 36 schema and YAML fields have no live consumer or only a dead one, and several already hold dangling references | Data |
+| D2 | Medium | M | 40 schema and YAML fields have no live consumer or only a dead one, and several already hold dangling references | Data |
 | D6 | Medium | S | Validation accepts an invalid date that the UI renders as "NaN", and checks no cross-references | Data |
 | D7 | Medium | S | Three of four content validators crash instead of reporting errors (Zod 3 API on Zod 4) | Data |
 | W3 | Medium | S | Analytics page context leaks across client-side navigation; five routes never send a page view | Weak impl. |
@@ -45,10 +46,10 @@ Severity is impact if left alone: **High** (wrong behavior users or the label ca
 | W8 | Low | S | Loader validation errors don't name the failing file | Weak impl. |
 | W9 | Low | S | Mixtape detail only embeds SoundCloud though the schema allows four platforms | Weak impl. |
 | W10 | Low | S | Catalog URL contract supports multi-value and key filters the UI never reads | Weak impl. |
-| W11 | Low | S | README deployment and CI sections describe a pipeline that no longer exists | Weak impl. |
+| W11 | Low | S | README deployment and CI sections are partly stale | Weak impl. |
 | W12 | Low | S | Client catalogs receive full documents, including unused fields and bodies | Weak impl. |
 
-Suggested first slice, given the transactional-artifact work ahead: W1, then T1 and T2 together (so the suite becomes a real gate), then W2 with T6 and D3 (status is the closest existing thing to transactional logic), then D1 and D6.
+Suggested first slice, given the transactional-artifact work ahead: W1, then T1 and T2 together (so the suite becomes a real gate), then W2 with T6 and D3 (status is the closest existing thing to transactional logic), then D6 and D1.
 
 ## 1. Tests that don't verify what they claim
 
@@ -58,16 +59,18 @@ Evidence. With `filterReleases` bypassed in `ReleasesCatalog.tsx` (E1) all 8 "Re
 
 Causes, all in `e2e/filtering.spec.ts` unless noted:
 
-- The card selector `[class*="grid"] > div` doesn't select cards. Cards render as `<a data-target="release_card">` (via `Card` in `src/components/ui/Card.tsx:22-29`). On `/releases` the selector matched 3 elements while the page had 9 release cards; none of them cards (a card is an `<a>`, so it can never be a direct `div` child of a grid). It appears 25 times in the file (for example lines 24, 31, 115, 149, and 230).
+- The card selector `[class*="grid"] > div` doesn't select cards. Cards render as `<a data-target="release_card">` (via `Card` in `src/components/ui/Card.tsx:22-29`). On `/releases` the selector matched 3 elements (the footer columns) while the page had 9 release cards; a card is an `<a>`, so it can never be a direct `div` child of a grid. It appears 25 times in the file (for example lines 24, 31, 115, 149, and 230).
 - Assertions that can't fail: `toBeLessThanOrEqual(initialCards)` after filtering (32, 49, 66, 155, 168), `toBeGreaterThanOrEqual(0)` (210, 271), and "should show only active artists" only checks that the count is above zero (254-258).
-- Conditional bodies that silently skip: the series test requires a visible series select, which is hidden because no series is active (35-51); the genre test looks for `input[type="checkbox"]`, but genre filters are buttons (`ReleasesCatalog.tsx:317-327`), so it never runs (53-68); the detail-navigation tests only assert if the URL happened to change (78-101, 234-252).
+- Conditional bodies that silently skip. The common cause is that the filter panel is collapsed by default (`filtersOpen` starts false; `hidden` class at `ReleasesCatalog.tsx:220` and `MixtapesCatalog.tsx:211`), so every select reports `isVisible() === false` (observed for the year select). That skips the series test (35-51), "should filter mixtapes by artist" (158-170), and "should show year filter" (200-212). The series select is additionally hidden because no series is active. The genre test would skip even with the panel open: it looks for `input[type="checkbox"]`, but genre filters are buttons (`ReleasesCatalog.tsx:317-327`) (53-68). The detail-navigation tests only assert if the URL happened to change (78-101, 234-252).
+- The search tests can't distinguish working search from broken search partly because search itself over-matches (W13): "test" returns 6 of 9 releases.
 - "should clear filters" never clicks the Clear button (103-117).
-- `e2e/navigation.spec.ts:56-68` would fail if it ran: it expects an `h1` containing "Series", but the series page title is an `h2` (`src/app/series/page.tsx:14`). The `if (isVisible)` guard hides this because the Series link is hidden.
+- `e2e/navigation.spec.ts:56-68` would fail if it ran: it expects an `h1` containing "Series", but the series page title is an `h2` (`src/app/series/page.tsx:14`); it also expects the URL `/series` exactly (line 65) while `trailingSlash: true` (`next.config.mjs:6`) likely yields `/series/` (not run). The `if (isVisible)` guard hides both because the Series link is hidden.
+- `e2e/navigation.spec.ts:109-125` "should navigate on mobile devices" accepts any visible link containing "Artists" (`nav a, a[href="/artists"]`), and the home page has visible ones outside the nav (`src/app/page.tsx:127, 292, 299`), so it likely passes without opening the mobile menu (inferred from markup, not run).
 - `e2e/smoke.spec.ts:44-50` "404 page works" only asserts the body has text.
 
 ### T2 — Loader tests can't detect broken ordering or a removed schema (High, S)
 
-Evidence. Reversing the date sort in `load-releases.ts:50-54` (M02) or `load-mixtapes.ts:49-53` (M03) passes every test in the whole suite. Replacing `XSchema.parse(data)` with an unchecked cast in each of the four loaders (M10-M13) also passes. The artist and series order tests do catch order inversions (M04, M05 killed).
+Evidence. Reversing the date sort in `load-releases.ts:50-54` (M02) or `load-mixtapes.ts:49-53` (M03) passes (M02 against the whole suite, M03 against its loader test). Replacing `XSchema.parse(data)` with an unchecked cast in each of the four loaders (M10-M13) also passes. The artist and series order tests do catch order inversions (M04, M05 killed).
 
 Cause. `src/lib/content/load-*.test.ts` assert properties of the committed content (`toHaveProperty`, `typeof`, array checks) that the content satisfies whether or not the loader validates or sorts it. The release and mixtape test files have no ordering test at all, though the catalog pages display in loader order. Several tests also return early when no content exists (`load-releases.test.ts:56, 72`; `load-mixtapes.test.ts:64, 80`; `load-artists.test.ts:138, 154`; `load-series.test.ts:44`), so an empty content directory passes vacuously. These are content-coupled integration checks presented as loader unit tests. A loader contract test needs fixture directories with known order and at least one invalid file.
 
@@ -92,7 +95,7 @@ Confirms the simplicity audit. `src/lib/utils/sort.test.ts:3-13` redefines `sort
 
 ### T7 — Interactive and analytics behavior in components is untested (Low, S)
 
-All of these mutations passed the full suite: inverting the Navigation active-state check (M29), making the mobile menu button do nothing (M30; `Navigation.test.tsx:86-91` only asserts that some button exists), dropping `trackingAttrs` from `Card` (M31, which silently removes release and artist click analytics), disabling the `PlaceholderImage` fallback (M33), changing three-or-more artist formatting in `ReleaseCard` (M35), and removing `placehold.ts` retina, clamping, or text handling (M24-M26). Only the clamp and text cases matter in practice; `PlaceholderImage` relies on `text`.
+All of these mutations passed the full suite: making `ArtistCard` link by `id` instead of `slug` (M34; every card fixture and every real artist has `id === slug`, so id/slug mix-ups in hrefs can't be detected), inverting the Navigation active-state check (M29), making the mobile menu button do nothing (M30; `Navigation.test.tsx:86-91` only asserts that some button exists), dropping `trackingAttrs` from `Card` (M31, which silently removes release and artist click analytics), disabling the `PlaceholderImage` fallback (M33), changing three-or-more artist formatting in `ReleaseCard` (M35), and removing `placehold.ts` retina, clamping, or text handling (M24-M26). Only the clamp and text cases matter in practice; `PlaceholderImage` relies on `text`.
 
 ### T8 — Class-name assertions standing in for behavior (Low, S)
 
@@ -106,11 +109,15 @@ All of these mutations passed the full suite: inverting the Navigation active-st
 
 `public/assets/js/tracking.js` (948 lines) implements the analytics event contract and the PII rules the README documents (`README.md:57-69, 145-165`: email and phone blocking, `mailto:`/`tel:` redaction, querystring stripping). No unit or e2e test references `tracking`, `dataLayer`, or `SigilZeroTracking`. It lives in `public/`, so it isn't type-checked either. Privacy sanitization is a trust boundary; it deserves a small contract suite (jsdom is already configured).
 
+### What the tests do verify
+
+Not everything is weak. Schema unit tests kill targeted mutations (S1-S4: dropping `.url()` on `embed_url`, loosening the release `status` enum, flipping the series `active` default, dropping `.email()` on `booking_email`). `serialize-filters.test.ts` catches a changed delimiter (S5) and a dropped `key` parse (M36). The `MixtapeCard` and `SeriesCard` tests catch a wrong href (S6) and a missing tagline (S7). Artist and series ordering (M04, M05), slug lookup (M07-M09), `hasActiveSeries` (M06), BPM overlap (M20), mixtape year (M22), and placeholder dimensions (M23) are covered. The schema tests do, however, also lock in fields nothing uses (D2).
+
 ## 2. Data definitions unused or duplicated
 
-### D1 — Series has two sources of truth that have already drifted (High, M)
+### D1 — Series has two sources of truth that have already drifted (Medium, M)
 
-`data/series.yml` is loaded by `load-series-registry.ts` without validation and feeds release cards, the release detail line, and the catalog series filter (`src/app/page.tsx:62, 190-194`; `releases/page.tsx:13`; `releases/[slug]/page.tsx:42-43`). `content/series/*.md` is loaded through `SeriesSchema` and feeds the series pages, the home series section, and nav visibility (`layout.tsx:59`, `page.tsx:61, 86-93`). They describe the same four series with different fields and have drifted: Red's `accent_hex` is `#D32F2F` in `data/series.yml:26` and `#FFBABA` in `content/series/red.md:9`; the registry carries `description` and `light_accent_hex` (`series.yml:27`), which nothing reads, while the markdown carries `tagline`, `background_hex`, and `default_genres`. Two TypeScript types follow (`SeriesRegistryItem` and `Series`), consumed by different cards (`ReleaseCard.tsx:12` and `SeriesCard.tsx:8`). Every series is `active: false`, which hides the Series nav and filter, while the registry still labels every release card with a series name.
+`data/series.yml` is loaded by `load-series-registry.ts` without validation and feeds release cards, the release detail line, and the catalog series filter (`src/app/page.tsx:62, 190-194`; `releases/page.tsx:13`; `releases/[slug]/page.tsx:42-43`). `content/series/*.md` is loaded through `SeriesSchema` and feeds the series pages, the home series section, and nav visibility (`layout.tsx:59`, `page.tsx:61, 86-93`). They describe the same four series with different fields and have drifted: Red's `accent_hex` is `#D32F2F` in `data/series.yml:26` and `#FFBABA` in `content/series/red.md:9`; the registry carries `description` and `light_accent_hex` (`series.yml:27`), which nothing reads, while the markdown carries `tagline`, `background_hex`, and `default_genres`. Two TypeScript types follow (`SeriesRegistryItem` and `Series`), consumed by different cards (`ReleaseCard.tsx:12` and `SeriesCard.tsx:8`). Every series is `active: false`, which hides the Series nav and filter, while the registry still labels every release card with a series name. Rated Medium because the only visible drift today is Red's accent color and the series pages are unlinked; it rises in priority if series becomes part of the transactional model.
 
 ### D2 — Fields with no live consumer (Medium, M)
 
@@ -126,8 +133,8 @@ Traced from schema to every non-test consumer in `src/app` and `src/components`.
 | `schemas/mixtape.ts` | `external_url` (21), `duration_minutes` (23), `thumbnail_image` (26), `featured` (32), `related_releases` (35) | No consumer |
 | `schemas/mixtape.ts` | `tags` (30) | Wired to filter UI, but no mixtape has tags, so the control never renders |
 | `schemas/series.ts` | `background_hex` (14), `default_genres` (18) | No consumer |
-| `data/series.yml` | `description`, `light_accent_hex` | No consumer |
-| `data/label.yml` | `tagline`, `contact_email`, `booking_email`, `demo_email`, `location`, `founded_year`, `social.facebook`, `social.beatport` | No consumer (see D4) |
+| `data/series.yml` | `description`, `light_accent_hex`, `color_hex`, `order`, `slug` | No consumer (registry readers use only `id`, `name`, `short_label`, `accent_hex`) |
+| `data/label.yml` | `name`, `tagline`, `contact_email`, `booking_email`, `demo_email`, `location`, `founded_year`, `social.facebook`, `social.beatport` | No consumer (see D4) |
 | `data/links.yml` | nine `SIGxxx-other` groups | Never loaded; all empty |
 
 Unused fields rot, and several already hold references that resolve to nothing: `related_releases` uses lowercase `sig001`-style values that match no release id or catalog number (`dyson-hope-burning-man-2025-sound-camp-house.md:22-25` and two "matrix rave" mixtapes); `featured_mixtapes` names three mixtapes that don't exist (`b-squared.md:39, 41`; `dyson-hope.md:43`); `featured_releases` uses catalog numbers (`SIG001`) where every other reference uses release ids. Schema tests (`src/lib/schemas/*.test.ts`) lock these fields in place, which makes them look supported. Decide per field whether it is planned (and document the consumer) or removable.
@@ -166,7 +173,7 @@ The home page splits New Releases and Coming Soon on the frontmatter `status` fi
 
 ### W3 — Analytics page context leaks across client navigation (Medium, S)
 
-`PageContextTracker` is rendered on 7 of 11 routes; it's missing from `mixtapes`, `mixtapes/[slug]`, `series`, `series/[slug]`, and `calendar`. It sets `data-page-type` and release and artist attributes on `<body>` (`PageContextTracker.tsx:55-58`) and never resets them on unmount (cleanup at 132-140 only clears timers and listeners). Observed with Playwright: from `/releases/drums-in-the-deep`, clicking the Mixtapes nav link left `data-page-type="release_detail"` and `data-release-title="Drums in the Deep"` on the body, and no page-view event was pushed for `/mixtapes`. Clicks on those pages are attributed to the previous release. Separately, the mixtape page's "Open on SoundCloud" link is tagged `data-entity="release"` and `data-target="streaming_link"` (`SoundCloudEmbed.tsx:70-77`).
+`PageContextTracker` is rendered on 7 of 12 page routes; it's missing from `mixtapes`, `mixtapes/[slug]`, `series`, `series/[slug]`, and `calendar`. It sets `data-page-type` and release and artist attributes on `<body>` (`PageContextTracker.tsx:55-58`) and never resets them on unmount (cleanup at 132-140 only clears timers and listeners). Observed with Playwright: from `/releases/drums-in-the-deep`, clicking the Mixtapes nav link left `data-page-type="release_detail"` and `data-release-title="Drums in the Deep"` on the body, and no page-view event was pushed for `/mixtapes`. Clicks on those pages are attributed to the previous release. Separately, the mixtape page's "Open on SoundCloud" link is tagged `data-entity="release"` and `data-target="streaming_link"` (`SoundCloudEmbed.tsx:70-77`); `MixtapeCard` and `SeriesCard` pass no `trackingAttrs` (`MixtapeCard.tsx:15`, `SeriesCard.tsx:13`), so those card clicks are untracked; and the press-kit Key Links are tagged `data-section="footer"` (`press-kit/page.tsx:60` and siblings).
 
 ### W4 — Slug lookup by filename substring (Medium, S)
 
@@ -196,13 +203,17 @@ All four series are inactive, yet `/series` and all four `/series/[slug]` pages 
 
 `serialize-filters.ts` round-trips multi-value series, type, and artist params and a `key` param, and tests cover that. The catalogs read only the first value of each (`ReleasesCatalog.tsx:55-57`, `MixtapesCatalog.tsx:44-45`), never read `keys`, and offer no key filter. A shared link with two artists silently drops one.
 
-### W11 — README describes a pipeline that no longer exists (Low, S)
+### W11 — README deployment and CI sections are partly stale (Low, S)
 
-`README.md:297-312` says the build writes to `/docs`, validates frontmatter, runs e2e "against a built server," and that all jobs must pass. Deploy uploads `./out` and doesn't validate (`deploy.yml`), Playwright runs against `npm run dev` (`playwright.config.ts:28-33`), and no job is required (W1).
+`README.md:297-312` says the build validates frontmatter (it doesn't; `npm run build` is `next build && cp -r out docs`), that e2e runs "against a built server" (Playwright runs `npm run dev`, `playwright.config.ts:28-33`), and that all jobs "must pass" (the `ci-status` job in `test.yml` aggregates them, but nothing requires it before merge or deploy, W1). It also describes `npm run build` and `/docs` as the deploy path, while `deploy.yml` runs `npx next build` and uploads `./out`. The `/docs` output and the `test.yml` build check are accurate.
 
 ### W12 — Client catalogs receive whole documents (Low, S)
 
 `ReleasesCatalog` and `MixtapesCatalog` receive full `ReleaseDocument[]`/`MixtapeDocument[]`, bodies and unused fields included; the `/releases` HTML payload contains `label_copy_short`, which nothing renders. Minor payload weight now; it matters more if transactional fields (prices, codes, private notes) are ever added to frontmatter, because anything in frontmatter will be shipped to the browser by default.
+
+### W13 — Search matches most of the catalog for short queries (Medium, S)
+
+`fuzzyMatch` (`filters/releases.ts:21-38`, duplicated in `filters/mixtapes.ts:15-32`) falls back to subsequence matching over one string that joins title, catalog number, track titles, and artist ids (`filters/releases.ts:54-61`). Over that much text, short queries match almost anything. Observed on `/releases`: "test" returned 6 of 9 releases, none containing "test" in any searched field; "Need More" returned "Need More Drugs" and "Get Up and Go". This is user-visible and is one reason the e2e search assertions carry no signal (T1). Fuzzy search is a solved problem; if fuzziness is wanted, an existing small library or per-field matching with a threshold beats the hand-rolled version.
 
 ## 4. Contract-first review of module boundaries
 
@@ -214,7 +225,7 @@ Contract-first asks whether each boundary has an executable contract (a typed in
 | YAML data → loaders (`load-yaml.ts`, `load-label.ts`, `load-links.ts`, `load-series-registry.ts`) | TypeScript types only, by cast | No runtime contract (D5); series duplicated with the markdown model (D1). |
 | Schemas → validator scripts | None; four hand-copied schemas | Drift is structural (simplicity audit), and three scripts are broken on Zod 4 (D7). |
 | Loaders → pages and components | Inferred Zod types | Many fields have no consumer (D2); `status` has two competing interpretations (D3); `active` has no single meaning (W6). |
-| Filters and URL serialization (`lib/filters`) | Good unit coverage of serialization; partial coverage of filtering | Fuzzy search, type, and key filters untested (T4); UI uses a narrower contract than the serializer (W10). |
+| Filters and URL serialization (`lib/filters`) | Good unit coverage of serialization; partial coverage of filtering | Fuzzy search, type, and key filters untested (T4); fuzzy search over-matches (W13); UI uses a narrower contract than the serializer (W10). |
 | Release status (`release-status.ts`) | None | Untested (T6) and evaluated at build time (W2). |
 | Components → tracking script (`data-*` attributes, body context) | README prose only | No test owns the event contract or PII rules (T10); context leaks on navigation (W3); dropping `trackingAttrs` is undetected (T7). |
 | Assembled site (e2e) | 37 Playwright tests | Selectors and assertions don't bind to behavior (T1). |
@@ -264,9 +275,13 @@ Each row is one production edit, run against the named test scope, then reverted
 | M31 | `Card` drops tracking attributes | full suite | Survived |
 | M32 | Breadcrumb skips `decodeURIComponent` | full suite | Survived |
 | M33 | `PlaceholderImage` never falls back | full suite | Survived |
-| M34 | `ArtistCard` links by id instead of slug | full suite | Killed |
+| M34 | `ArtistCard` links by id instead of slug | full suite | Survived (fixtures use `id === slug`; an earlier run that appeared killed used a malformed edit, corrected on independent re-run) |
 | M35 | `ReleaseCard` 3+ artist formatting changed | full suite | Survived |
 | M36 | Serializer ignores `key` param | full suite | Killed |
+| S1-S4 | Schema loosened (mixtape `embed_url` URL check, release `status` enum, series `active` default, artist `booking_email` check) | schema tests | Killed |
+| S5 | Serializer artist delimiter changed | `serialize-filters.test.ts` | Killed |
+| S6 | `MixtapeCard` href changed | `MixtapeCard.test.tsx` | Killed |
+| S7 | `SeriesCard` tagline removed | `SeriesCard.test.tsx` | Killed |
 | E1 | Releases catalog bypasses `filterReleases` | e2e Releases Filtering | Survived (8/8 pass) |
 | E2 | `filterMixtapes` returns input | e2e Mixtapes Filtering | Survived (6/6 pass) |
 | E3 | Releases catalog renders no cards | e2e Releases Filtering | Survived (8/8 pass) |
