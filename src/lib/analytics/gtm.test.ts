@@ -36,7 +36,7 @@ describe('gtmLoaderScript', () => {
     expect(Array.isArray(win.dataLayer)).toBe(true);
   });
 
-  it.each(['127.0.0.1', '192.168.101.83', 'jasoncookdesign.github.io', 'www.sigilzero.com', 'sigilzero.com.example.test'])(
+  it.each(['127.0.0.1', '192.168.0.10', 'jasoncookdesign.github.io', 'www.sigilzero.com', 'sigilzero.com.example.test'])(
     'does not inject the GTM script on %s',
     (hostname) => {
       runLoader(hostname);

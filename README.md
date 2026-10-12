@@ -36,7 +36,7 @@ Content processing uses gray-matter for frontmatter parsing, remark and rehype f
 SIGIL.ZERO uses a browser-side tracker at `/public/assets/js/tracking.js` with a GTM-first pipeline.
 
 - `tracking.js` is vendor-agnostic and only pushes normalized objects into `window.dataLayer`.
-- Google Tag Manager (GTM) is installed once in the root app shell, and loads only when the page hostname is `sigilzero.com` (`src/lib/analytics/gtm.ts`). On localhost, in CI and on any other host, `window.dataLayer` still exists and `tracking.js` still pushes to it, but GTM never loads, so nothing reaches GA4 or Meta.
+- Google Tag Manager (GTM) is installed once in the root app shell, and loads only when the page hostname is `sigilzero.com` (`src/lib/analytics/gtm.ts`). On localhost, in CI and on any other host, `window.dataLayer` still exists and `tracking.js` still pushes to it, but GTM never loads, so nothing reaches GA4 or Meta. (The `<noscript>` GTM iframe can't be gated and still renders for visitors with JavaScript disabled.)
 - GA4 and Meta are configured in GTM, not in application code.
 - No direct `gtag()` or `fbq()` calls exist in the app code.
 
