@@ -37,6 +37,7 @@ export default function ReleaseCard({ release, series, artists }: Props) {
   return (
     <Card
       href={`/releases/${release.slug}`}
+      data-testid="release-card"
       trackingAttrs={{
         "data-track": "true",
         "data-entity": "release",

@@ -42,10 +42,10 @@ test.describe('Smoke Test', () => {
   });
 
   test('404 page works', async ({ page }) => {
-    await page.goto('/non-existent-page-xyz');
-    
-    // Should show 404 or redirect
-    const content = await page.textContent('body');
-    expect(content).toBeTruthy();
+    const response = await page.goto('/non-existent-page-xyz');
+
+    expect(response?.status()).toBe(404);
+    await expect(page.locator('h1')).toHaveText('404');
+    await expect(page.getByRole('link', { name: /Go home/ })).toHaveAttribute('href', '/');
   });
 });

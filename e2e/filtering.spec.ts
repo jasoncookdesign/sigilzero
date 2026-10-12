@@ -1,292 +1,220 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
+import {
+  activeArtists,
+  activeMixtapes,
+  activeReleases,
+  allSeries,
+  hasActiveSeries,
+} from './content';
+
+const releaseCards = (page: Page) => page.getByTestId('release-card');
+const mixtapeCards = (page: Page) => page.getByTestId('mixtape-card');
+const artistCards = (page: Page) => page.getByTestId('artist-card');
+
+async function cardTitles(cards: ReturnType<Page['getByTestId']>) {
+  return (await cards.locator('h3').allTextContents()).map((t) => t.trim()).sort();
+}
+
+async function openFilters(page: Page) {
+  await page.getByRole('button', { name: 'More Filters' }).click();
+  await expect(page.getByRole('button', { name: 'Hide Filters' })).toBeVisible();
+}
+
+const titlesOf = (docs: Record<string, any>[]) => docs.map((d) => d.title as string).sort();
 
 test.describe('Releases Filtering', () => {
+  const releases = activeReleases();
+
   test.beforeEach(async ({ page }) => {
     await page.goto('/releases');
-    // Fail fast if we hit a 404 or error page
-    await expect(page.locator('h1:has-text("404")')).not.toBeVisible();
-    await expect(page.locator('h1:has-text("Error")')).not.toBeVisible();
-    // Wait for catalog page to load
-    await page.getByTestId('releases-page-title').first().waitFor();
+    await expect(page.getByTestId('releases-page-title')).toBeVisible();
+    await expect(releaseCards(page)).toHaveCount(releases.length);
   });
 
-  test('should display releases page with filters', async ({ page }) => {
-    await expect(page.getByTestId('releases-page-title').first()).toBeVisible();
-    
-    // Check if filter inputs are visible
-    await expect(page.locator('input[placeholder*="Search"]').first()).toBeVisible();
+  test('shows a card for every active release', async ({ page }) => {
+    expect(releases.length).toBeGreaterThan(1);
+    expect(await cardTitles(releaseCards(page))).toEqual(titlesOf(releases));
   });
 
-  test('should filter releases by search query', async ({ page }) => {
-    const searchInput = page.locator('input[placeholder*="Search"]').first();
-    
-    // Get initial count of releases
-    const initialCards = await page.locator('[class*="grid"] > div').count();
-    
-    // Type in search
-    await searchInput.fill('Need More');
-    await page.waitForTimeout(500); // Wait for filter to apply
-    
-    // Check that results are filtered (should be less than or equal to initial)
-    const filteredCards = await page.locator('[class*="grid"] > div').count();
-    expect(filteredCards).toBeLessThanOrEqual(initialCards);
+  test('search narrows to the matching release', async ({ page }) => {
+    await page.getByPlaceholder(/Search/).fill('Afterphase');
+
+    // Fuzzy matching also lets some unrelated releases through, so this checks
+    // that the match is shown and the list shrank, not an exact result set.
+    const cards = releaseCards(page);
+    await expect(cards.filter({ hasText: 'Afterphase' })).toHaveCount(1);
+    await expect(cards).not.toHaveCount(releases.length);
   });
 
-  test('should filter releases by series if available', async ({ page }) => {
-    // Check if series filter exists
-    const seriesSelect = page.locator('select:has(option:text("Series"))').first();
-    
-    if (await seriesSelect.isVisible()) {
-      // Get initial count
-      const initialCards = await page.locator('[class*="grid"] > div').count();
-      
-      // Select a series
-      await seriesSelect.selectOption({ index: 1 }); // Select first non-"All" option
-      await page.waitForTimeout(500);
-      
-      // Check that results changed
-      const filteredCards = await page.locator('[class*="grid"] > div').count();
-      expect(filteredCards).toBeLessThanOrEqual(initialCards);
+  test('series filter matches whether any series is active', async ({ page }) => {
+    await openFilters(page);
+    const seriesSelect = page.getByLabel('Filter by series');
+
+    if (!hasActiveSeries()) {
+      await expect(seriesSelect).toHaveCount(0);
+      return;
     }
+    const seriesId = allSeries()[0]!.id as string;
+    await seriesSelect.selectOption(seriesId);
+    expect(await cardTitles(releaseCards(page))).toEqual(
+      titlesOf(releases.filter((r) => r.series_id === seriesId))
+    );
   });
 
-  test('should filter releases by genre if available', async ({ page }) => {
-    const genreCheckbox = page.locator('input[type="checkbox"]').first();
-    
-    if (await genreCheckbox.isVisible()) {
-      // Get initial count
-      const initialCards = await page.locator('[class*="grid"] > div').count();
-      
-      // Check a genre
-      await genreCheckbox.check();
-      await page.waitForTimeout(500);
-      
-      // Verify filtering occurred
-      const filteredCards = await page.locator('[class*="grid"] > div').count();
-      expect(filteredCards).toBeLessThanOrEqual(initialCards);
-    }
+  test('genre filter shows exactly the releases with that genre', async ({ page }) => {
+    const genre = 'progressive tech house';
+    const expected = titlesOf(releases.filter((r) => (r.genres ?? []).includes(genre)));
+    expect(expected.length).toBeGreaterThan(0);
+    expect(expected.length).toBeLessThan(releases.length);
+
+    await openFilters(page);
+    await page.getByRole('button', { name: genre, exact: true }).click();
+
+    await expect(releaseCards(page)).toHaveCount(expected.length);
+    expect(await cardTitles(releaseCards(page))).toEqual(expected);
   });
 
-  test('should display release cards with expected content', async ({ page }) => {
-    const firstCard = page.locator('[class*="grid"] > div').first();
-    
-    // Check that card has title (cards may use placeholder images)
-    await expect(firstCard).toBeVisible();
-    await expect(firstCard.locator('h3, h2')).toBeVisible();
+  test('type filter shows exactly the releases of that type', async ({ page }) => {
+    const expected = titlesOf(releases.filter((r) => r.type === 'album'));
+    expect(expected.length).toBeGreaterThan(0);
+
+    await openFilters(page);
+    await page.getByLabel('Filter by type').selectOption('album');
+
+    await expect(releaseCards(page)).toHaveCount(expected.length);
+    expect(await cardTitles(releaseCards(page))).toEqual(expected);
   });
 
-  test('should navigate to release detail page when clicked', async ({ page }) => {
-    // Check if there are any cards first
-    const cardCount = await page.locator('[class*="grid"] > div').count();
-    if (cardCount > 0) {
-      const firstCard = page.locator('[class*="grid"] > div').first();
-      const title = await firstCard.locator('h3, h2').first().textContent();
-      
-      // Card is wrapped in a Link component, click the card itself
-      await firstCard.click();
-      
-      // Wait a moment for navigation
-      await page.waitForTimeout(1000);
-      
-      // Check if we navigated to a detail page
-      const currentUrl = page.url();
-      if (currentUrl.match(/\/releases\/.+/)) {
-        // Should show the release title
-        if (title) {
-          await expect(page.locator('h1')).toContainText(title);
-        }
-      }
-      // If we didn't navigate, test passes (no items to navigate to)
-    }
+  test('year filter shows exactly the releases from that year', async ({ page }) => {
+    const expected = titlesOf(releases.filter((r) => String(r.release_date).startsWith('2023-')));
+    expect(expected.length).toBeGreaterThan(0);
+
+    await openFilters(page);
+    await page.getByLabel('Filter by year').selectOption('2023');
+
+    await expect(releaseCards(page)).toHaveCount(expected.length);
+    expect(await cardTitles(releaseCards(page))).toEqual(expected);
   });
 
-  test('should clear filters', async ({ page }) => {
-    const searchInput = page.locator('input[placeholder*="Search"]').first();
-    
-    // Apply a filter
-    await searchInput.fill('Test');
-    await page.waitForTimeout(500);
-    
-    // Clear the search
-    await searchInput.clear();
-    await page.waitForTimeout(500);
-    
-    // Should show all releases again
-    const cards = await page.locator('[class*="grid"] > div').count();
-    expect(cards).toBeGreaterThan(0);
+  test('clicking a card opens that release', async ({ page }) => {
+    await releaseCards(page).filter({ hasText: 'Afterphase' }).click();
+
+    await expect(page).toHaveURL(/\/releases\/afterphase\/?$/);
+    await expect(page.locator('h1')).toContainText('Afterphase');
   });
 
-  test('should show filtered count', async ({ page }) => {
-    // Apply a filter to trigger the count display
-    const searchInput = page.locator('input[placeholder*="Search"]').first();
-    await searchInput.fill('test');
-    await page.waitForTimeout(500);
-    
-    // Check if filtered count is displayed ("Showing X of Y releases")
-    const countText = page.locator('text=/Showing .+ of .+ releases/i');
-    await expect(countText).toBeVisible();
+  test('Clear filters restores every release', async ({ page }) => {
+    await page.getByPlaceholder(/Search/).fill('Afterphase');
+    await expect(releaseCards(page)).not.toHaveCount(releases.length);
+
+    await page.getByRole('button', { name: 'Clear filters' }).first().click();
+
+    await expect(page.getByPlaceholder(/Search/)).toHaveValue('');
+    await expect(releaseCards(page)).toHaveCount(releases.length);
+  });
+
+  test('filtered count reports the visible cards', async ({ page }) => {
+    await page.getByPlaceholder(/Search/).fill('Afterphase');
+    await expect(releaseCards(page)).not.toHaveCount(releases.length);
+
+    const shown = await releaseCards(page).count();
+    await expect(page.getByText(`Showing ${shown} of ${releases.length} releases`)).toBeVisible();
   });
 });
 
 test.describe('Mixtapes Filtering', () => {
+  const mixtapes = activeMixtapes();
+
   test.beforeEach(async ({ page }) => {
     await page.goto('/mixtapes');
-    // Fail fast if we hit a 404 or error page
-    await expect(page.locator('h1:has-text("404")')).not.toBeVisible();
-    await expect(page.locator('h1:has-text("Error")')).not.toBeVisible();
-    // Wait for catalog page to load
-    await page.getByTestId('mixtapes-page-title').first().waitFor();
+    await expect(page.getByTestId('mixtapes-page-title')).toBeVisible();
+    await expect(mixtapeCards(page)).toHaveCount(mixtapes.length);
   });
 
-  test('should display mixtapes page with filters', async ({ page }) => {
-    await expect(page.getByTestId('mixtapes-page-title').first()).toBeVisible();
-    await expect(page.locator('input[placeholder*="Search"]').first()).toBeVisible();
+  test('shows a card for every active mixtape', async ({ page }) => {
+    expect(mixtapes.length).toBeGreaterThan(1);
+    expect(await cardTitles(mixtapeCards(page))).toEqual(titlesOf(mixtapes));
   });
 
-  test('should filter mixtapes by search query', async ({ page }) => {
-    const searchInput = page.locator('input[placeholder*="Search"]').first();
-    
-    const initialCards = await page.locator('[class*="grid"] > div').count();
-    
-    await searchInput.fill('Live');
-    await page.waitForTimeout(500);
-    
-    const filteredCards = await page.locator('[class*="grid"] > div').count();
-    expect(filteredCards).toBeLessThanOrEqual(initialCards);
+  test('search narrows to the matching mixtape', async ({ page }) => {
+    await page.getByPlaceholder(/Search/).fill('Caribbean');
+
+    const cards = mixtapeCards(page);
+    await expect(cards.filter({ hasText: 'Live in the Caribbean' })).toHaveCount(1);
+    await expect(cards).not.toHaveCount(mixtapes.length);
   });
 
-  test('should filter mixtapes by artist if available', async ({ page }) => {
-    const artistSelect = page.locator('select:has(option:text("Artist"))').first();
-    
-    if (await artistSelect.isVisible()) {
-      const initialCards = await page.locator('[class*="grid"] > div').count();
-      
-      await artistSelect.selectOption({ index: 1 });
-      await page.waitForTimeout(500);
-      
-      const filteredCards = await page.locator('[class*="grid"] > div').count();
-      expect(filteredCards).toBeLessThanOrEqual(initialCards);
-    }
+  test('artist filter shows exactly that artist\'s mixtapes', async ({ page }) => {
+    const expected = titlesOf(mixtapes.filter((m) => m.artist_id === 'b-squared'));
+    expect(expected.length).toBeGreaterThan(0);
+
+    await openFilters(page);
+    await page.getByLabel('Filter by artist').selectOption('b-squared');
+
+    await expect(mixtapeCards(page)).toHaveCount(expected.length);
+    expect(await cardTitles(mixtapeCards(page))).toEqual(expected);
   });
 
-  test('should display mixtape cards with expected content', async ({ page }) => {
-    const firstCard = page.locator('[class*="grid"] > div').first();
-    
-    // Check that card structure exists (cards may use placeholder images)
-    await expect(firstCard).toBeVisible();
-    await expect(firstCard.locator('h3, h2')).toBeVisible();
+  test('year filter offers each content year and filters by it', async ({ page }) => {
+    const years = [...new Set(mixtapes.map((m) => String(m.date).slice(0, 4)))].sort().reverse();
+
+    await openFilters(page);
+    const yearSelect = page.getByLabel('Filter by year');
+    await expect(yearSelect.locator('option')).toHaveText(['All years', ...years]);
+
+    const expected = titlesOf(mixtapes.filter((m) => String(m.date).startsWith('2024-')));
+    await yearSelect.selectOption('2024');
+    await expect(mixtapeCards(page)).toHaveCount(expected.length);
+    expect(await cardTitles(mixtapeCards(page))).toEqual(expected);
   });
 
-  test('should navigate to mixtape detail page when clicked', async ({ page }) => {
-    // Check if there are any cards first
-    const cardCount = await page.locator('[class*="grid"] > div').count();
-    if (cardCount > 0) {
-      const firstCard = page.locator('[class*="grid"] > div').first();
-      
-      // Card is wrapped in a Link component, click the card itself
-      await firstCard.click();
-      
-      // Wait a moment for navigation
-      await page.waitForTimeout(1000);
-      
-      // Check if we navigated to a detail page (if not, test still passes)
-      const currentUrl = page.url();
-      if (currentUrl.match(/\/mixtapes\/.+/)) {
-        await expect(page).toHaveURL(/\/mixtapes\/.+/);
-      }
-    }
-  });
+  test('clicking a card opens that mixtape', async ({ page }) => {
+    await mixtapeCards(page).filter({ hasText: 'Live in the Caribbean' }).click();
 
-  test('should show year filter', async ({ page }) => {
-    const yearSelect = page.locator('select:has(option:text("Year"))').first();
-    
-    if (await yearSelect.isVisible()) {
-      // Select a year
-      await yearSelect.selectOption({ index: 1 });
-      await page.waitForTimeout(500);
-      
-      // Should filter results
-      const cards = await page.locator('[class*="grid"] > div').count();
-      expect(cards).toBeGreaterThanOrEqual(0);
-    }
+    await expect(page).toHaveURL(/\/mixtapes\/dyson-hope-live-in-the-caribbean\/?$/);
+    await expect(page.locator('h1')).toContainText('Live in the Caribbean');
   });
 });
 
 test.describe('Artists Filtering', () => {
+  const artists = activeArtists();
+
   test.beforeEach(async ({ page }) => {
     await page.goto('/artists');
-    // Fail fast if we hit a 404 or error page
-    await expect(page.locator('h1:has-text("404")')).not.toBeVisible();
-    await expect(page.locator('h1:has-text("Error")')).not.toBeVisible();
-    // Wait for catalog page to load
-    await page.getByTestId('artists-page-title').waitFor();
-  });
-
-  test('should display artists page', async ({ page }) => {
     await expect(page.getByTestId('artists-page-title')).toBeVisible();
   });
 
-  test('should display artist cards', async ({ page }) => {
-    const cards = await page.locator('[class*="grid"] > div').count();
-    expect(cards).toBeGreaterThan(0);
+  test('shows exactly the active artists', async ({ page }) => {
+    expect(artists.length).toBeGreaterThan(0);
+    await expect(artistCards(page)).toHaveCount(artists.length);
+    expect(await cardTitles(artistCards(page))).toEqual(artists.map((a) => a.name as string).sort());
   });
 
-  test('should navigate to artist detail page when clicked', async ({ page }) => {
-    // Check if there are any cards first
-    const cardCount = await page.locator('[class*="grid"] > div').count();
-    if (cardCount > 0) {
-      const firstCard = page.locator('[class*="grid"] > div').first();
-      
-      // Card is wrapped in a Link component, click the card itself
-      await firstCard.click();
-      
-      // Wait a moment for navigation
-      await page.waitForTimeout(1000);
-      
-      // Check if we navigated to a detail page (if not, test still passes)
-      const currentUrl = page.url();
-      if (currentUrl.match(/\/artists\/.+/)) {
-        await expect(page).toHaveURL(/\/artists\/.+/);
-      }
-    }
-  });
+  test('clicking a card opens that artist', async ({ page }) => {
+    const artist = artists[0]!;
+    await artistCards(page).filter({ hasText: artist.name }).click();
 
-  test('should show only active artists', async ({ page }) => {
-    // All displayed artists should be active (not inactive)
-    const cards = await page.locator('[class*="grid"] > div').count();
-    expect(cards).toBeGreaterThan(0);
+    await expect(page).toHaveURL(new RegExp(`/artists/${artist.slug}/?$`));
+    await expect(page.locator('h1')).toContainText(artist.name);
   });
 });
 
 test.describe('Series Page', () => {
-  test('should display series page if available', async ({ page }) => {
+  const series = allSeries();
+
+  test('lists every series', async ({ page }) => {
     await page.goto('/series');
-    
-    // Either shows series or redirects
-    const url = page.url();
-    if (url.includes('/series')) {
-      await expect(page.getByTestId('series-page-title')).toBeVisible();
-      
-      const cards = await page.locator('[class*="grid"] > div').count();
-      expect(cards).toBeGreaterThanOrEqual(0);
-    }
+    await expect(page.getByTestId('series-page-title')).toBeVisible();
+    await expect(page.getByTestId('series-card')).toHaveCount(series.length);
   });
 
-  test('should navigate to series detail page', async ({ page }) => {
+  test('clicking a series card opens that series', async ({ page }) => {
     await page.goto('/series');
-    
-    if (page.url().includes('/series')) {
-      const cardCount = await page.locator('[class*="grid"] > div').count();
-      
-      if (cardCount > 0) {
-        const firstCard = page.locator('[class*="grid"] > div').first();
-        const cardLink = firstCard.locator('a').first();
-        
-        if (await cardLink.isVisible()) {
-          await cardLink.click();
-          await expect(page).toHaveURL(/\/series\/.+/);
-        }
-      }
-    }
+    const first = page.getByTestId('series-card').first();
+    const href = await first.getAttribute('href');
+    expect(href).toMatch(/^\/series\/.+/);
+
+    await first.click();
+    await expect(page).toHaveURL(new RegExp(`${href!.replace(/\/$/, '')}/?$`));
   });
 });
